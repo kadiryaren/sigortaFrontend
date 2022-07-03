@@ -1,17 +1,15 @@
 import React from 'react'
 import { useEffect } from 'react'
-
+import { MDBDataTable } from 'mdbreact';
 import { MainContext, useContext } from '../contex'
+import SideBarLinks from '../components/SideBarLinks';
 
 
 export default function Home() {
     const {token,setToken,basePath,setBasePath} = useContext(MainContext);
 
-    // useEffect(() => {
-    //     // if(!token){
-    //     //     window.location.href = basePath + "/login"
-    //     // }
-    // },[])
+
+    
 
 
     return (
@@ -19,18 +17,14 @@ export default function Home() {
         {/* navbar */}
         <div className="navbar bg-base-100 shadow">
             <div className="flex-none">
-                {/* <button className="btn btn-square btn-ghost">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button> */}
+              
                 <label for="my-drawer" className="btn btn-square btn-ghost drawer-button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></label>
             </div>
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">Sigorta Sistemi</a>
+                <a className="btn btn-ghost normal-case text-xl">Biçerer Sigorta</a>
             </div>
             <div className="flex-none">
-                <button className="btn btn-square btn-ghost">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-                </button>
+            <button class="btn btn-success"><a href="/login" className="link link-hover">Giriş Yap</a></button>
             </div>
         </div>
         <div className="drawer">
@@ -39,17 +33,17 @@ export default function Home() {
                  {/* Toggle Button */}
 
                 <div className="container">
-                
-
+                    <div className="flex justify-center align-center my-5">
+                        <img src={ require('../assets/images/mainPhoto.jpeg') } alt="" />
+                    </div>
                 </div>
                  
             </div> 
             <div className="drawer-side ">
                 <label for="my-drawer" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-
-                <li><a>Sidebar Item 1</a></li>
-                <li><a>Sidebar Item 2</a></li>
+                    <SideBarLinks></SideBarLinks>
+                
                 
                 </ul>
             </div>  

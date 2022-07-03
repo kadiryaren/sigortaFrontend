@@ -4,21 +4,29 @@ import {BrowserRouter as Router,Routes, Route} from  "react-router-dom";
 import { MainContext } from './contex';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import TumKullanicilar from './pages/TumKullanicilar';
 
 export default function App() {
 
   const[token, setToken] = useState(false);
-  const[basePath, setBasePath] = useState("http://localhost:5000");
+  const[userId,setUserId] = useState(false);
+
   const data = {
     token,
-    setToken
+    setToken,
+    userId,
+    setUserId
+
   }
 
 	return (
 		<MainContext.Provider value={data}>
 			<Router>
-        <Routes>
+      <Routes>
           <Route  path="/"  element={<Home  />}  />
+        </Routes>
+        <Routes>
+          <Route  path="/kullanicilar"  element={<TumKullanicilar  />}  />
         </Routes>
         <Routes>
           <Route  path="/login"  element={<Login  />}  />
