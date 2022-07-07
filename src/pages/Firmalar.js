@@ -8,29 +8,30 @@ import SideBarLinks from '../components/SideBarLinks';
 
 
 
-export default function TumKullanicilar() {
+export default function Firmalar() {
     const navigate = useNavigate();
-    const {token,userId ,setUserId} = useContext(MainContext);
+    const {token,userId ,setUserId,firmaId,setFirmaId,firmaAdi,setFirmaAdi} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
-    const click =  (id) => {
+    const click =  (id,firmaName) => {
             
-        setUserId(id);
-        navigate("/kullanicilar/tek/");
+        setFirmaId(id);
+        setFirmaAdi(firmaName);
+        navigate("/firma/tek");
 
     };
 
     const fetchData = async () => {
-        const response = await fetch("http://127.0.0.1:5000/kullanici/goster/hepsi/",{
+        const response = await fetch("http://127.0.0.1:5000/firma/goster/hepsi/",{
             method:"POST",
             mode:"cors",
             headers:{
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f"
+                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
             })
-        })
+        });
 
         
         const returnData = await response.json();
@@ -38,9 +39,9 @@ export default function TumKullanicilar() {
         const processedData = [];
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
             processedData.push({
-                kullaniciAdi: returnData[i].kullaniciAdi,
+                ad: returnData[i].ad,
                 
-                clickEvent: () => click(returnData[i].id)
+                clickEvent: () => click(returnData[i].id,returnData[i].ad)
             });
 
             
@@ -53,8 +54,8 @@ export default function TumKullanicilar() {
         const data = {
             columns:[
                 {
-                    label: 'Kullanıcı',
-                    field: 'kullaniciAdi',
+                    label: 'Firma Adi',
+                    field: 'ad',
                     sort: 'asc',
                     width: 150
                 }
@@ -100,7 +101,7 @@ export default function TumKullanicilar() {
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
-                            <b style={{'font-size':'30px'}}>Kullanıcılar</b>
+                            <b style={{'font-size':'30px'}}>Firmalar</b>
                         </h1>
                     </div>
 
@@ -130,7 +131,7 @@ export default function TumKullanicilar() {
                 </ul>
             </div>  
         </div>
-
+      
       
     </div>
   )

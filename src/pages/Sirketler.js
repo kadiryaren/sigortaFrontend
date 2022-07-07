@@ -8,27 +8,33 @@ import SideBarLinks from '../components/SideBarLinks';
 
 
 
-export default function TumKullanicilar() {
+export default function Sirketler() {
     const navigate = useNavigate();
-    const {token,userId ,setUserId} = useContext(MainContext);
+    const {sigortaSirketiId,
+        setSigortaSirketiId,
+        sigortaSirketiAdi,
+        setSigortaSirketiAdi,sirketPhoto,
+        setSirketPhoto} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
-    const click =  (id) => {
-            
-        setUserId(id);
-        navigate("/kullanicilar/tek/");
+    const click =  (id,arsivName,photo) => {
+        console.log("yonlendirme");
+        setSigortaSirketiId(id);
+        setSigortaSirketiAdi(arsivName);
+        setSirketPhoto(photo);
+        navigate("/sirket/tek");
 
     };
 
     const fetchData = async () => {
-        const response = await fetch("http://127.0.0.1:5000/kullanici/goster/hepsi/",{
+        const response = await fetch("http://127.0.0.1:5000/sirket/goster/hepsi/",{
             method:"POST",
             mode:"cors",
             headers:{
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f"
+                erisimKodu:"e57d111c-a1cf-4d6c-a814-fccb5e538a9f"
             })
         })
 
@@ -38,28 +44,22 @@ export default function TumKullanicilar() {
         const processedData = [];
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
             processedData.push({
-                kullaniciAdi: returnData[i].kullaniciAdi,
-                
-                clickEvent: () => click(returnData[i].id)
+                ad: returnData[i].ad,
+                clickEvent: () => click(returnData[i].id,returnData[i].sigortaSirketiAdi,returnData[i].fotograf)
             });
 
             
         }
 
-        //setFetchedData(processedData);
-
-   
 
         const data = {
             columns:[
                 {
-                    label: 'Kullanıcı',
-                    field: 'kullaniciAdi',
+                    label: 'Sirket Adi',
+                    field: 'ad',
                     sort: 'asc',
                     width: 150
                 }
-               
-               
             ],
             rows: processedData
              
@@ -74,8 +74,7 @@ export default function TumKullanicilar() {
         fetchData();
     },[])
     
-    console.log("tset");
-    console.log(fetchedData);
+
 
     return (
     <div>
@@ -100,7 +99,7 @@ export default function TumKullanicilar() {
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
-                            <b style={{'font-size':'30px'}}>Kullanıcılar</b>
+                            <b style={{'font-size':'30px'}}>Sirketler</b>
                         </h1>
                     </div>
 
@@ -113,10 +112,7 @@ export default function TumKullanicilar() {
                         />
 
                 </div>
-                {/* {fetchedData.map((item) =>(
-                    
-
-                ) )} */}
+            
 
                 
                  
@@ -130,7 +126,7 @@ export default function TumKullanicilar() {
                 </ul>
             </div>  
         </div>
-
+      
       
     </div>
   )

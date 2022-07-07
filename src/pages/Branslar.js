@@ -8,20 +8,21 @@ import SideBarLinks from '../components/SideBarLinks';
 
 
 
-export default function TumKullanicilar() {
+export default function Branslar() {
     const navigate = useNavigate();
-    const {token,userId ,setUserId} = useContext(MainContext);
+    const {token,userId ,setUserId,bransId,setBransId,bransAdi,setBransAdi} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
-    const click =  (id) => {
+    const click =  (id,BransName) => {
             
-        setUserId(id);
-        navigate("/kullanicilar/tek/");
+        setBransAdi(BransName);
+        setBransId(id);
+        navigate("/brans/tek");
 
     };
 
     const fetchData = async () => {
-        const response = await fetch("http://127.0.0.1:5000/kullanici/goster/hepsi/",{
+        const response = await fetch("http://127.0.0.1:5000/brans/goster/hepsi/",{
             method:"POST",
             mode:"cors",
             headers:{
@@ -38,23 +39,20 @@ export default function TumKullanicilar() {
         const processedData = [];
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
             processedData.push({
-                kullaniciAdi: returnData[i].kullaniciAdi,
+                ad: returnData[i].ad,
                 
-                clickEvent: () => click(returnData[i].id)
+                clickEvent: () => click(returnData[i].id,returnData[i].ad)
             });
 
             
         }
 
-        //setFetchedData(processedData);
-
-   
 
         const data = {
             columns:[
                 {
-                    label: 'Kullanıcı',
-                    field: 'kullaniciAdi',
+                    label: 'Brans Adi',
+                    field: 'ad',
                     sort: 'asc',
                     width: 150
                 }
@@ -74,8 +72,7 @@ export default function TumKullanicilar() {
         fetchData();
     },[])
     
-    console.log("tset");
-    console.log(fetchedData);
+
 
     return (
     <div>
@@ -100,7 +97,7 @@ export default function TumKullanicilar() {
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
-                            <b style={{'font-size':'30px'}}>Kullanıcılar</b>
+                            <b style={{'font-size':'30px'}}>Branslar</b>
                         </h1>
                     </div>
 
@@ -113,10 +110,7 @@ export default function TumKullanicilar() {
                         />
 
                 </div>
-                {/* {fetchedData.map((item) =>(
-                    
-
-                ) )} */}
+            
 
                 
                  
@@ -130,7 +124,7 @@ export default function TumKullanicilar() {
                 </ul>
             </div>  
         </div>
-
+      
       
     </div>
   )

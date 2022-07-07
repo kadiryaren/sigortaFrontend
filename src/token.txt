@@ -1,0 +1,21 @@
+e57d111c-a1cf-4d6c-a814-fccb5e538a9f
+
+
+{
+    "alacaklarDuzenle": 1,
+    "arsivKlasorleriDuzenle": 1,
+    "bireyselIslerDuzenle": 1,
+    "branslarDuzenle": 1,
+    "durum": true,
+    "firmalarDuzenle": 1,
+    "id": 7,
+    "kayitlarGoruntule": 1,
+    "kullaniciAdi": "test",
+    "kullaniciId": 22,
+    "kullanicilarDuzenle": 1,
+    "mesaj": "Islem basarili!",
+    "musterilerDuzenle": 1,
+    "ortakIslerDuzenle": 1,
+    "sigortaSirketleriDuzenle": 1,
+    "verilenlerDuzenle": 1
+}
