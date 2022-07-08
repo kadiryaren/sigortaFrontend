@@ -99,7 +99,7 @@ export default function TekKullanici(props) {
                 
                 <div className="d-flex w-100 h-100">
                     {/* <div style={{'height':'100%'}} className="d-flex w-100 flex-column bg-danger justify-content-start align-items-center mt-5">
-                        <h1 style={{'font-size':'30px'}}>Izinler</h1>
+                        <h1 style={{'fontSize':'30px'}}>Izinler</h1>
                         <ul className='mt-3'>
 
                            
@@ -131,7 +131,7 @@ export default function TekKullanici(props) {
                         </ul>
                     </div>
                     <div style={{'height':'100%'}} className="d-flex w-100 flex-column justify-content-start align-items-center mt-5" > 
-                    <h1 style={{'font-size':'30px'}}>Islemler</h1>
+                    <h1 style={{'fontSize':'30px'}}>Islemler</h1>
 
                     <ul className='d-flex flex-column justify-content-center align-items-center mt-5'>
                         

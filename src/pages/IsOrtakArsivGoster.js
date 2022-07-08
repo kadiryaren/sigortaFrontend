@@ -8,33 +8,32 @@ import SideBarLinks from '../components/SideBarLinks';
 
 
 
-export default function Arsivler() {
+export default function IsOrtakArsivGoster() {
     const navigate = useNavigate();
-    const {arsivKlasoruId,
-        setarsivKlasoruId,
-        arsivKlasoruAdi,
-        setarsivKlasoruAdi} = useContext(MainContext);
+    const {arsivId,musteriId,setMusteriId,isId,setIsId,firmaId,setFirmaId} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
-    const click =  (id,arsivName) => {
-
-        setarsivKlasoruId(id);
-        setarsivKlasoruAdi(arsivName);
-            
-        
-        navigate("/arsiv/tek");
-
+    const click =  (id,musteriId,firmaid) => {
+        setMusteriId(musteriId);
+        setFirmaId(firmaid);
+        setIsId(id)
+  
+        navigate("/is/ortak/arsiv/tek");
     };
 
+
     const fetchData = async () => {
-        const response = await fetch("http://127.0.0.1:5000/arsiv/goster/hepsi/",{
+        const response = await fetch("http://127.0.0.1:5000/is/ortak/arsiv/goster/hepsi/",{
             method:"POST",
             mode:"cors",
             headers:{
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f"
+                erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702",
+                arsivId: arsivId
+
+
             })
         })
 
@@ -44,9 +43,17 @@ export default function Arsivler() {
         const processedData = [];
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
             processedData.push({
-                ad: returnData[i].ad,
+                musteriAdi: returnData[i].musteriAdi,
+                bransAdi :returnData[i].bransAdi,
+                sigortaSirketiAdi: returnData[i].sigortaSirketiAdi,
+                arsivKlasoruAdi: returnData[i].arsivKlasoruAdi,
+                plaka: returnData[i].plaka,
+                ruhsatSeriNo: returnData[i].ruhsatSeriNo,
+                policeBitisTarihi: returnData[i].policeBitisTarihi,
+                komisyonOraniFirma: returnData[i].komisyonOraniFirma,
+                firmaAdi: returnData[i].firmaAdi,
                 
-                clickEvent: () => click(returnData[i].id,returnData[i].ad)
+                clickEvent: () => click(returnData[i].id,returnData[i].musteriId,returnData[i].firmaId)
             });
 
             
@@ -56,8 +63,56 @@ export default function Arsivler() {
         const data = {
             columns:[
                 {
-                    label: 'Arsiv Adi',
-                    field: 'ad',
+                    label: 'Musteri Adi',
+                    field: 'musteriAdi',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Brans Adi',
+                    field: 'bransAdi',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Firma',
+                    field: 'firmaAdi',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Sigorta Sirketi',
+                    field: 'sigortaSirketiAdi',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Arsiv',
+                    field: 'arsivKlasoruAdi',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Plaka',
+                    field: 'plaka',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Ruhsat Seri No',
+                    field: 'ruhsatSeriNo',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Police Bitis Tarihi',
+                    field: 'policeBitisTarihi',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Komisyon Orani',
+                    field: 'komisyonOraniFirma',
                     sort: 'asc',
                     width: 150
                 }
@@ -97,12 +152,12 @@ export default function Arsivler() {
         <div className="drawer">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-                 {/* Toggle Button */}
+             
 
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Arsivler</b>
+                            <b style={{'fontSize':'30px'}}>Ortak Isler</b>
                         </h1>
                     </div>
 

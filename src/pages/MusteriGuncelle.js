@@ -96,7 +96,7 @@ export default function MusteriGuncelle(props) {
             className="container d-flex flex-column align-items-center bg-gray-200 mt-3 rounded"
           >
             <div
-              style={{ height: "25%", "font-size": "30px" }}
+              style={{ height: "25%", "fontSize": "30px" }}
               className="w-50 p-0 bg-warning rounded d-flex justify-content-center align-items-center mt-3"
             >
               Brans Adi

@@ -128,7 +128,7 @@ export default function Musteriler() {
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
-                            <b style={{'font-size':'30px'}}>Musteriler</b>
+                            <b style={{'fontSize':'30px'}}>Musteriler</b>
                         </h1>
                     </div>
 

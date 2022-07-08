@@ -10,13 +10,9 @@ import SideBarLinks from '../components/SideBarLinks';
 
 export default function TekFirma(props) {
     const navigate = useNavigate();
-    const {token,userId,firmaId,setFirmaId} = useContext(MainContext);
+    const {token,userId,firmaId,setFirmaId,arsivId} = useContext(MainContext);
     const [fetchedData,setFetchedData] = useState([]);
     const location = useLocation()
-
-
-   
-
 
     const sil = async () => {
         const response = await fetch("http://127.0.0.1:5000/firma/sil/",{
@@ -71,13 +67,13 @@ export default function TekFirma(props) {
 
                 <div style={{'height':'100%'}} className="container mx-auto my-5 flex flex-col  items-center border-2 bg-gray-200">
                    
-                <div style={{"height":"15%",'font-size':'30px'}} className="w-100 bg-success rounded d-flex justify-content-center align-items-center">Firma Adi</div>
+                <div style={{"height":"15%",'fontSize':'30px'}} className="w-100 bg-success rounded d-flex justify-content-center align-items-center">Firma Adi</div>
                 <div className="d-flex w-100 h-100">
                     <div style={{'height':'100%'}} className="d-flex w-100 flex-column bg-danger justify-content-start align-items-center mt-5">
                         
                     </div>
                     <div style={{'height':'100%'}} className="d-flex w-100 flex-column justify-content-start align-items-center mt-5" > 
-                    <h1 style={{'font-size':'30px'}}>Islemler</h1>
+                    <h1 style={{'fontSize':'30px'}}>Islemler</h1>
 
                     <ul className='d-flex flex-column justify-content-center align-items-center mt-5'>
                         

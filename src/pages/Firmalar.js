@@ -17,7 +17,7 @@ export default function Firmalar() {
             
         setFirmaId(id);
         setFirmaAdi(firmaName);
-        navigate("/firma/tek");
+        navigate("/is/ortak/firma");
 
     };
 
@@ -29,7 +29,7 @@ export default function Firmalar() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
             })
         });
 
@@ -101,7 +101,7 @@ export default function Firmalar() {
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
-                            <b style={{'font-size':'30px'}}>Firmalar</b>
+                            <b style={{'fontSize':'30px'}}>Firmalar</b>
                         </h1>
                     </div>
 

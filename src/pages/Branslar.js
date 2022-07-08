@@ -97,7 +97,7 @@ export default function Branslar() {
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
-                            <b style={{'font-size':'30px'}}>Branslar</b>
+                            <b style={{'fontSize':'30px'}}>Branslar</b>
                         </h1>
                     </div>
 

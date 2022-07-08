@@ -76,7 +76,7 @@ export default function ArsivGuncelle(props) {
 
                 <div style={{'height':'100%'}} className="container mx-auto my-5 flex flex-col  items-center border-2 bg-gray-200">
                    
-                <div style={{"height":"15%",'font-size':'30px'}} className="w-100 bg-success rounded d-flex justify-content-center align-items-center">Brans Adi</div>
+                <div style={{"height":"15%",'fontSize':'30px'}} className="w-100 bg-success rounded d-flex justify-content-center align-items-center">Brans Adi</div>
                 
                    <div className="form d-flex flex-column align-items-center">
                     <label htmlhtmlFor="">Arsiv Adi</label>

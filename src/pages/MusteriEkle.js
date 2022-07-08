@@ -84,7 +84,7 @@ export default function MusteriEkle(props) {
             className="container mx-auto my-5 flex flex-col  items-center border-2 bg-gray-200"
           >
             <div
-              style={{ height: "15%", "font-size": "30px" }}
+              style={{ height: "15%", "fontSize": "30px" }}
               className="w-100 bg-success rounded d-flex justify-content-center align-items-center"
             >
               Brans Adi

@@ -30,7 +30,14 @@ import MusteriGuncelle from './pages/MusteriGuncelle';
 import MusteriEkle from './pages/MusteriEkle';
 import SirketGuncelle from './pages/SirketGuncelle';
 import SirketEkle from './pages/SirketEkle';
-import IsBireyselGoster from './pages/IsBireyselGoster';
+import IsBireyselArsivGoster from './pages/IsBireyselArsivGoster';
+import IsBireyselMusteriGoster from './pages/IsBireyselMusteriGoster';
+import IsBireyselArsivTek from './pages/IsBireyselArsivTek';
+import IsOrtakArsivGoster from './pages/IsOrtakArsivGoster';
+import IsOrtakArsivTek from './pages/IsOrtakArsivTek';
+import IsOrtakMusteriGoster from './pages/IsOrtakMusteriGoster';
+import IsOrtakFirmaGoster from './pages/IsOrtakFirmaGoster';
+import IsBireyselEkle from './pages/IsBireyselEkle';
 
 export default function App() {
 
@@ -49,7 +56,9 @@ export default function App() {
   const[musteriData,setMusteriData] = useState(false);
   const[isBireyselId,setIsBireyselId] = useState(false);
   const[isBireyselData,setIsBireyselData] = useState(false);
-  const[arsivId,setArsivId] = useState(false);
+  const[arsivId,setArsivId] = useState("kadir");
+  const[isId,setIsId] = useState(false);
+
 
 
   const data = {
@@ -79,7 +88,7 @@ export default function App() {
     setMusteriId,
     musteriData,
     setMusteriData,isBireyselId,setIsBireyselId,isBireyselData,setIsBireyselData,
-    arsivId,setArsivId
+    arsivId,setArsivId,isId,setIsId
   }
 
 	return (
@@ -112,7 +121,16 @@ export default function App() {
             <Route  path="/musteri/tek"  element={<TekMusteri  />}  />
             <Route  path="/musteri/guncelle"  element={<MusteriGuncelle  />}  />
             <Route  path="/musteri/ekle"  element={<MusteriEkle  />}  />
-            <Route  path="/is/bireysel"  element={<IsBireyselGoster  />}  />
+            <Route  path="/is/bireysel"  element={<IsBireyselArsivGoster  />}  />
+            <Route  path="/is/bireysel/ekle"  element={<IsBireyselEkle  />}  />
+            <Route  path="/is/bireysel/musteri"  element={<IsBireyselMusteriGoster  />}  />
+            <Route  path="/is/bireysel/arsiv/tek"  element={<IsBireyselArsivTek  />}  />
+            <Route  path="/is/ortak/arsiv/tek"  element={<IsOrtakArsivTek  />}  />
+
+            <Route  path="/is/ortak"  element={<IsOrtakArsivGoster  />}  />
+            <Route  path="/is/ortak/musteri"  element={<IsOrtakMusteriGoster  />}  />
+            <Route  path="/is/ortak/firma"  element={<IsOrtakFirmaGoster  />}  />
+            
             <Route  path="/login"  element={<Login  />}  />
             <Route  path="/logout"  element={<CikisYap  />}  />
           </Routes>

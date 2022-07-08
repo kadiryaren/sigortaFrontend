@@ -99,7 +99,7 @@ export default function Sirketler() {
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
-                            <b style={{'font-size':'30px'}}>Sirketler</b>
+                            <b style={{'fontSize':'30px'}}>Sirketler</b>
                         </h1>
                     </div>
 

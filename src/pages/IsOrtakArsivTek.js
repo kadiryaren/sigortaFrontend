@@ -8,78 +8,21 @@ import SideBarLinks from '../components/SideBarLinks';
 
 
 
-export default function TekMusteri(props) {
+export default function IsOrtakArsivTek(props) {
     const navigate = useNavigate();
-    const {musteriId,
-        setMusteriId,
-        musteriData,
-        setMusteriData} = useContext(MainContext);
-    const [fetchedData,setFetchedData] = useState([]);
-    const location = useLocation()
-
-    // const fetchData = async () => {
-    //     const response = await fetch("http://127.0.0.1:5000/is/bireysel/musteri/goster/hepsi/",{
-    //         method:"POST",
-    //         mode:"cors",
-    //         headers:{
-    //             'Content-Type':'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702"
-    //         })
-    //     })
-
-        
-    //     const returnData = await response.json();
-    //     console.log(returnData);
-    //     const processedData = [];
-    //     for(let i = 1; i<Array.from(returnData.keys()).length;i++){
-    //         processedData.push({
-    //             ad: returnData[i].ad,
-                
-    //             clickEvent: () => click(returnData[i].id,returnData[i].ad)
-    //         });
-    //     }
-
-
-
-    // };
-
-    const getMusteriData = async () => {
-        const data = await fetch("http://127.0.0.1:5000/musteri/goster/tek/",{
-            method: "POST",
-            mode:'cors',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify({
-                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
-                musteriId:musteriId
-            })
-        });
-
-        const customerData = await data.json();
-        setMusteriData(customerData);
-        console.log(customerData);
-    }
-
-    useEffect(() => {
-        getMusteriData();
-    },[]);
-
+    const{isId} = useContext(MainContext);
    
-
-
     const sil = async () => {
-        const response = await fetch("http://127.0.0.1:5000/musteri/sil/",{
+        const response = await fetch("http://127.0.0.1:5000/is/ortak/sil/",{
             method:"POST",
             mode:'cors',
             headers:{
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
-                musteriId:musteriId
+                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
+                isId:isId
+   
             })
         })
 
@@ -98,7 +41,14 @@ export default function TekMusteri(props) {
     }
 
     const guncelle = () => {
-        navigate("/musteri/guncelle/");
+        navigate("/is/bireysel/guncelle");
+    }
+
+    const goruntule = () => {
+        navigate("/is/ortak/musteri");
+    }
+    const firmaortak = () => {
+        navigate("/is/ortak/firma");
     }
 
     return (
@@ -127,10 +77,11 @@ export default function TekMusteri(props) {
                             <h1><b style={{'fontSize':'30px'}}>Yapmak Istediginiz islemi seciniz:</b></h1>
                         </div>
                     <div className="d-flex justify-content-center">
-                        <a onClick={guncelle} className='btn bg-green-500 text-black hover:bg-green-300 hover:text-white mx-2'>Güncelle</a>
+                        <a onClick={firmaortak} className='btn bg-gray-200 text-black hover:bg-green-300 hover:text-white mx-2'>Firma ile yapilan ortak isleri gor</a>
+                        <a onClick={goruntule} className='btn bg-green-500 text-black hover:bg-green-300 hover:text-white mx-2'>Musteriye Yapilan Isleri Gor</a>
+                        <a onClick={guncelle} className='btn bg-blue-500 text-black hover:bg-blue-300 hover:text-white mx-2'>Güncelle</a>
                         <a onClick={silClick} className='btn bg-red-500 text-black hover:bg-red-300 hover:text-white mx-2'>Sil</a>
                     </div>
-                 
                     </div>
                    
             

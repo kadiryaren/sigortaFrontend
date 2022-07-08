@@ -9,22 +9,24 @@ import { useNavigate } from "react-router-dom";
 
 
 
-export default function FirmaEkle(props) {
+export default function IsBireyselEkle(props) {
     const navigate = useNavigate();
+    const data = [1,2,3,4,5];
     const {token,userId} = useContext(MainContext);
-    const [fetchedData,setFetchedData] = useState([]);
+    const [fetchedData,setFetchedData] = useState({
+        "musteriler":[]
+    });
 
     const [guncelleData,setGuncelleData] = useState({});
 
     
 
     const initialData = {
-        erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
-        firmaAdi:""
+        erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702"
     };
 
-    const ekle = async () => {
-        const response = await fetch("http://127.0.0.1:5000/firma/ekle/",{
+    const getAllData = async () => {
+        const response = await fetch("http://127.0.0.1:5000/goster/hepsi/",{
             method:"POST",
             mode:"cors",
             headers:{
@@ -35,15 +37,20 @@ export default function FirmaEkle(props) {
 
         
         const returnData = await response.json();
-        await setFetchedData(returnData)
-
+        setFetchedData(returnData);
+        
     };
 
-    const ekleClick = () => {
-              
-        ekle();
-        navigate("/firmalar");       
-    }
+
+useEffect(() => {
+    getAllData();
+ },[]);
+
+
+ useEffect(() => {
+    console.log(fetchedData);
+ },[fetchedData]);
+
 
 
     return (
@@ -72,10 +79,22 @@ export default function FirmaEkle(props) {
                 
                    <div className="form d-flex flex-column align-items-center">
                    
-                   <label htmlhtmlFor="">Firma Adi</label>
-                    <input type="text" className='form-control' onChange={(e) => {initialData.firmaAdi = e.target.value}} />
+                   <label htmlFor="cars">Musteri</label>
+                    <select id="musteri" name="musteri">
+                        <option value="volvo">Volvo</option>
+                        
+                    </select>
+                    <button className='btn bg-green-200' >Ekle</button>
+                    {
+                            
+                            useEffect(() => {
+                                fetchedData["musteriler"].forEach((item) => {
+                                    <h1>{item}</h1>
+                                });
+                             },[fetchedData])
+                            
+                        }
                     
-                    <button className='btn bg-green-200' onClick={ekleClick}>Ekle</button>
                    </div>
 
                 </div>

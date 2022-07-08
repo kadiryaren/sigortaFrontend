@@ -8,36 +8,31 @@ import SideBarLinks from '../components/SideBarLinks';
 
 
 
-export default function IsBireyselGoster() {
+export default function IsBireyselArsivGoster() {
     const navigate = useNavigate();
-    const {isBireyselId,setIsBireyselId,isBireyselData,setIsBireyselData} = useContext(MainContext);
+    const {arsivId,musteriId,setMusteriId,isId,setIsId} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
-    const click =  (id,arsivId,bransId,musteriId,plaka,policeBitisTarihi,policeNo,ruhsatSeriNo,sigortaSirketiId) => {
-            
-        setIsBireyselData({
-            arsivId:arsivId,
-            bransId:bransId,
-            musteriId:musteriId,
-            plaka:plaka,
-            policeBitisTarihi:policeBitisTarihi,
-            policeNo:policeNo,
-            ruhsatSeriNo:ruhsatSeriNo,
-            sigortaSirketiId:sigortaSirketiId
-        })
-        setIsBireyselId(id);
-        navigate("/isbireysel/tek");
+    const click =  (id,musteriId) => {
+        setMusteriId(musteriId);
+        setIsId(id)
+  
+        navigate("/is/bireysel/arsiv/tek");
     };
 
+
     const fetchData = async () => {
-        const response = await fetch("http://127.0.0.1:5000/is/bireysel/musteri/goster/hepsi/",{
+        const response = await fetch("http://127.0.0.1:5000/is/bireysel/arsiv/goster/hepsi/",{
             method:"POST",
             mode:"cors",
             headers:{
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702"
+                erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702",
+                arsivId: arsivId
+
+
             })
         })
 
@@ -47,9 +42,15 @@ export default function IsBireyselGoster() {
         const processedData = [];
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
             processedData.push({
-                ad: returnData[i].ad,
+                musteriAdi: returnData[i].musteriAdi,
+                bransAdi :returnData[i].bransAdi,
+                sigortaSirketiAdi: returnData[i].sigortaSirketiAdi,
+                arsivKlasoruAdi: returnData[i].arsivKlasoruAdi,
+                plaka: returnData[i].plaka,
+                ruhsatSeriNo: returnData[i].ruhsatSeriNo,
+                policeBitisTarihi: returnData[i].policeBitisTarihi,
                 
-                clickEvent: () => click(returnData[i].id,returnData[i].ad)
+                clickEvent: () => click(returnData[i].id,returnData[i].musteriId)
             });
 
             
@@ -59,8 +60,44 @@ export default function IsBireyselGoster() {
         const data = {
             columns:[
                 {
-                    label: '',
-                    field: 'ad',
+                    label: 'Musteri Adi',
+                    field: 'musteriAdi',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Brans Adi',
+                    field: 'bransAdi',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Sigorta Sirketi',
+                    field: 'sigortaSirketiAdi',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Arsiv',
+                    field: 'arsivKlasoruAdi',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Plaka',
+                    field: 'plaka',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Ruhsat Seri No',
+                    field: 'ruhsatSeriNo',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Police Bitis Tarihi',
+                    field: 'policeBitisTarihi',
                     sort: 'asc',
                     width: 150
                 }
@@ -105,8 +142,11 @@ export default function IsBireyselGoster() {
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
-                            <b style={{'font-size':'30px'}}>Branslar</b>
+                            <b style={{'fontSize':'30px'}}>Bireysel Isler</b>
                         </h1>
+                    </div>
+                    <div className="d-flex justify-content-center align-items-center mt-3">
+                        <a href="/is/bireysel/ekle" className='btn bg-green-400 text-black hover:bg-green-300 hover:text-white mx-2'>Ekle</a>
                     </div>
 
                     <MDBDataTable

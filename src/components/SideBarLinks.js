@@ -10,13 +10,10 @@ export default function () {
   const navigation = useNavigate();
 
   const{arsivId,setArsivId} = useContext(MainContext);
-//  useEffect(() => {
-//     setArsivId(0);
-//  },[])
- 
 
-
-  
+  useEffect(() =>{
+      console.log("arsivID => "+arsivId);
+  },[arsivId])
  
 
   return (
@@ -86,36 +83,48 @@ export default function () {
             <label tabIndex="0" className="btn m-1">Bireysel Isler</label>
             <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                   <li  className='my-2'><button onClick={() => {
-                    setArsivId(0);
+                    setArsivId(0)
 
-               
-                    
-                    //navigation("/isler/bireysel");
-                    console.log("arsivId=>"+arsivId);
+                    navigation("/is/bireysel");
+                
                   }}  className=' bg-yellow-300 hover:bg-gray-500 hover:text-white'>Genel</button></li>
                   <li  className='my-2'><button onClick={() => {
-                    setArsivId(1);
+                    setArsivId(1)
                     
-                    //navigation("/isler/bireysel");
-                    console.log("arsivId=>"+arsivId);
+                    navigation("/is/bireysel");
+                
                   }}  className=' bg-green-300 hover:bg-gray-500 hover:text-white'>Onemli</button></li>
                   <li  className='my-2'><button onClick={()  => {
                     setArsivId(2);
                    
-                    //navigation("/isler/bireysel");
-                    console.log("arsivId==>"+arsivId);
+                    navigation("/is/bireysel");
+                  
                   }}  className=' bg-red-200 hover:bg-gray-500 hover:text-white'>Silinmisler</button></li>
               </ul>
         </div>
-        {/* <div className="dropdown">
+        <div className="dropdown">
             <label tabIndex="0" className="btn m-1">Ortak Isler</label>
             <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li className='my-2'><button href='/isler/ortak'  className=' bg-yellow-300 hover:bg-gray-500 hover:text-white'>Genel</button></li>
-                <li  className='my-2'><button href='/isler/ortak'  className=' bg-green-300 hover:bg-gray-500 hover:text-white'>Onemli</button></li>
-                <li  className='my-2'><button href='/isler/ortak'  className=' bg-red-200 hover:bg-gray-500 hover:text-white'>Silinmisler</button></li>
+                  <li  className='my-2'><button onClick={() => {
+                    setArsivId(0)
+
+                    navigation("/is/ortak");
                 
+                  }}  className=' bg-yellow-300 hover:bg-gray-500 hover:text-white'>Genel</button></li>
+                  <li  className='my-2'><button onClick={() => {
+                    setArsivId(1)
+                    
+                    navigation("/is/ortak");
+                
+                  }}  className=' bg-green-300 hover:bg-gray-500 hover:text-white'>Onemli</button></li>
+                  <li  className='my-2'><button onClick={()  => {
+                    setArsivId(2);
+                   
+                    navigation("/is/ortak");
+                  
+                  }}  className=' bg-red-200 hover:bg-gray-500 hover:text-white'>Silinmisler</button></li>
               </ul>
-        </div> */}
+        </div>
        
     </div>
   )
