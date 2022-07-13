@@ -38,6 +38,9 @@ import IsOrtakArsivTek from './pages/IsOrtakArsivTek';
 import IsOrtakMusteriGoster from './pages/IsOrtakMusteriGoster';
 import IsOrtakFirmaGoster from './pages/IsOrtakFirmaGoster';
 import IsBireyselEkle from './pages/IsBireyselEkle';
+import IsBireyselGuncelle from './pages/IsBireyselGuncelle';
+import IsOrtakGuncelle from './pages/IsOrtakGuncelle';
+import IsOrtakEkle from './pages/IsOrtakEkle';
 
 export default function App() {
 
@@ -58,6 +61,8 @@ export default function App() {
   const[isBireyselData,setIsBireyselData] = useState(false);
   const[arsivId,setArsivId] = useState("kadir");
   const[isId,setIsId] = useState(false);
+  const[isTuru,setIsTuru] = useState();
+  const[alacakId,setAlacakId] = useState(-1);
 
 
 
@@ -123,9 +128,12 @@ export default function App() {
             <Route  path="/musteri/ekle"  element={<MusteriEkle  />}  />
             <Route  path="/is/bireysel"  element={<IsBireyselArsivGoster  />}  />
             <Route  path="/is/bireysel/ekle"  element={<IsBireyselEkle  />}  />
+            <Route  path="/is/bireysel/guncelle"  element={<IsBireyselGuncelle  />}  />
             <Route  path="/is/bireysel/musteri"  element={<IsBireyselMusteriGoster  />}  />
             <Route  path="/is/bireysel/arsiv/tek"  element={<IsBireyselArsivTek  />}  />
             <Route  path="/is/ortak/arsiv/tek"  element={<IsOrtakArsivTek  />}  />
+            <Route  path="/is/ortak/guncelle/"  element={<IsOrtakGuncelle  />}  />
+            <Route  path="/is/ortak/ekle/"  element={<IsOrtakEkle  />}  />
 
             <Route  path="/is/ortak"  element={<IsOrtakArsivGoster  />}  />
             <Route  path="/is/ortak/musteri"  element={<IsOrtakMusteriGoster  />}  />

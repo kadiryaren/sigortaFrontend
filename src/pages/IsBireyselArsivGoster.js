@@ -48,6 +48,7 @@ export default function IsBireyselArsivGoster() {
                 arsivKlasoruAdi: returnData[i].arsivKlasoruAdi,
                 plaka: returnData[i].plaka,
                 ruhsatSeriNo: returnData[i].ruhsatSeriNo,
+                policeNo: returnData[i].policeNo,
                 policeBitisTarihi: returnData[i].policeBitisTarihi,
                 
                 clickEvent: () => click(returnData[i].id,returnData[i].musteriId)
@@ -92,6 +93,12 @@ export default function IsBireyselArsivGoster() {
                 {
                     label: 'Ruhsat Seri No',
                     field: 'ruhsatSeriNo',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Police No',
+                    field: 'policeNo',
                     sort: 'asc',
                     width: 150
                 },

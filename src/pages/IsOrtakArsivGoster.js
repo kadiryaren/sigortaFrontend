@@ -10,12 +10,11 @@ import SideBarLinks from '../components/SideBarLinks';
 
 export default function IsOrtakArsivGoster() {
     const navigate = useNavigate();
-    const {arsivId,musteriId,setMusteriId,isId,setIsId,firmaId,setFirmaId} = useContext(MainContext);
+    const {arsivId,musteriId,setMusteriId,isId,setIsId} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
-    const click =  (id,musteriId,firmaid) => {
+    const click =  (id,musteriId) => {
         setMusteriId(musteriId);
-        setFirmaId(firmaid);
         setIsId(id)
   
         navigate("/is/ortak/arsiv/tek");
@@ -36,9 +35,9 @@ export default function IsOrtakArsivGoster() {
 
             })
         })
-
         
         const returnData = await response.json();
+        console.log("return data ");
         console.log(returnData);
         const processedData = [];
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
@@ -49,11 +48,12 @@ export default function IsOrtakArsivGoster() {
                 arsivKlasoruAdi: returnData[i].arsivKlasoruAdi,
                 plaka: returnData[i].plaka,
                 ruhsatSeriNo: returnData[i].ruhsatSeriNo,
+                policeNo: returnData[i].policeNo,
                 policeBitisTarihi: returnData[i].policeBitisTarihi,
-                komisyonOraniFirma: returnData[i].komisyonOraniFirma,
-                firmaAdi: returnData[i].firmaAdi,
+                komisyonOraniFirma:returnData[i].komisyonOraniFirma,
+                firmaAdi:returnData[i].firmaAdi,
                 
-                clickEvent: () => click(returnData[i].id,returnData[i].musteriId,returnData[i].firmaId)
+                clickEvent: () => click(returnData[i].id,returnData[i].musteriId)
             });
 
             
@@ -75,7 +75,7 @@ export default function IsOrtakArsivGoster() {
                     width: 150
                 },
                 {
-                    label: 'Firma',
+                    label: 'Firma Adi',
                     field: 'firmaAdi',
                     sort: 'asc',
                     width: 150
@@ -105,25 +105,31 @@ export default function IsOrtakArsivGoster() {
                     width: 150
                 },
                 {
-                    label: 'Police Bitis Tarihi',
-                    field: 'policeBitisTarihi',
+                    label: 'Police No',
+                    field: 'policeNo',
                     sort: 'asc',
                     width: 150
                 },
                 {
-                    label: 'Komisyon Orani',
+                    label: 'Firma Komisyon Orani',
                     field: 'komisyonOraniFirma',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Police Bitis Tarihi',
+                    field: 'policeBitisTarihi',
                     sort: 'asc',
                     width: 150
                 }
                
-               
             ],
             rows: processedData
-             
         }
 
         await setFetchedData(data);
+        console.log("fetchlenmis data");
+        console.log(data);
 
     };
 
@@ -152,13 +158,16 @@ export default function IsOrtakArsivGoster() {
         <div className="drawer">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-             
+                 {/* Toggle Button */}
 
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
                             <b style={{'fontSize':'30px'}}>Ortak Isler</b>
                         </h1>
+                    </div>
+                    <div className="d-flex justify-content-center align-items-center mt-3">
+                        <a href="/is/ortak/ekle" className='btn bg-green-400 text-black hover:bg-green-300 hover:text-white mx-2'>Ekle</a>
                     </div>
 
                     <MDBDataTable

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { MDBDataTable } from 'mdbreact';
 import { MainContext, useContext } from '../contex'
 import SideBarLinks from '../components/SideBarLinks';
+import AlacakGoster from '../components/AlacakGoster';
+
 
 
 
@@ -36,7 +38,6 @@ export default function IsBireyselArsivTek(props) {
         if(window.confirm("Firma Silinecek Emin Misiniz?") == true){
             sil();
             navigate("/is/bireysel");
-
         }
     }
 
@@ -75,10 +76,11 @@ export default function IsBireyselArsivTek(props) {
                             <h1><b style={{'fontSize':'30px'}}>Yapmak Istediginiz islemi seciniz:</b></h1>
                         </div>
                     <div className="d-flex justify-content-center">
-                    <a onClick={goruntule} className='btn bg-green-500 text-black hover:bg-green-300 hover:text-white mx-2'>Musteriye Yapilan Isleri Gor</a>
+                        <a onClick={goruntule} className='btn bg-green-500 text-black hover:bg-green-300 hover:text-white mx-2'>Musteriye Yapilan Isleri Gor</a>
                         <a onClick={guncelle} className='btn bg-blue-500 text-black hover:bg-blue-300 hover:text-white mx-2'>Güncelle</a>
                         <a onClick={silClick} className='btn bg-red-500 text-black hover:bg-red-300 hover:text-white mx-2'>Sil</a>
                     </div>
+                    <AlacakGoster isTuru={0} />
                     </div>
                    
             

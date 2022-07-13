@@ -33,15 +33,15 @@ export default function IsOrtakArsivTek(props) {
     
 
     const silClick = () => {
-        if(window.confirm("Firma Silinecek Emin Misiniz?") == true){
+        if(window.confirm("Is Silinecek Emin Misiniz?") == true){
             sil();
-            navigate("/musteriler");
+            navigate("/is/ortak");
 
         }
     }
 
     const guncelle = () => {
-        navigate("/is/bireysel/guncelle");
+        navigate("/is/ortak/guncelle");
     }
 
     const goruntule = () => {
