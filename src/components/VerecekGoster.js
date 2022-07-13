@@ -5,22 +5,22 @@ import { MDBDataTable } from 'mdbreact';
 import { useNavigate } from 'react-router-dom';
 
 
-export default function AlacakGoster(props) {
+export default function VerecekGoster(props) {
 
 
 
     const navigate = useNavigate();
-    const [tableData,setTableData] = useState({});
-    const{isId,setAlacakId} = useContext(MainContext);
-    const click =  (alacakId) => {
-        setAlacakId(alacakId);
-        navigate("/alacak");
+    const [tableData2,setTableData2] = useState({});
+    const{isId,setVerecekId} = useContext(MainContext);
+    const click =  (verecekId) => {
+        setVerecekId(verecekId);
+        navigate("/verecek");
     };
 
 
-    const getAlacaklar = async () => {
+    const getVerecekler = async () => {
 
-        const response = await fetch("http://127.0.0.1:5000/alacaklar/goster/",{
+        const response = await fetch("http://127.0.0.1:5000/verecekler/goster/",{
             method:"POST",
             mode:"cors",
             headers:{
@@ -34,11 +34,10 @@ export default function AlacakGoster(props) {
         })
         
         const returnData = await response.json();
-        console.log("return data ");
-        console.log(returnData);
-        const processedData = [];
+        console.log("verecek Calisti");
+        const processedData2 = [];
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
-            processedData.push({
+            processedData2.push({
                 musteriAdi: returnData[i].musteriAdi,
                 aciklama : returnData[i].aciklama,
                 miktar : returnData[i].miktar,
@@ -52,7 +51,7 @@ export default function AlacakGoster(props) {
    
 
 
-        const data = {
+        const data2 = {
             columns:[
                 {
                     label: 'Aciklama',
@@ -74,14 +73,14 @@ export default function AlacakGoster(props) {
                 }
                
             ],
-            rows: processedData
+            rows: processedData2
         }
 
-        setTableData(data);
+        setTableData2(data2);
     }
 
     useEffect(() => {
-        getAlacaklar();
+        getVerecekler();
     }, [])
     
 
@@ -92,7 +91,7 @@ export default function AlacakGoster(props) {
                         bordered
                         hover
                     
-                        data={tableData}
+                        data={tableData2}
                         />
     </div>
   )

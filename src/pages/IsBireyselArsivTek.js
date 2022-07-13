@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Link, Navigate, useLocation } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 import { MDBDataTable } from 'mdbreact';
 import { MainContext, useContext } from '../contex'
 import SideBarLinks from '../components/SideBarLinks';
 import AlacakGoster from '../components/AlacakGoster';
+import VerecekGoster from '../components/VerecekGoster';
 
 
 
 
 export default function IsBireyselArsivTek(props) {
     const navigate = useNavigate();
-    const{isId} = useContext(MainContext);
+    const [tableData2,setTableData2] = useState({});
+    const[verecekData,setVerecekData] = useState({});
+    
+    const{verecekId,setVerecekId} = useContext(MainContext);
+    const{isId,isTuru,setIsTuru} = useContext(MainContext);
    
     const sil = async () => {
         const response = await fetch("http://127.0.0.1:5000/is/bireysel/sil/",{
@@ -49,6 +54,15 @@ export default function IsBireyselArsivTek(props) {
 
         navigate("/is/bireysel/musteri");
     }
+    const clickVerecek =  (verecekId) => {
+        setVerecekId(verecekId);
+        navigate("/is/bireysel/arsiv/tek");
+    };
+
+
+    useEffect(() => {
+        setIsTuru(0);
+    },[])
 
     return (
     <div>
@@ -70,8 +84,8 @@ export default function IsBireyselArsivTek(props) {
             <div className="drawer-content w-screen h-screen flex flex-column  align-center">
                  {/* Toggle Button */}
 
-                <div className="w-100 d-flex justify-content-center align-items-center  h-25">
-                    <div className="d-flex flex-column justify-content-center align-items-center w-75 h-100 bg-yellow-300 rounded">
+                <div className="w-100 h-100 d-flex justify-content-center align-items-start  h-25">
+                    <div className="d-flex flex-column justify-content-center align-items-center w-75 h-100  rounded">
                         <div className="text-center my-5">
                             <h1><b style={{'fontSize':'30px'}}>Yapmak Istediginiz islemi seciniz:</b></h1>
                         </div>
@@ -80,7 +94,18 @@ export default function IsBireyselArsivTek(props) {
                         <a onClick={guncelle} className='btn bg-blue-500 text-black hover:bg-blue-300 hover:text-white mx-2'>Güncelle</a>
                         <a onClick={silClick} className='btn bg-red-500 text-black hover:bg-red-300 hover:text-white mx-2'>Sil</a>
                     </div>
-                    <AlacakGoster isTuru={0} />
+
+                   <div className="d-flex justify-content-center align-items-center mt-5">
+                            <div className="d-flex flex-column justify-content-center align-items-center mt-4 mr-5">
+                                <Link to="/alacak/ekle" className='btn bg-gray-200 text-dark'>Alacak ekle</Link>
+                                <AlacakGoster isTuru={0} />
+                            </div>
+                        
+                            <div className="d-flex flex-column justify-content-center align-items-center mt-4">
+                                <Link to="/verecek/ekle" className='btn bg-gray-200 text-dark'>Verecek ekle</Link>
+                                <VerecekGoster isTuru={0} />
+                            </div>
+                </div>
                     </div>
                    
             

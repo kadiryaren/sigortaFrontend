@@ -6,15 +6,60 @@ import { MDBDataTable } from 'mdbreact';
 import { MainContext, useContext } from '../contex'
 import SideBarLinks from '../components/SideBarLinks';
 import AlacakGoster from '../components/AlacakGoster';
-import VerecekGoster from '../components/VerecekGoster';
+import VerecekGoster from '../components/AlacakGoster';
 
 
-export default function IsOrtakArsivTek(props) {
+
+
+export default function AlacakTek(props) {
     const navigate = useNavigate();
-    const{isId} = useContext(MainContext);
+    const{alacakId,isId,isTuru} = useContext(MainContext);
+    const [alacakdata,setAlacakData] = useState({});
+    const initialData  = {
+        erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702",
+        isId:isId,
+        alacakId: alacakId,
+        isTuru:isTuru
+
+    }
+
+    const fetchAlacakData = async () => {
+        const response = await fetch("http://127.0.0.1:5000/alacaklar/goster/",{
+            method:"POST",
+            mode:'cors',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(initialData)
+        })
+
+        const data= await response.json();
+        setAlacakData({
+            ...alacakdata,
+            miktar: data.filter((item) => {return item.id === alacakId})[0].miktar,
+            aciklama : data.filter((item) => {return item.id === alacakId})[0].aciklama
+        })
+    }
+
+    const guncelle = async () => {
+        const response = await fetch("http://127.0.0.1:5000/alacaklar/guncelle/",{
+            method:"POST",
+            mode:'cors',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(initialData)
+        })
+    }
+
+
+    useEffect(() => {
+        fetchAlacakData();
+        
+    },[])
    
     const sil = async () => {
-        const response = await fetch("http://127.0.0.1:5000/is/ortak/sil/",{
+        const response = await fetch("http://127.0.0.1:5000/alacaklar/sil/",{
             method:"POST",
             mode:'cors',
             headers:{
@@ -22,8 +67,7 @@ export default function IsOrtakArsivTek(props) {
             },
             body: JSON.stringify({
                 erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
-                isId:isId
-   
+                alacakId: alacakId
             })
         })
 
@@ -34,24 +78,25 @@ export default function IsOrtakArsivTek(props) {
     
 
     const silClick = () => {
-        if(window.confirm("Is Silinecek Emin Misiniz?") == true){
+        if(window.confirm("Firma Silinecek Emin Misiniz?") == true){
             sil();
-            navigate("/is/ortak");
-
+            navigate("/is/bireysel/arsiv/tek");
         }
     }
 
-    const guncelle = () => {
-        navigate("/is/ortak/guncelle");
+    const guncelleClick = () => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        initialData["tarih"] = today;
+        guncelle();
+        navigate("/is/bireysel/arsiv/tek");
     }
 
-    const goruntule = () => {
-        navigate("/is/ortak/musteri");
-    }
-    const firmaortak = () => {
-        navigate("/is/ortak/firma");
-    }
-
+   
     return (
     <div>
         {/* navbar */}
@@ -72,27 +117,28 @@ export default function IsOrtakArsivTek(props) {
             <div className="drawer-content w-screen h-screen flex flex-column  align-center">
                  {/* Toggle Button */}
 
-                <div className="w-100 h-100 d-flex justify-content-center align-items-center  h-25">
+                <div className="w-100 h-100 d-flex justify-content-center align-items-start  h-25">
                     <div className="d-flex flex-column justify-content-center align-items-center w-75 h-100  rounded">
                         <div className="text-center my-5">
                             <h1><b style={{'fontSize':'30px'}}>Yapmak Istediginiz islemi seciniz:</b></h1>
                         </div>
                     <div className="d-flex justify-content-center">
-                        <a onClick={firmaortak} className='btn bg-gray-200 text-black hover:bg-green-300 hover:text-white mx-2'>Firma ile yapilan ortak isleri gor</a>
-                        <a onClick={goruntule} className='btn bg-green-500 text-black hover:bg-green-300 hover:text-white mx-2'>Musteriye Yapilan Isleri Gor</a>
-                        <a onClick={guncelle} className='btn bg-blue-500 text-black hover:bg-blue-300 hover:text-white mx-2'>Güncelle</a>
+                        
                         <a onClick={silClick} className='btn bg-red-500 text-black hover:bg-red-300 hover:text-white mx-2'>Sil</a>
                     </div>
-                    <div className="d-flex justify-content-center align-items-center">
-                            <div className="d-flex flex-column justify-content-center align-items-center mt-4 mr-5">
-                                <label htmlFor="alacak" style={{"font-size":"25px"}}>Alacak</label>
-                                <AlacakGoster isTuru={1} />
-                            </div>
-                        
-                            <div className="d-flex flex-column justify-content-center align-items-center mt-4">
-                                <label htmlFor="alacak" style={{"font-size":"25px"}}>Verecek</label>
-                                <VerecekGoster isTuru={1} />
-                            </div>
+
+                   <div className="d-flex flex-column justify-content-center align-items-center">
+                        <label htmlFor="aciklama">Aciklama</label>
+                        <input className='form-control' onChange={(e) => {initialData["aciklama"] = e.target.value }} type="text" name="aciklama" placeholder={alacakdata.aciklama}  />
+                        <br />
+
+                        <label htmlFor="miktar">Miktar</label>
+                        {/* placeholder={alacakdata.miktar}  */}
+                        <input className='form-control' onChange={(e) => {initialData["miktar"] = e.target.value }} type="number" name="miktar" placeholder={alacakdata.miktar}  />
+                        <br />
+
+                        <button onClick={guncelleClick} className='btn bg-green-200' >Guncelle</button>
+
                     </div>
                     </div>
                    
