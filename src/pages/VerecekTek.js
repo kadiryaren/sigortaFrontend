@@ -11,21 +11,21 @@ import VerecekGoster from '../components/AlacakGoster';
 
 
 
-export default function AlacakTek(props) {
+export default function VerecekTek(props) {
     const navigate = useNavigate();
-    const{alacakId,isId,isTuru} = useContext(MainContext);
-    const [alacakdata,setAlacakData] = useState({});
+    const{alacakId,isId,isTuru,verecekId} = useContext(MainContext);
+    const [verecekData,setVerecekData] = useState({});
     const [initialData,setInitialData] = useState({
         erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702",
         isId:isId,
-        alacakId: alacakId,
+        verecekId: verecekId,
         isTuru:isTuru
 
     })
      
 
-    const fetchAlacakData = async () => {
-        const response = await fetch("http://127.0.0.1:5000/alacaklar/goster/",{
+    const fetchVereceklerData = async () => {
+        const response = await fetch("http://127.0.0.1:5000/verecekler/goster/",{
             method:"POST",
             mode:'cors',
             headers:{
@@ -35,21 +35,21 @@ export default function AlacakTek(props) {
         })
 
         const data= await response.json();
-       setInitialData({
+        setInitialData({
             ...initialData,
             miktar: data.filter((item) => {return item.id === alacakId})[0].miktar,
             aciklama : data.filter((item) => {return item.id === alacakId})[0].aciklama
 
        })
-        setAlacakData({
-            ...alacakdata,
+        setVerecekData({
+            ...verecekData,
             miktar: data.filter((item) => {return item.id === alacakId})[0].miktar,
             aciklama : data.filter((item) => {return item.id === alacakId})[0].aciklama
         })
     }
 
     const guncelle = async () => {
-        const response = await fetch("http://127.0.0.1:5000/alacaklar/guncelle/",{
+        const response = await fetch("http://127.0.0.1:5000/verecekler/guncelle/",{
             method:"POST",
             mode:'cors',
             headers:{
@@ -61,12 +61,12 @@ export default function AlacakTek(props) {
 
 
     useEffect(() => {
-        fetchAlacakData();
+        fetchVereceklerData();
         
     },[])
    
     const sil = async () => {
-        const response = await fetch("http://127.0.0.1:5000/alacaklar/sil/",{
+        const response = await fetch("http://127.0.0.1:5000/verecekler/sil/",{
             method:"POST",
             mode:'cors',
             headers:{
@@ -74,7 +74,7 @@ export default function AlacakTek(props) {
             },
             body: JSON.stringify({
                 erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
-                alacakId: alacakId
+                verecekId: verecekId
             })
         })
 
@@ -85,7 +85,7 @@ export default function AlacakTek(props) {
     
 
     const silClick = () => {
-        if(window.confirm("Firma Silinecek Emin Misiniz?") == true){
+        if(window.confirm("Verecek Silinecek Emin Misiniz?") == true){
             sil();
             navigate("/is/bireysel/arsiv/tek");
         }
@@ -136,12 +136,12 @@ export default function AlacakTek(props) {
 
                    <div className="d-flex flex-column justify-content-center align-items-center">
                         <label htmlFor="aciklama">Aciklama</label>
-                        <input className='form-control' onChange={(e) => {initialData["aciklama"] = e.target.value }} type="text" name="aciklama" placeholder={alacakdata.aciklama}  />
+                        <input className='form-control' onChange={(e) => {initialData["aciklama"] = e.target.value }} type="text" name="aciklama" placeholder={verecekData.aciklama}  />
                         <br />
 
                         <label htmlFor="miktar">Miktar</label>
                         {/* placeholder={alacakdata.miktar}  */}
-                        <input className='form-control' onChange={(e) => {initialData["miktar"] = e.target.value }} type="number" name="miktar" placeholder={alacakdata.miktar}  />
+                        <input className='form-control' onChange={(e) => {initialData["miktar"] = e.target.value }} type="number" name="miktar" placeholder={verecekData.miktar}  />
                         <br />
 
                         <button onClick={guncelleClick} className='btn bg-green-200' >Guncelle</button>

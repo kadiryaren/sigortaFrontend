@@ -44,6 +44,7 @@ import IsOrtakEkle from './pages/IsOrtakEkle';
 import AlacakTek from './pages/AlacakTek';
 import AlacakEkle from './pages/AlacakEkle';
 import VerecekEkle from './pages/VerecekEkle';
+import VerecekTek from './pages/VerecekTek';
 
 export default function App() {
 
@@ -139,6 +140,7 @@ export default function App() {
             <Route  path="/is/ortak/guncelle/"  element={<IsOrtakGuncelle  />}  />
             <Route  path="/is/ortak/ekle/"  element={<IsOrtakEkle  />}  />
             <Route  path="/alacak"  element={<AlacakTek  />}  />
+            <Route  path="/verecek"  element={<VerecekTek  />}  />
             <Route  path="/alacak/ekle"  element={<AlacakEkle  />}  />
             <Route  path="/verecek/ekle"  element={<VerecekEkle  />}  />
 
