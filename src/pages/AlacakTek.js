@@ -9,105 +9,118 @@ import AlacakGoster from "../components/AlacakGoster";
 import VerecekGoster from "../components/AlacakGoster";
 
 export default function AlacakTek(props) {
-	const navigate = useNavigate();
-	const { alacakId, isId, erisimKodu } = useContext(MainContext);
-	const [alacakdata, setAlacakData] = useState({});
-	const [initialData, setInitialData] = useState({
-		erisimKodu: erisimKodu,
-		isId: isId,
-		alacakId: alacakId,
-		isTuru: props.propIsTuru,
-	});
 
-	const fetchAlacakData = async () => {
-		const response = await fetch("http://127.0.0.1:5000/alacaklar/goster/", {
-			method: "POST",
-			mode: "cors",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(initialData),
-		});
+	
 
-		const data = await response.json();
-		setInitialData({
-			...initialData,
-			miktar: data.filter((item) => {
-				return item.id === alacakId;
-			})[0].miktar,
-			aciklama: data.filter((item) => {
-				return item.id === alacakId;
-			})[0].aciklama,
-		});
-		setAlacakData({
-			...alacakdata,
-			miktar: data.filter((item) => {
-				return item.id === alacakId;
-			})[0].miktar,
-			aciklama: data.filter((item) => {
-				return item.id === alacakId;
-			})[0].aciklama,
-		});
-	};
+    const navigate = useNavigate();
+    const{alacakId,isId,erisimKodu,isTuru} = useContext(MainContext);
+    const [alacakdata,setAlacakData] = useState({});
+    const [initialData,setInitialData] = useState({
+        erisimKodu:erisimKodu ,
+        isId:isId,
+        alacakId: alacakId,
+        isTuru:isTuru
 
-	const guncelle = async () => {
-		const response = await fetch("http://127.0.0.1:5000/alacaklar/guncelle/", {
-			method: "POST",
-			mode: "cors",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(initialData),
-		});
-	};
+    })
+     
 
-	useEffect(() => {
-		fetchAlacakData();
-		console.log("isTuru ++> ");
-		console.log(props.propIsTuru);
-	}, []);
+    const fetchAlacakData = async () => {
+        const response = await fetch("http://127.0.0.1:5000/alacaklar/goster/",{
+            method:"POST",
+            mode:'cors',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(initialData)
+        })
 
-	const sil = async () => {
-		const response = await fetch("http://127.0.0.1:5000/alacaklar/sil/", {
-			method: "POST",
-			mode: "cors",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				erisimKodu: erisimKodu,
-				alacakId: alacakId,
-			}),
-		});
+        const data= await response.json();
+       setInitialData({
+            ...initialData,
+            miktar: data.filter((item) => {return item.id === alacakId})[0].miktar,
+            aciklama : data.filter((item) => {return item.id === alacakId})[0].aciklama
 
-		const returnVAL = await response.json();
-		console.log(returnVAL.durum);
-	};
+       })
+        setAlacakData({
+            ...alacakdata,
+            miktar: data.filter((item) => {return item.id === alacakId})[0].miktar,
+            aciklama : data.filter((item) => {return item.id === alacakId})[0].aciklama
+        })
+    }
 
-	const silClick = () => {
-		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
-			sil();
-			navigate("/is/bireysel/arsiv/tek");
-		}
-	};
+    const guncelle = async () => {
+        const response = await fetch("http://127.0.0.1:5000/alacaklar/guncelle/",{
+            method:"POST",
+            mode:'cors',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(initialData)
+        })
+    }
 
-	const guncelleClick = () => {
-		var today = new Date();
-		var dd = String(today.getDate()).padStart(2, "0");
-		var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-		var yyyy = today.getFullYear();
 
-		today = yyyy + "-" + mm + "-" + dd;
-		initialData["tarih"] = today;
-		guncelle();
-		if (props.propIsTuru === 0) {
-			navigate("/is/bireysel/arsiv/tek");
-		} else if (props.propIsTuru === 1) {
-			navigate("/is/ortak/arsiv/tek");
-		}
-	};
+    useEffect(() => {
+        fetchAlacakData();
+        console.log("isTuru ++> ");
+        console.log(props.propIsTuru);
+        
+    },[])
+   
+    const sil = async () => {
+        const response = await fetch("http://127.0.0.1:5000/alacaklar/sil/",{
+            method:"POST",
+            mode:'cors',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({
+                erisimKodu:erisimKodu,
+                alacakId: alacakId
+            })
+        })
 
-	return (
+        const returnVAL = await response.json();
+        console.log(returnVAL.durum);
+        
+    }
+    
+
+    const silClick = () => {
+        if(window.confirm("Alacak Silinecek Emin Misiniz?") == true){
+            sil();
+            if(isTuru === 0){
+                navigate("/is/bireysel/arsiv/tek");
+            }else if(isTuru === 1){
+                navigate("/is/ortak/arsiv/tek");
+            }
+        }
+    }
+
+    const guncelleClick = () => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        initialData["tarih"] = today;
+        guncelle();
+        console.log(" isturu");
+
+
+        console.log(isTuru);
+        if(isTuru == 0){
+            navigate("/is/bireysel/arsiv/tek");
+        }
+        if(isTuru == 1){
+            console.log("yonlendirildi");
+            navigate("/is/ortak/arsiv/tek");
+        }
+
+
+    }
+return (
 		<div>
 			{/* navbar */}
 			<div className="navbar bg-base-100 shadow">
@@ -216,4 +229,7 @@ export default function AlacakTek(props) {
 			</div>
 		</div>
 	);
+   
+   
+
 }

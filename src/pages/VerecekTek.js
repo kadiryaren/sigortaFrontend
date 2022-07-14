@@ -17,7 +17,7 @@ export default function VerecekTek(props) {
         erisimKodu: erisimKodu,
         isId:isId,
         verecekId: verecekId,
-        isTuru:props.propIsTuru
+        isTuru:isTuru
 
     })
      
