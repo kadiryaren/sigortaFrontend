@@ -15,7 +15,7 @@ export default function IsOrtakArsivGoster() {
     const click =  (id,musteriId) => {
         setMusteriId(musteriId);
         setIsId(id);
-        setIsTuru(0);
+        setIsTuru(1);
   
         navigate("/is/ortak/arsiv/tek");
     };

@@ -11,9 +11,11 @@ export default function AlacakGoster(props) {
 
     const navigate = useNavigate();
     const [tableData,setTableData] = useState({});
-    const{isId,setAlacakId,erisimKodu} = useContext(MainContext);
+    const{isId,setAlacakId,erisimKodu,setIsTuru} = useContext(MainContext);
     const click =  (alacakId) => {
         setAlacakId(alacakId);
+        setIsTuru(props.propIsTuru);
+
         navigate("/alacak");
     };
 
