@@ -13,9 +13,9 @@ export default function IsOrtakGuncelle(props) {
     const navigate = useNavigate();
     const [tumFirmalar,setTumFirmalar] = useState([])
    
-    const {token,userId,setArsivId,isId,setIsId} = useContext(MainContext);
+    const {token,userId,setArsivId,isId,setIsId,erisimKodu} = useContext(MainContext);
     const[initialData,setInitialData] = useState({
-        erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
+        erisimKodu:erisimKodu,
         arsivId: "",
         musteriId:"",
         bransId:"",

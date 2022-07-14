@@ -10,9 +10,9 @@ import { useNavigate } from "react-router-dom";
 export default function VerecekEkle(props) {
     const navigate = useNavigate();
     const [counter,setCounter] = useState(0);
-    const {token,userId,setArsivId,isTuru,isId} = useContext(MainContext);
+    const {token,userId,setArsivId,isTuru,isId,erisimKodu} = useContext(MainContext);
     const initialData  = {
-        erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702"
+        erisimKodu: erisimKodu
 
     }
     console.log(isTuru);

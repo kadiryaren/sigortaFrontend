@@ -10,7 +10,7 @@ import SideBarLinks from '../components/SideBarLinks';
 
 export default function Firmalar() {
     const navigate = useNavigate();
-    const {token,userId ,setUserId,firmaId,setFirmaId,firmaAdi,setFirmaAdi} = useContext(MainContext);
+    const {token,userId ,setUserId,firmaId,setFirmaId,firmaAdi,setFirmaAdi,erisimKodu} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
     const click =  (id,firmaName) => {
@@ -29,7 +29,7 @@ export default function Firmalar() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
+                erisimKodu:erisimKodu,
             })
         });
 

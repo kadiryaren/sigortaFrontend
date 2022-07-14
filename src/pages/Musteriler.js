@@ -11,7 +11,7 @@ import SideBarLinks from '../components/SideBarLinks';
 export default function Musteriler() {
     const navigate = useNavigate();
     
-    const {musteriId,setMusteriId, musteriData,
+    const {musteriId,setMusteriId, musteriData,erisimKodu,
         setMusteriData} = useContext(MainContext);
 
         const[rowSelected,setRowSelected] = useState(false);
@@ -34,7 +34,7 @@ export default function Musteriler() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702"
+                erisimKodu:erisimKodu
             })
         })
 

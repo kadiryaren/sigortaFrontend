@@ -1,8 +1,10 @@
 import React from 'react'
+import { useContext } from 'react';
 import { useState,useEffect } from 'react'
+import { MainContext } from '../contex';
 
 export default function Login() {
- 
+    const {erisimKodu} = useContext(MainContext);
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
    
@@ -36,7 +38,7 @@ export default function Login() {
                     'Content-Type':'application/json'
                 },
                 body: JSON.stringify({
-                    erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702"
+                    erisimKodu:erisimKodu
                 })
             })
 

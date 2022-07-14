@@ -13,10 +13,10 @@ import VerecekGoster from '../components/AlacakGoster';
 
 export default function VerecekTek(props) {
     const navigate = useNavigate();
-    const{alacakId,isId,isTuru,verecekId} = useContext(MainContext);
+    const{alacakId,isId,isTuru,verecekId,erisimKodu} = useContext(MainContext);
     const [verecekData,setVerecekData] = useState({});
     const [initialData,setInitialData] = useState({
-        erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702",
+        erisimKodu: erisimKodu,
         isId:isId,
         verecekId: verecekId,
         isTuru:isTuru
@@ -37,14 +37,14 @@ export default function VerecekTek(props) {
         const data= await response.json();
         setInitialData({
             ...initialData,
-            miktar: data.filter((item) => {return item.id === alacakId})[0].miktar,
-            aciklama : data.filter((item) => {return item.id === alacakId})[0].aciklama
+            miktar: data.filter((item) => {return item.id === verecekId})[0].miktar,
+            aciklama : data.filter((item) => {return item.id === verecekId})[0].aciklama
 
        })
         setVerecekData({
             ...verecekData,
-            miktar: data.filter((item) => {return item.id === alacakId})[0].miktar,
-            aciklama : data.filter((item) => {return item.id === alacakId})[0].aciklama
+            miktar: data.filter((item) => {return item.id === verecekId})[0].miktar,
+            aciklama : data.filter((item) => {return item.id === verecekId})[0].aciklama
         })
     }
 
@@ -73,7 +73,7 @@ export default function VerecekTek(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
+                erisimKodu:erisimKodu,
                 verecekId: verecekId
             })
         })

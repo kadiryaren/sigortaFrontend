@@ -10,7 +10,7 @@ import SideBarLinks from '../components/SideBarLinks';
 
 export default function TekFirma(props) {
     const navigate = useNavigate();
-    const {token,userId,firmaId,setFirmaId,arsivId} = useContext(MainContext);
+    const {token,userId,firmaId,setFirmaId,arsivId,erisimKodu} = useContext(MainContext);
     const [fetchedData,setFetchedData] = useState([]);
     const location = useLocation()
 
@@ -22,7 +22,7 @@ export default function TekFirma(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+                erisimKodu:erisimKodu,
                 firmaId:firmaId
             })
         })

@@ -11,6 +11,7 @@ export default function TekArsiv(props) {
     const {arsivKlasoruId,
         setarsivKlasoruId,
         arsivKlasoruAdi,
+        erisimKodu,
         setarsivKlasoruAdi} = useContext(MainContext);
     const [fetchedData,setFetchedData] = useState([]);
     const location = useLocation()
@@ -27,7 +28,7 @@ export default function TekArsiv(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+                erisimKodu:erisimKodu,
                 arsivKlasoruId:arsivKlasoruId
             })
         })

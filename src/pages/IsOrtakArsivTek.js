@@ -11,7 +11,7 @@ import VerecekGoster from '../components/VerecekGoster';
 
 export default function IsOrtakArsivTek(props) {
     const navigate = useNavigate();
-    const{isId} = useContext(MainContext);
+    const{isId,erisimKodu} = useContext(MainContext);
    
     const sil = async () => {
         const response = await fetch("http://127.0.0.1:5000/is/ortak/sil/",{
@@ -21,7 +21,7 @@ export default function IsOrtakArsivTek(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
+                erisimKodu:erisimKodu,
                 isId:isId
    
             })

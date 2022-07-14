@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 export default function IsBireyselEkle(props) {
     const navigate = useNavigate();
     const [counter,setCounter] = useState(0);
-    const {token,userId,setArsivId} = useContext(MainContext);
+    const {token,userId,setArsivId,erisimKodu} = useContext(MainContext);
     
     const [fetchedData,setFetchedData] = useState({
         "musteriler":[],
@@ -22,7 +22,7 @@ export default function IsBireyselEkle(props) {
 
     });
     const initialData = {
-        erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
+        erisimKodu:erisimKodu,
         arsivId: false,
         musteriId:false,
         bransId:false,

@@ -11,13 +11,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function SirketGuncelle(props) {
     const navigate = useNavigate();
-    const {sigortaSirketiId,setSigortaSirketiId,sigortaSirketiAdi,setSigortaSirketiAdi,sirketPhoto,setSirketPhoto} = useContext(MainContext);
+    const {sigortaSirketiId,setSigortaSirketiId,sigortaSirketiAdi,erisimKodu,setSigortaSirketiAdi,sirketPhoto,setSirketPhoto} = useContext(MainContext);
 
 
 
 
     const initialData = {
-        erisimKodu:"e57d111c-a1cf-4d6c-a814-fccb5e538a9f",
+        erisimKodu:erisimKodu,
         sigortaSirketiId:sigortaSirketiId,
         sigortaSirketiAdi:sigortaSirketiAdi,
         fotograf:sirketPhoto

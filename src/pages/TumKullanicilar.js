@@ -8,7 +8,7 @@ import SideBarLinks from "../components/SideBarLinks";
 
 export default function TumKullanicilar() {
 	const navigate = useNavigate();
-	const { token, userId, setUserId } = useContext(MainContext);
+	const { token, userId,erisimKodu, setUserId } = useContext(MainContext);
 
 	const [fetchedData, setFetchedData] = useState([]);
 	const click = (id) => {
@@ -26,7 +26,7 @@ export default function TumKullanicilar() {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					erisimKodu: "39dd3ad9-a280-413a-946d-567ac526474b",
+					erisimKodu:erisimKodu,
 				}),
 			}
 		);

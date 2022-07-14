@@ -12,6 +12,7 @@ export default function TekSirket(props) {
         setSigortaSirketiId,
         sigortaSirketiAdi,
         setSigortaSirketiAdi,
+        erisimKodu,
         sirketPhoto,
         setSirketPhoto} = useContext(MainContext);
     const [fetchedData,setFetchedData] = useState([]);
@@ -24,7 +25,7 @@ export default function TekSirket(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e57d111c-a1cf-4d6c-a814-fccb5e538a9f",
+                erisimKodu:erisimKodu,
                 sigortaSirketiId:sigortaSirketiId
             })
         })

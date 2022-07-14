@@ -10,7 +10,7 @@ import SideBarLinks from '../components/SideBarLinks';
 
 export default function IsBireyselMusteriGoster() {
     const navigate = useNavigate();
-    const {arsivId,musteriId,setMusteriId} = useContext(MainContext);
+    const {arsivId,musteriId,setMusteriId,erisimKodu} = useContext(MainContext);
     const [fetchedData,setFetchedData] = useState(false);
     
 
@@ -22,7 +22,7 @@ export default function IsBireyselMusteriGoster() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702",
+                erisimKodu: erisimKodu,
                 musteriId: musteriId
 
 

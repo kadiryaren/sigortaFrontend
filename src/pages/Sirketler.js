@@ -13,6 +13,7 @@ export default function Sirketler() {
     const {sigortaSirketiId,
         setSigortaSirketiId,
         sigortaSirketiAdi,
+        erisimKodu,
         setSigortaSirketiAdi,sirketPhoto,
         setSirketPhoto} = useContext(MainContext);
 
@@ -34,7 +35,7 @@ export default function Sirketler() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e57d111c-a1cf-4d6c-a814-fccb5e538a9f"
+                erisimKodu:erisimKodu
             })
         })
 

@@ -14,11 +14,12 @@ export default function ArsivEkle(props) {
 		setarsivKlasoruId,
 		arsivKlasoruAdi,
 		setarsivKlasoruAdi,
+		erisimKodu
 	} = useContext(MainContext);
 	const [fetchedData, setFetchedData] = useState([]);
 
 	const initialData = {
-		erisimKodu: "e7644581-2584-4b58-ba60-73a48053ba8f",
+		erisimKodu: erisimKodu,
 		arsivKlasoruAdi: "",
 	};
 

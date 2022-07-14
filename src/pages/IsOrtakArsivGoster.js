@@ -10,7 +10,7 @@ import SideBarLinks from '../components/SideBarLinks';
 
 export default function IsOrtakArsivGoster() {
     const navigate = useNavigate();
-    const {arsivId,musteriId,setMusteriId,isId,setIsId} = useContext(MainContext);
+    const {arsivId,musteriId,setMusteriId,isId,setIsId,erisimKodu} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
     const click =  (id,musteriId) => {
@@ -29,7 +29,7 @@ export default function IsOrtakArsivGoster() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702",
+                erisimKodu: erisimKodu,
                 arsivId: arsivId
 
 

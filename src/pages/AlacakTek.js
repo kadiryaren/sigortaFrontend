@@ -13,10 +13,10 @@ import VerecekGoster from '../components/AlacakGoster';
 
 export default function AlacakTek(props) {
     const navigate = useNavigate();
-    const{alacakId,isId,isTuru} = useContext(MainContext);
+    const{alacakId,isId,isTuru,erisimKodu} = useContext(MainContext);
     const [alacakdata,setAlacakData] = useState({});
     const [initialData,setInitialData] = useState({
-        erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702",
+        erisimKodu:erisimKodu ,
         isId:isId,
         alacakId: alacakId,
         isTuru:isTuru
@@ -73,7 +73,7 @@ export default function AlacakTek(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
+                erisimKodu:erisimKodu,
                 alacakId: alacakId
             })
         })

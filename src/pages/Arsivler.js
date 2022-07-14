@@ -13,6 +13,7 @@ export default function Arsivler() {
     const {arsivKlasoruId,
         setarsivKlasoruId,
         arsivKlasoruAdi,
+        erisimKodu,
         setarsivKlasoruAdi} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
@@ -34,7 +35,7 @@ export default function Arsivler() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f"
+                erisimKodu:erisimKodu
             })
         })
 

@@ -9,13 +9,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function FirmaEkle(props) {
 	const navigate = useNavigate();
-	const { token, userId } = useContext(MainContext);
+	const { token, userId ,erisimKodu} = useContext(MainContext);
 	const [fetchedData, setFetchedData] = useState([]);
 
 	const [guncelleData, setGuncelleData] = useState({});
 
 	const initialData = {
-		erisimKodu: "e7644581-2584-4b58-ba60-73a48053ba8f",
+		erisimKodu: erisimKodu,
 		firmaAdi: "",
 	};
 

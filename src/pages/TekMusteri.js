@@ -12,6 +12,7 @@ export default function TekMusteri(props) {
     const navigate = useNavigate();
     const {musteriId,
         setMusteriId,
+        erisimKodu,
         musteriData,
         setMusteriData} = useContext(MainContext);
     const [fetchedData,setFetchedData] = useState([]);
@@ -53,7 +54,7 @@ export default function TekMusteri(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
+                erisimKodu:erisimKodu,
                 musteriId:musteriId
             })
         });
@@ -78,7 +79,7 @@ export default function TekMusteri(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+                erisimKodu:erisimKodu,
                 musteriId:musteriId
             })
         })

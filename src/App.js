@@ -68,6 +68,7 @@ export default function App() {
   const[isTuru,setIsTuru] = useState();
   const[alacakId,setAlacakId] = useState(-1);
   const[verecekId,setVerecekId] = useState(-1);
+  const [erisimKodu,setErisimKodu] = useState("8008827b-8d15-48a0-b52b-569155ae5702");
 
 
 
@@ -98,7 +99,7 @@ export default function App() {
     setMusteriId,
     musteriData,
     setMusteriData,isBireyselId,setIsBireyselId,isBireyselData,setIsBireyselData,
-    arsivId,setArsivId,isId,setIsId,verecekId,setVerecekId,alacakId,setAlacakId,isTuru,setIsTuru
+    arsivId,setArsivId,isId,setIsId,verecekId,setVerecekId,alacakId,setAlacakId,isTuru,setIsTuru,erisimKodu,setErisimKodu
   }
 
 	return (

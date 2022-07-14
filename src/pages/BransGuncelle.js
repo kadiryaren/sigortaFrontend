@@ -11,13 +11,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function BransGuncelle(props) {
     const navigate = useNavigate();
-    const {bransId,bransAdi,setBransId,setBransAdi} = useContext(MainContext);
+    const {bransId,bransAdi,setBransId,setBransAdi,erisimKodu} = useContext(MainContext);
     const [setFetchedData] = useState([]);
 
 
 
     const initialData = {
-        erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+        erisimKodu:erisimKodu,
        bransId: bransId,
        bransAdi:bransAdi
     };

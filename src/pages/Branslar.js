@@ -10,7 +10,7 @@ import SideBarLinks from '../components/SideBarLinks';
 
 export default function Branslar() {
     const navigate = useNavigate();
-    const {token,userId ,setUserId,bransId,setBransId,bransAdi,setBransAdi} = useContext(MainContext);
+    const {token,userId ,setUserId,bransId,setBransId,bransAdi,erisimKodu,setBransAdi} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
     const click =  (id,BransName) => {
@@ -29,7 +29,7 @@ export default function Branslar() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f"
+                erisimKodu:erisimKodu
             })
         })
 

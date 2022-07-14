@@ -9,9 +9,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function MusteriEkle(props) {
 	const navigate = useNavigate();
+	const {erisimKodu} = useContext(MainContext);
 
 	const initialData = {
-		erisimKodu: "e7644581-2584-4b58-ba60-73a48053ba8f",
+		erisimKodu: erisimKodu,
 
 		musteriAdi: "",
 		musteriSoyadi: "",

@@ -10,7 +10,7 @@ import SideBarLinks from '../components/SideBarLinks';
 
 export default function IsOrtakFirmaGoster() {
     const navigate = useNavigate();
-    const {arsivId,musteriId,setMusteriId,isId,setIsId,firmaId,setFirmaId} = useContext(MainContext);
+    const {arsivId,musteriId,setMusteriId,erisimKodu,isId,setIsId,firmaId,setFirmaId} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
     const click =  (id,musteriId) => {
@@ -30,7 +30,7 @@ export default function IsOrtakFirmaGoster() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+                erisimKodu:erisimKodu,
                 firmaId:firmaId
             })
         })
@@ -61,7 +61,7 @@ export default function IsOrtakFirmaGoster() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702",
+                erisimKodu: erisimKodu,
                 firmaId: firmaId
 
             })

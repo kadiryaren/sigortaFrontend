@@ -10,7 +10,7 @@ import SideBarLinks from '../components/SideBarLinks';
 
 export default function TekBrans(props) {
     const navigate = useNavigate();
-    const {token,userId,bransId,setBransId,bransAdi,setBransAdi} = useContext(MainContext);
+    const {token,userId,bransId,setBransId,bransAdi,setBransAdi,erisimKodu} = useContext(MainContext);
     const [fetchedData,setFetchedData] = useState([]);
     const location = useLocation()
 
@@ -26,7 +26,7 @@ export default function TekBrans(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+                erisimKodu:erisimKodu,
                 bransId:bransId
             })
         })

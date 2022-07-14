@@ -14,13 +14,14 @@ export default function ArsivGuncelle(props) {
     const {arsivKlasoruId,
         setarsivKlasoruId,
         arsivKlasoruAdi,
+        erisimKodu,
         setarsivKlasoruAdi} = useContext(MainContext);
     const [setFetchedData] = useState([]);
 
 
 
     const initialData = {
-        erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+        erisimKodu:erisimKodu,
         arsivKlasoruId: arsivKlasoruId,
         arsivKlasoruAdi:arsivKlasoruAdi
     };

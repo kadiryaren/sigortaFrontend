@@ -11,13 +11,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function FirmaGuncelle(props) {
     const navigate = useNavigate();
-    const {token,userId,firmaId,firmaAdi} = useContext(MainContext);
+    const {token,userId,firmaId,firmaAdi,erisimKodu} = useContext(MainContext);
     const [fetchedData,setFetchedData] = useState([]);
     const location = useLocation()
     const [guncelleData,setGuncelleData] = useState({});
 
     const initialData = {
-        erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+        erisimKodu:erisimKodu,
        firmaId: firmaId,
        firmaAdi:firmaAdi
     };

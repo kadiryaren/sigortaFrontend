@@ -9,7 +9,7 @@ import SideBarLinks from '../components/SideBarLinks';
 
 
 export default function KullaniciGuncelle(props) {
-    const {token,userId} = useContext(MainContext);
+    const {token,userId,erisimKodu} = useContext(MainContext);
     const [fetchedData,setFetchedData] = useState([]);
     const location = useLocation()
     const [guncelleData,setGuncelleData] = useState({});
@@ -25,7 +25,7 @@ export default function KullaniciGuncelle(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+                erisimKodu:erisimKodu,
                 kullaniciId:userId
             })
         })
@@ -42,7 +42,7 @@ export default function KullaniciGuncelle(props) {
     },[])
 
     const initialData = {
-        erisimKodu:"e7644581-2584-4b58-ba60-73a48053ba8f",
+        erisimKodu:erisimKodu,
         kullaniciId:userId,
         sifre:"",
         alacaklarDuzenle: fetchedData.alacaklarDuzenle,

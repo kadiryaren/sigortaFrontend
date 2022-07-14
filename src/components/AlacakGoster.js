@@ -11,7 +11,7 @@ export default function AlacakGoster(props) {
 
     const navigate = useNavigate();
     const [tableData,setTableData] = useState({});
-    const{isId,setAlacakId} = useContext(MainContext);
+    const{isId,setAlacakId,erisimKodu} = useContext(MainContext);
     const click =  (alacakId) => {
         setAlacakId(alacakId);
         navigate("/alacak");
@@ -27,7 +27,7 @@ export default function AlacakGoster(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu: "8008827b-8d15-48a0-b52b-569155ae5702",
+                erisimKodu: erisimKodu,
                 isId:isId,
                 isTuru: props.isTuru
             })

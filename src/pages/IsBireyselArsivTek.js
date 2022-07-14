@@ -16,7 +16,7 @@ export default function IsBireyselArsivTek(props) {
     const [tableData2,setTableData2] = useState({});
     const[verecekData,setVerecekData] = useState({});
     
-    const{verecekId,setVerecekId} = useContext(MainContext);
+    const{verecekId,setVerecekId,erisimKodu} = useContext(MainContext);
     const{isId,isTuru,setIsTuru} = useContext(MainContext);
    
     const sil = async () => {
@@ -27,7 +27,7 @@ export default function IsBireyselArsivTek(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702",
+                erisimKodu:erisimKodu,
                 isId:isId
    
             })
