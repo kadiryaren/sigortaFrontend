@@ -52,7 +52,14 @@ useEffect(() => {
 
  const ekleClick = () => {
     ekle();
-    navigate("/is/bireysel/arsiv/tek");
+    if(isTuru === 0){
+        navigate("/is/bireysel/arsiv/tek");
+
+    }
+    else if(isTuru === 1){
+        navigate("/is/ortak/arsiv/tek");
+
+    }
  }
 
 

@@ -10,12 +10,13 @@ import SideBarLinks from '../components/SideBarLinks';
 
 export default function IsOrtakArsivGoster() {
     const navigate = useNavigate();
-    const {arsivId,musteriId,setMusteriId,isId,setIsId,erisimKodu} = useContext(MainContext);
+    const {arsivId,musteriId,setMusteriId,isId,setIsId,erisimKodu,isTuru,setIsTuru} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
     const click =  (id,musteriId) => {
         setMusteriId(musteriId);
-        setIsId(id)
+        setIsId(id);
+        setIsTuru(0);
   
         navigate("/is/ortak/arsiv/tek");
     };

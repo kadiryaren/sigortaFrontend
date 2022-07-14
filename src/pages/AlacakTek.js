@@ -10,16 +10,15 @@ import VerecekGoster from '../components/AlacakGoster';
 
 
 
-
 export default function AlacakTek(props) {
     const navigate = useNavigate();
-    const{alacakId,isId,isTuru,erisimKodu} = useContext(MainContext);
+    const{alacakId,isId,erisimKodu} = useContext(MainContext);
     const [alacakdata,setAlacakData] = useState({});
     const [initialData,setInitialData] = useState({
         erisimKodu:erisimKodu ,
         isId:isId,
         alacakId: alacakId,
-        isTuru:isTuru
+        isTuru:props.propIsTuru
 
     })
      
@@ -62,6 +61,8 @@ export default function AlacakTek(props) {
 
     useEffect(() => {
         fetchAlacakData();
+        console.log("isTuru ++> ");
+        console.log(props.propIsTuru);
         
     },[])
    
@@ -100,7 +101,13 @@ export default function AlacakTek(props) {
         today = yyyy + '-' + mm + '-' + dd;
         initialData["tarih"] = today;
         guncelle();
-        navigate("/is/bireysel/arsiv/tek");
+        if(props.propIsTuru === 0){
+            navigate("/is/bireysel/arsiv/tek");
+        }else if(props.propIsTuru === 1){
+            navigate("/is/ortak/arsiv/tek");
+        }
+
+
     }
 
    

@@ -13,13 +13,13 @@ import VerecekGoster from '../components/AlacakGoster';
 
 export default function VerecekTek(props) {
     const navigate = useNavigate();
-    const{alacakId,isId,isTuru,verecekId,erisimKodu} = useContext(MainContext);
+    const{alacakId,isId,verecekId,erisimKodu,isTuru} = useContext(MainContext);
     const [verecekData,setVerecekData] = useState({});
     const [initialData,setInitialData] = useState({
         erisimKodu: erisimKodu,
         isId:isId,
         verecekId: verecekId,
-        isTuru:isTuru
+        isTuru:props.propIsTuru
 
     })
      
@@ -87,7 +87,14 @@ export default function VerecekTek(props) {
     const silClick = () => {
         if(window.confirm("Verecek Silinecek Emin Misiniz?") == true){
             sil();
-            navigate("/is/bireysel/arsiv/tek");
+            if(isTuru === 0){
+                navigate("/is/bireysel/arsiv/tek");
+        
+            }
+            else if(isTuru === 1){
+                navigate("/is/ortak/arsiv/tek");
+        
+            }
         }
     }
 
@@ -100,7 +107,14 @@ export default function VerecekTek(props) {
         today = yyyy + '-' + mm + '-' + dd;
         initialData["tarih"] = today;
         guncelle();
-        navigate("/is/bireysel/arsiv/tek");
+        if(isTuru === 0){
+            navigate("/is/bireysel/arsiv/tek");
+    
+        }
+        else if(isTuru === 1){
+            navigate("/is/ortak/arsiv/tek");
+    
+        }
     }
 
    

@@ -98,12 +98,12 @@ export default function IsBireyselArsivTek(props) {
                    <div className="d-flex justify-content-center align-items-center mt-5">
                             <div className="d-flex flex-column justify-content-center align-items-center mt-4 mr-5">
                                 <Link to="/alacak/ekle" className='btn bg-gray-200 text-dark'>Alacak ekle</Link>
-                                <AlacakGoster isTuru={0} />
+                                <AlacakGoster propIsTuru={0} />
                             </div>
                         
                             <div className="d-flex flex-column justify-content-center align-items-center mt-4">
                                 <Link to="/verecek/ekle" className='btn bg-gray-200 text-dark'>Verecek ekle</Link>
-                                <VerecekGoster isTuru={0} />
+                                <VerecekGoster propIsTuru={0} />
                             </div>
                 </div>
                     </div>
