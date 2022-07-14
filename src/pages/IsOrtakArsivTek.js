@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation,Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 import { MDBDataTable } from 'mdbreact';
 import { MainContext, useContext } from '../contex'
@@ -11,7 +11,7 @@ import VerecekGoster from '../components/VerecekGoster';
 
 export default function IsOrtakArsivTek(props) {
     const navigate = useNavigate();
-    const{isId,erisimKodu} = useContext(MainContext);
+    const{isId,erisimKodu,setIsTuru} = useContext(MainContext);
    
     const sil = async () => {
         const response = await fetch("http://127.0.0.1:5000/is/ortak/sil/",{
@@ -52,6 +52,10 @@ export default function IsOrtakArsivTek(props) {
         navigate("/is/ortak/firma");
     }
 
+
+    useEffect(() => {
+        setIsTuru(1);
+    },[]);
     return (
     <div>
         {/* navbar */}
@@ -85,13 +89,13 @@ export default function IsOrtakArsivTek(props) {
                     </div>
                     <div className="d-flex justify-content-center align-items-center">
                             <div className="d-flex flex-column justify-content-center align-items-center mt-4 mr-5">
-                                <label htmlFor="alacak" style={{"font-size":"25px"}}>Alacak</label>
-                                <AlacakGoster isTuru={1} />
+                                <Link to="/alacak/ekle" className='btn bg-gray-200 text-dark'>Alacak ekle</Link>
+                                <AlacakGoster propIsTuru={"1"} />
                             </div>
                         
                             <div className="d-flex flex-column justify-content-center align-items-center mt-4">
-                                <label htmlFor="alacak" style={{"font-size":"25px"}}>Verecek</label>
-                                <VerecekGoster isTuru={1} />
+                                <Link to="/verecek/ekle" className='btn bg-gray-200 text-dark'>Verecek ekle</Link>
+                                <VerecekGoster propIsTuru={"1"} />
                             </div>
                     </div>
                     </div>

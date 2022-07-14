@@ -43,8 +43,9 @@ useEffect(() => {
     initialData["isTuru"] = isTuru;
     initialData["isId"] = isId;
 
+    console.log("initial Data");
     console.log(initialData);
-    console.log(isTuru);
+
 
  },[]);
 
@@ -52,8 +53,16 @@ useEffect(() => {
 
  const ekleClick = () => {
     ekle();
-    navigate("/is/bireysel/arsiv/tek");
- }
+    if(isTuru === 0){
+        navigate("/is/bireysel/arsiv/tek");
+
+    }
+
+    else if(isTuru === 1){
+        navigate("/is/ortak/arsiv/tek");
+    }
+}
+
 
 
 

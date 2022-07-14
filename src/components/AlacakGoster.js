@@ -29,7 +29,7 @@ export default function AlacakGoster(props) {
             body: JSON.stringify({
                 erisimKodu: erisimKodu,
                 isId:isId,
-                isTuru: props.isTuru
+                isTuru: props.propIsTuru
             })
         })
         
