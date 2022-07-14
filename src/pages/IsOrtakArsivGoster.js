@@ -134,6 +134,8 @@ export default function IsOrtakArsivGoster() {
 		await setFetchedData(data);
 		console.log("fetchlenmis data");
 		console.log(data);
+		console.log("processed data");
+		console.log(processedData);
 	};
 
 	useEffect(() => {
