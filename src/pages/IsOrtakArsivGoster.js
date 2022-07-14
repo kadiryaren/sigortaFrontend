@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
-import {  } from 'react-router-dom';
-import { MDBDataTable } from 'mdbreact';
-import { MainContext, useContext } from '../contex'
+import React, { useState } from "react";
+import { useEffect } from "react";
+import {} from "react-router-dom";
+import { MDBDataTable } from "mdbreact";
+import { MainContext, useContext } from "../contex";
 import { useNavigate } from "react-router-dom";
-import SideBarLinks from '../components/SideBarLinks';
-
-
+import SideBarLinks from "../components/SideBarLinks";
 
 export default function IsOrtakArsivGoster() {
+
     const navigate = useNavigate();
     const {arsivId,musteriId,setMusteriId,isId,setIsId,erisimKodu,isTuru,setIsTuru} = useContext(MainContext);
 
@@ -198,4 +197,5 @@ export default function IsOrtakArsivGoster() {
       
     </div>
   )
+
 }

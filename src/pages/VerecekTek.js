@@ -1,17 +1,15 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { MDBDataTable } from 'mdbreact';
-import { MainContext, useContext } from '../contex'
-import SideBarLinks from '../components/SideBarLinks';
-import AlacakGoster from '../components/AlacakGoster';
-import VerecekGoster from '../components/AlacakGoster';
-
-
-
+import { MDBDataTable } from "mdbreact";
+import { MainContext, useContext } from "../contex";
+import SideBarLinks from "../components/SideBarLinks";
+import AlacakGoster from "../components/AlacakGoster";
+import VerecekGoster from "../components/AlacakGoster";
 
 export default function VerecekTek(props) {
+
     const navigate = useNavigate();
     const{alacakId,isId,verecekId,erisimKodu,isTuru} = useContext(MainContext);
     const [verecekData,setVerecekData] = useState({});
@@ -181,4 +179,5 @@ export default function VerecekTek(props) {
 
     </div>
   )
+
 }

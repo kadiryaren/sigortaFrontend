@@ -1,17 +1,15 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
-import { Link, Navigate, useLocation } from 'react-router-dom'
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { MDBDataTable } from 'mdbreact';
-import { MainContext, useContext } from '../contex'
-import SideBarLinks from '../components/SideBarLinks';
-import AlacakGoster from '../components/AlacakGoster';
-import VerecekGoster from '../components/VerecekGoster';
-
-
-
+import { MDBDataTable } from "mdbreact";
+import { MainContext, useContext } from "../contex";
+import SideBarLinks from "../components/SideBarLinks";
+import AlacakGoster from "../components/AlacakGoster";
+import VerecekGoster from "../components/VerecekGoster";
 
 export default function IsBireyselArsivTek(props) {
+
     const navigate = useNavigate();
     const [tableData2,setTableData2] = useState({});
     const[verecekData,setVerecekData] = useState({});
@@ -126,4 +124,5 @@ export default function IsBireyselArsivTek(props) {
 
     </div>
   )
+
 }

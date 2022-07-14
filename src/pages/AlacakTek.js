@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MDBDataTable } from 'mdbreact';
 import { MainContext, useContext } from '../contex'
@@ -174,4 +174,5 @@ export default function AlacakTek(props) {
 
     </div>
   )
+
 }
