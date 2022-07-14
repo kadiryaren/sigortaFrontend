@@ -68,7 +68,7 @@ export default function App() {
 	const [alacakId, setAlacakId] = useState(-1);
 	const [verecekId, setVerecekId] = useState(-1);
 	const [erisimKodu, setErisimKodu] = useState(
-		"39dd3ad9-a280-413a-946d-567ac526474b"
+		"8008827b-8d15-48a0-b52b-569155ae5702"
 	);
 
 	const data = {

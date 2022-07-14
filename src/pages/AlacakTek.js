@@ -12,13 +12,13 @@ import VerecekGoster from '../components/AlacakGoster';
 
 export default function AlacakTek(props) {
     const navigate = useNavigate();
-    const{alacakId,isId,erisimKodu} = useContext(MainContext);
+    const{alacakId,isId,erisimKodu,isTuru} = useContext(MainContext);
     const [alacakdata,setAlacakData] = useState({});
     const [initialData,setInitialData] = useState({
         erisimKodu:erisimKodu ,
         isId:isId,
         alacakId: alacakId,
-        isTuru:props.propIsTuru
+        isTuru:isTuru
 
     })
      
@@ -86,9 +86,13 @@ export default function AlacakTek(props) {
     
 
     const silClick = () => {
-        if(window.confirm("Firma Silinecek Emin Misiniz?") == true){
+        if(window.confirm("Alacak Silinecek Emin Misiniz?") == true){
             sil();
-            navigate("/is/bireysel/arsiv/tek");
+            if(isTuru === 0){
+                navigate("/is/bireysel/arsiv/tek");
+            }else if(isTuru === 1){
+                navigate("/is/ortak/arsiv/tek");
+            }
         }
     }
 
@@ -101,9 +105,15 @@ export default function AlacakTek(props) {
         today = yyyy + '-' + mm + '-' + dd;
         initialData["tarih"] = today;
         guncelle();
-        if(props.propIsTuru === 0){
+        console.log(" isturu");
+
+
+        console.log(isTuru);
+        if(isTuru == 0){
             navigate("/is/bireysel/arsiv/tek");
-        }else if(props.propIsTuru === 1){
+        }
+        if(isTuru == 1){
+            console.log("yonlendirildi");
             navigate("/is/ortak/arsiv/tek");
         }
 
