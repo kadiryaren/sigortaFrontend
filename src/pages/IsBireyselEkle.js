@@ -115,7 +115,7 @@ export default function IsBireyselEkle(props) {
 
 					<div
 						style={{ height: "100%" }}
-						className="container mx-auto my-5 flex flex-col  items-center border-2 bg-gray-200"
+						className="container mx-auto my-5 flex flex-col  items-center border-2 "
 					>
 						<h1
 							style={{ fontSize: "30px" }}

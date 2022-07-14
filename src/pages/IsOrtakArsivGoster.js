@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import SideBarLinks from "../components/SideBarLinks";
 
 export default function IsOrtakArsivGoster() {
-
     const navigate = useNavigate();
     const {arsivId,musteriId,setMusteriId,isId,setIsId,erisimKodu,isTuru,setIsTuru} = useContext(MainContext);
 
