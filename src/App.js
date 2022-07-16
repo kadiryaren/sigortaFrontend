@@ -45,6 +45,7 @@ import AlacakTek from "./pages/AlacakTek";
 import AlacakEkle from "./pages/AlacakEkle";
 import VerecekEkle from "./pages/VerecekEkle";
 import VerecekTek from "./pages/VerecekTek";
+import Teklif from "./pages/Teklif";
 
 export default function App() {
 	const [token, setToken] = useState(false);
@@ -68,8 +69,9 @@ export default function App() {
 	const [alacakId, setAlacakId] = useState(-1);
 	const [verecekId, setVerecekId] = useState(-1);
 	const [erisimKodu, setErisimKodu] = useState(
-		"8008827b-8d15-48a0-b52b-569155ae5702"
+		"490888f3-a917-430f-8176-86da1a4a81c1"
 	);
+	const[page,setPage] = useState("<html></html>")
 
 	const data = {
 		token,
@@ -114,6 +116,7 @@ export default function App() {
 		setIsTuru,
 		erisimKodu,
 		setErisimKodu,
+		page,setPage
 	};
 
 	return (
@@ -171,7 +174,7 @@ export default function App() {
 					<Route path="/is/ortak" element={<IsOrtakArsivGoster />} />
 					<Route path="/is/ortak/musteri" element={<IsOrtakMusteriGoster />} />
 					<Route path="/is/ortak/firma" element={<IsOrtakFirmaGoster />} />
-
+					<Route path="/teklif" element={<Teklif />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/logout" element={<CikisYap />} />
 				</Routes>

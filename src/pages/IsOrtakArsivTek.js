@@ -11,6 +11,10 @@ import VerecekGoster from "../components/VerecekGoster";
 export default function IsOrtakArsivTek(props) {
 	const navigate = useNavigate();
 	const { isId, erisimKodu, setIsTuru } = useContext(MainContext);
+	const[borc,setBorc] = useState(0);
+	const[bireyselPay,setBireyselPay] = useState(0);
+	const[firmaPay,setFirmaPay] = useState(0);
+
 
 	const sil = async () => {
 		const response = await fetch("http://127.0.0.1:5000/is/ortak/sil/", {
@@ -27,6 +31,45 @@ export default function IsOrtakArsivTek(props) {
 
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
+	};
+
+	const payFetch = async () => {
+		const response = await fetch("http://127.0.0.1:5000/pay/", {
+			method: "POST",
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				erisimKodu: erisimKodu,
+				isId: isId
+			}),
+		});
+
+		const returnVAL = await response.json();
+		setBireyselPay(returnVAL.bireyselAlacak);
+		setFirmaPay(returnVAL.firmaAlacak);
+
+		console.log("pay");
+		console.log(returnVAL);
+	};
+
+	const fetchBorc = async () => {
+		const response = await fetch("http://127.0.0.1:5000/borc/", {
+			method: "POST",
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				erisimKodu: erisimKodu,
+				isId: isId,
+				isTuru:1
+			}),
+		});
+
+		const returnVAL = await response.json();
+		setBorc(returnVAL.toplamTutar);
 	};
 
 	const silClick = () => {
@@ -49,6 +92,8 @@ export default function IsOrtakArsivTek(props) {
 
 	useEffect(() => {
 		setIsTuru(1);
+		fetchBorc();
+		payFetch();
 	}, []);
 	return (
 		<div>
@@ -115,7 +160,20 @@ export default function IsOrtakArsivTek(props) {
 								<a onClick={silClick} className="btn btn-error rounded mx-2">
 									Sil
 								</a>
+								<div class="alert alert-info shadow-lg">
+									<div>
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+										<span>{`Total Musteri Borcu: ${borc} TL`}</span>
+									</div>
+								</div>
 							</div>
+							<div class="alert alert-info shadow-lg">
+									<div>
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+										<span>{`Firma Pay: ${firmaPay} TL`}</span>
+									</div>
+								</div>
+							
 							<div className="d-flex justify-content-center align-items-center">
 								<div className="d-flex flex-column justify-content-center align-items-center mt-4 mr-5">
 									<Link to="/alacak/ekle" className="btn rounded btn-outline">

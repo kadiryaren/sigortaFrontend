@@ -1,17 +1,42 @@
 import React, { useContext } from "react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { MainContext } from "../contex";
 import { useNavigate } from "react-router-dom";
 
 export default function () {
 	const navigation = useNavigate();
 
-	const { arsivId, setArsivId } = useContext(MainContext);
+	const { arsivId, setArsivId,erisimKodu } = useContext(MainContext);
+	const[arsivler,setArsivler] = useState([])
+
+	const getAllData = async () => {
+		const response = await fetch("http://127.0.0.1:5000/arsiv/goster/hepsi/", {
+			method: "POST",
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				erisimKodu:erisimKodu
+			}),
+		});
+
+		const returnData = await response.json();
+		setArsivler(returnData.slice(1));
+	};
 
 	useEffect(() => {
 		console.log("arsivID => " + arsivId);
 	}, [arsivId]);
 
+	useEffect(() => {
+		getAllData();
+	},[])
+
+	useEffect(() => {
+		console.log("arsivler");
+		console.log(arsivler);
+	},[arsivler])
 	return (
 		<div className="d-flex flex-column justify-content-center">
 			<div className="dropdown">
@@ -232,7 +257,28 @@ export default function () {
 					tabIndex="0"
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
-					<li className="my-2">
+
+
+{
+						arsivler.map((item) => {
+							return (
+								<li className="my-2">
+									<button
+										onClick={() => {
+											setArsivId(item.id);
+
+											navigation("/is/ortak");
+										}}
+										className=" bg-yellow-300 hover:bg-gray-500 hover:text-white "
+									>
+										{item.ad}
+									</button>
+								</li>
+							)
+
+						})
+					}
+					{/* <li className="my-2">
 						<button
 							onClick={() => {
 								setArsivId(0);
@@ -267,7 +313,7 @@ export default function () {
 						>
 							Silinmisler
 						</button>
-					</li>
+					</li> */}
 				</ul>
 			</div>
 			<div className="dropdown">
@@ -281,7 +327,27 @@ export default function () {
 					tabIndex="0"
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
-					<li className="my-2">
+
+					{
+						arsivler.map((item) => {
+							return (
+								<li className="my-2">
+									<button
+										onClick={() => {
+											setArsivId(item.id);
+
+											navigation("/is/ortak");
+										}}
+										className=" bg-yellow-300 hover:bg-gray-500 hover:text-white "
+									>
+										{item.ad}
+									</button>
+								</li>
+							)
+
+						})
+					}
+					{/* <li className="my-2">
 						<button
 							onClick={() => {
 								setArsivId(0);
@@ -316,9 +382,18 @@ export default function () {
 						>
 							Silinmisler
 						</button>
-					</li>
+					</li> */}
 				</ul>
 			</div>
+			<button
+							onClick={() => {
+								
+								navigation("/teklif");
+							}}
+							className=" btn text-black bg-yellow-300 hover:bg-gray-500 hover:text-white "
+						>
+							Teklif Ver
+						</button>
 		</div>
 	);
 }

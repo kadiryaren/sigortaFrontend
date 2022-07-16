@@ -12,6 +12,7 @@ export default function IsBireyselArsivTek(props) {
 	const navigate = useNavigate();
 	const [tableData2, setTableData2] = useState({});
 	const [verecekData, setVerecekData] = useState({});
+	const[borc,setBorc] = useState();
 
 	const { verecekId, setVerecekId, erisimKodu } = useContext(MainContext);
 	const { isId, isTuru, setIsTuru } = useContext(MainContext);
@@ -32,6 +33,26 @@ export default function IsBireyselArsivTek(props) {
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
 	};
+
+	const fetchBorc = async () => {
+		const response = await fetch("http://127.0.0.1:5000/borc/", {
+			method: "POST",
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				erisimKodu: erisimKodu,
+				isId: isId,
+				isTuru:0
+			}),
+		});
+
+		const returnVAL = await response.json();
+		setBorc(returnVAL.toplamTutar);
+	};
+
+
 
 	const silClick = () => {
 		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
@@ -54,6 +75,7 @@ export default function IsBireyselArsivTek(props) {
 
 	useEffect(() => {
 		setIsTuru(0);
+		fetchBorc();
 	}, []);
 
 	return (
@@ -115,6 +137,12 @@ export default function IsBireyselArsivTek(props) {
 								<a onClick={silClick} className="btn btn-error rounded mx-2">
 									Sil
 								</a>
+								<div class="alert alert-info shadow-lg">
+									<div>
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+										<span>{`Total Musteri Borcu: ${borc} TL`}</span>
+									</div>
+								</div>
 							</div>
 
 							<div className="d-flex justify-content-center align-items-center mt-5">
