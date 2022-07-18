@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+import { useEffect,useContext } from "react";
 import { Navigate, useLocation, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MDBDataTable } from "mdbreact";
-import { MainContext, useContext } from "../contex";
+import { MainContext } from "../contex";
 import SideBarLinks from "../components/SideBarLinks";
 import AlacakGoster from "../components/AlacakGoster";
 import VerecekGoster from "../components/VerecekGoster";
@@ -120,14 +120,14 @@ export default function IsOrtakArsivTek(props) {
 					</label>
 				</div>
 				<div className="flex-1">
-					<a href="/home" className="btn btn-ghost normal-case text-xl">
-						Biçerer Sigorta
-					</a>
+					<Link to="/home" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
+                <img className='w-50' src={ require('../assets/images/logo.jpeg') } alt="" />
+                </Link>
 				</div>
 				<div className="flex-none">
-					<a className="btn btn-error hover:text-white" href="/logout">
+					<Link className="btn btn-error hover:text-white" to="/logout">
 						Çıkış Yap
-					</a>
+					</Link>
 				</div>
 			</div>
 			<div className="drawer ">
@@ -173,6 +173,12 @@ export default function IsOrtakArsivTek(props) {
 										<span>{`Firma Pay: ${firmaPay} TL`}</span>
 									</div>
 								</div>
+								<div class="alert alert-warning shadow-lg">
+									<div>
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+										<span>{`Bireysel Pay: ${bireyselPay} TL`}</span>
+									</div>
+								</div>
 							
 							<div className="d-flex justify-content-center align-items-center">
 								<div className="d-flex flex-column justify-content-center align-items-center mt-4 mr-5">
@@ -184,7 +190,7 @@ export default function IsOrtakArsivTek(props) {
 
 								<div className="d-flex flex-column justify-content-center align-items-center mt-4">
 									<Link to="/verecek/ekle" className="btn btn-outline rounded">
-										Verecek ekle
+										Verilen ekle
 									</Link>
 									<VerecekGoster propIsTuru={"1"} />
 								</div>

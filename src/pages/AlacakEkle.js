@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect,useLocation } from "react";
+import { Link } from "react-router-dom";
 
 import { MDBDataTable } from "mdbreact";
 import { MainContext, useContext } from "../contex";
@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 export default function AlacakEkle(props) {
 	const navigate = useNavigate();
 	const [counter, setCounter] = useState(0);
-	const { token, userId, setArsivId, isTuru, isId, erisimKodu } =
+	const { token, userId, setArsivId, isTuru, isId, erisimKodu,setNextPage } =
 		useContext(MainContext);
 	const initialData = {
 		erisimKodu: erisimKodu,
@@ -47,9 +47,11 @@ export default function AlacakEkle(props) {
 	const ekleClick = () => {
 		ekle();
 		if (isTuru === 0) {
-			navigate("/is/bireysel/arsiv/tek");
+			setNextPage("/is/bireysel/arsiv/tek")
+			navigate("/bos");
 		} else if (isTuru === 1) {
-			navigate("/is/ortak/arsiv/tek");
+			setNextPage("/is/ortak/arsiv/tek");
+			navigate("/bos");
 		}
 	};
 
@@ -78,14 +80,14 @@ export default function AlacakEkle(props) {
 					</label>
 				</div>
 				<div className="flex-1">
-					<a href="/home" className="btn btn-ghost normal-case text-xl">
-						Biçerer Sigorta
-					</a>
+					<Link to="/home" className="btn btn-ghost normal-case text-xl">
+					Biçerer Sigorta
+					</Link>
 				</div>
 				<div className="flex-none">
-					<a className="btn btn-error hover:text-white" href="/logout">
+					<Link className="btn btn-error hover:text-white" to="/logout">
 						Çıkış Yap
-					</a>
+					</Link>
 				</div>
 			</div>
 			<div className="drawer ">

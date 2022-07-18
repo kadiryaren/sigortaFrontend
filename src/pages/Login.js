@@ -2,11 +2,15 @@ import React from 'react'
 import { useContext } from 'react';
 import { useState,useEffect } from 'react'
 import { MainContext } from '../contex';
+import { useNavigate,Link} from 'react-router-dom';
+
 
 export default function Login() {
-    const {erisimKodu} = useContext(MainContext);
+    const navigate = useNavigate();
+    const {erisimKodu,setErisimKodu} = useContext(MainContext);
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
+    const [durum,setDurum] = useState(true);
    
 
     const [submit,setSubmit] = useState();
@@ -22,45 +26,42 @@ export default function Login() {
 
     const get_access_token = async () => {
 
-        const payload = {
-            username: username,
-            password: password
-        }
-        console.log(payload);
-
-       
-
-        try{
-            const response  = await fetch('http://127.0.0.1:5000/kullanici/goster/hepsi/',{
-                method: "POST",
-                mode:"cors",
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify({
-                    erisimKodu:erisimKodu
-                })
+        const response  = await fetch('http://127.0.0.1:5000/kullanici/giris/',{
+            method: "POST",
+            mode:"cors",
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({
+                kullaniciAdi:username,
+                sifre:password
             })
+        })
 
-            const access_token = await response.json();
+        const access_token = await response.json();
 
-            console.log(access_token);
+        if(access_token.durum === "false"){
+            setDurum(false)
         }
-        catch(e){
-            console.log(e);
+        else{
+            setErisimKodu(access_token.erisimKodu);
+            window.sessionStorage.setItem("erisimKodu",access_token.erisimKodu);
         }
-
-            
-
-
-
-        
-
+    
     }
 
 
+    useEffect(() => {
+        if(erisimKodu != undefined){
+            navigate("/home");
+        }
+    },[erisimKodu])
 
-   
+    useEffect(() => {
+        console.log(durum);
+    },[durum])
+
+
 
   return (
     <div>
@@ -74,7 +75,9 @@ export default function Login() {
                     
                 </div>
                 <div className="flex-1">
-                    <a href="/home" className="btn btn-ghost normal-case text-xl">Biçerer Sigorta</a>
+                    <Link to="/home" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
+                <img className='w-50' src={ require('../assets/images/logo.jpeg') } alt="" />
+                </Link>
                 </div>
                 <div className="flex-none">
                    
@@ -136,6 +139,17 @@ export default function Login() {
                                     
 
                                     <div className="text-center lg:text-left">
+                                        {
+                                                durum  === false ?  (
+                                                    <div className="text-danger m-2">
+                                                        Kullanici Adi veya Sifre Hatali
+                                                    </div>
+                                                ) : (
+                                                    <div></div>
+                                                )
+                                                    
+                                            
+                                        }
                                         <button
                                         type="button"
                                         className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"

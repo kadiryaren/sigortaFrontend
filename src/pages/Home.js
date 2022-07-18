@@ -3,12 +3,17 @@ import { useEffect } from 'react'
 import { MDBDataTable } from 'mdbreact';
 import { MainContext, useContext } from '../contex'
 import SideBarLinks from '../components/SideBarLinks';
-
+import {Link} from "react-router-dom";
 
 export default function Home() {
-    const {token,setToken,basePath,setBasePath, userId} = useContext(MainContext);
+    const {token,setToken,basePath,setBasePath, userId,erisimKodu} = useContext(MainContext);
 
+    useEffect(() => {
 
+        console.log("erisimKodu");
+        console.log(erisimKodu);
+
+    },[erisimKodu])
     
 
 
@@ -21,10 +26,19 @@ export default function Home() {
                
             </div>
             <div className="flex-1">
-                <a href="/home" className="btn btn-ghost normal-case text-xl">Biçerer Sigorta</a>
+                <Link to="/home" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
+                <img className='w-50' src={ require('../assets/images/logo.jpeg') } alt="" />
+                </Link>
             </div>
             <div className="flex-none">
-            
+                {
+                    erisimKodu === undefined ? (
+                       <Link to="/login" className="link link-hover btn btn-success">Giriş Yap</Link>
+                    ):(
+                        <Link to="/logout" className="link link-hover btn bg-red-700">Cikis Yap</Link>
+                    )
+                }
+               
             </div>
         </div>
         <div className="drawer">
@@ -33,8 +47,11 @@ export default function Home() {
                  {/* Toggle Button */}
 
                 <div className="container">
-                    <div className="flex justify-center align-center my-5">
+                    <div className="flex justify-center align-center my-2">
                         <img src={ require('../assets/images/mainPhoto.jpeg') } alt="" />
+                    </div>
+                    <div className="flex justify-center align-center my-2">
+                        <img src={ require('../assets/images/mainPhoto2.jpg') } alt="" />
                     </div>
                 </div>
                  

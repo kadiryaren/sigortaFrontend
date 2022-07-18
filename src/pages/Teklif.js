@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect ,useContext} from "react";
+import { useLocation,Link } from "react-router-dom";
 
 import { MDBDataTable } from "mdbreact";
-import { MainContext, useContext } from "../contex";
+import { MainContext } from "../contex";
 import SideBarLinks from "../components/SideBarLinks";
 import { useNavigate } from "react-router-dom";
 
@@ -22,15 +22,18 @@ export default function Teklif(props) {
 		sigortaSirketleri: [],
 		branslar: [],
 		arsivKlasorleri: [],
+		teklifData: []
     });
 
 	const [guncelleData, setGuncelleData] = useState({});
-
+	const[teklif,setTeklif] = useState([]);
 	const[initialData,setInitialData] = useState({
 		erisimKodu: erisimKodu,
 		sigortaIsimleri:[],
 		sigortaSirketleri: [],
 		fiyatBilgileri:[]
+	
+		
 	});
 	
 
@@ -86,27 +89,53 @@ export default function Teklif(props) {
 	
 
 	const ekleClick = () => {
-		window.location.href = 'http://127.0.0.1:5000/teklif/?data=' + JSON.stringify(initialData);
+		const data = {
+			erisimKodu: erisimKodu,
+			bransId: initialData.bransId,
+			ad: initialData.ad,
+			soyad:initialData.soyad,
+			ustBilgi:initialData.ustBilgi,
+			altBilgi:initialData.altBilgi,
+			sigortaSirketleri: teklif.map((item) => {
+				return  item.sirketId
+			}),
+			fiyatBilgileri: teklif.map((item) => {
+				return item.fiyat
+			})
+
+		}
+		window.location.href = 'http://127.0.0.1:5000/teklif/?data=' + JSON.stringify(data);
 		
 	};
 
 	useEffect(() => {
-		console.log("sirket adi ---- fiyat");
-		console.log(sirketAdi);
-		console.log(fiyat);
-	},[sirketAdi,fiyat])
+		console.log("initial data");
+		console.log(initialData);
+		
+	},[initialData])
 
 
 	const sirketFiyatEkle = () => {
 		
 
-		setInitialData({
-			...initialData,
-			sigortaSirketleri: initialData.sigortaSirketleri.concat([sirketId]),
-			sigortaIsimleri: initialData.sigortaIsimleri.concat([sirketAdi]),
-			fiyatBilgileri : initialData.fiyatBilgileri.concat([fiyat])
+		// setInitialData({
+		// 	...initialData,
+		// 	sigortaSirketleri: initialData.sigortaSirketleri.concat([sirketId]),
+		// 	sigortaIsimleri: initialData.sigortaIsimleri.concat([sirketAdi]),
+		// 	fiyatBilgileri : initialData.fiyatBilgileri.concat([fiyat])
 
-		})
+		// })
+
+		setTeklif([
+			...teklif,
+			{
+				id: teklif.length,
+				sirketAdi:sirketAdi,
+				sirketId:sirketId,
+				fiyat: fiyat
+			}
+
+		])
 		// initialData.sigortaSirketleri.push(sirketId);
 		// initialData.sigortaIsimleri.push(sirketAdi);
 		// initialData.fiyatBilgileri.push(fiyat);
@@ -140,14 +169,14 @@ export default function Teklif(props) {
 					</label>
 				</div>
 				<div className="flex-1">
-					<a href="/home" className="btn btn-ghost normal-case text-xl">
-						Biçerer Sigorta
-					</a>
+					<Link to="/home" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
+                <img className='w-50' src={ require('../assets/images/logo.jpeg') } alt="" />
+                </Link>
 				</div>
 				<div className="flex-none">
-					<a className="btn btn-error hover:text-white" href="/logout">
+					<Link className="btn btn-error hover:text-white" to="/logout">
 						Çıkış Yap
-					</a>
+					</Link>
 				</div>
 			</div>
 			<div className="drawer ">
@@ -157,7 +186,7 @@ export default function Teklif(props) {
 
 					<div
 						style={{ height: "100%" }}
-						className="container mx-auto my-5 flex flex-col  items-center border-2 "
+						className="container min-h-full mx-auto my-5 flex flex-col  items-center border-2 "
 					>
 						<h1
 							style={{ fontSize: "30px" }}
@@ -204,7 +233,7 @@ export default function Teklif(props) {
 											Ust Bilgi 
 										</label>
 									</div>
-									<input
+									<textarea
 										type="text"
 										className="form-control w-7/12"
 										onChange={(e) => {
@@ -219,7 +248,7 @@ export default function Teklif(props) {
 											Alt Bilgi 
 										</label>
 									</div>
-									<input
+									<textarea
 										type="text"
 										className="form-control w-7/12"
 										onChange={(e) => {
@@ -236,7 +265,7 @@ export default function Teklif(props) {
 										</label>
 									</div>
 									<select
-										className="form-control w-7/12"
+										className="form-control w-7/12 select"
 										onChange={(e) => {
 											initialData["bransId"] = e.target.value;
 										}}
@@ -263,24 +292,38 @@ export default function Teklif(props) {
 											<tr>
 												<td>Sigorta Sirketi</td>
 												<td>Fiyat</td>
+												<td>Islem</td>
 											</tr>
 										</thead>
 										<tbody>
 											{
-												initialData.sigortaSirketleri.length === 0 ? (
+												teklif.length === 0 ? (
 													<tr>
 														<td>Sirket Yok</td>
 														<td>Fiyat Yok</td>
+														<td>Islem Yok</td>
 													</tr>
 												) : (
 													
-													initialData.sigortaIsimleri.map((item,index) => {
+													teklif.map((item) => {
 														
 														return (
 															<tr>
-															<td>{initialData.sigortaIsimleri[index]}</td>
-															<td>{initialData.fiyatBilgileri[index]}</td>
-														</tr>
+																<td>{item.sirketAdi}</td>
+																<td>{item.fiyat}</td>
+																<td><button className="btn bg-red-600" onClick={() => {
+																		// setTeklif({
+																		// 	...teklif,
+																		// 	teklifData: initialData.teklifData.filter((eachItem) => {return eachItem.id !== item.id})
+																		// })
+
+																		setTeklif(teklif.filter((element) => {
+																			return item.id !== element.id
+																		}))
+																}} >
+																	X
+																	</button></td>
+															</tr>
 														)
 
 													})
@@ -306,7 +349,7 @@ export default function Teklif(props) {
 										</label>
 									</div>
 									<select
-										className="form-control w-7/12"
+										className=" w-7/12 select select-md select-primary rounded-lg	 "
 										onChange={(e) => {
 											setSirketId(e.target.value);
 											setSirketAdi(fetchedData["sigortaSirketleri"].filter((item)=> {return (e.target.value == item.id)})[0]['ad']);
@@ -341,12 +384,13 @@ export default function Teklif(props) {
 										</label>
 									</div>
 									<input
-										type="text"
+										type="number"
 										className="form-control w-7/12"
 										onChange={(e) => {
 											setFiyat(e.target.value);
 											console.log("fiyat" + fiyat);
 										}}
+									
 									/>
 								</div>
 								<div className="flex justify-center mt-4">
@@ -365,7 +409,7 @@ export default function Teklif(props) {
 							
 
 								<button
-									className="btn btn-primary rounded mt-3"
+									className="btn btn-primary rounded mt-3 mb-12"
 									onClick={ekleClick}
 								>
 									Teklif Sablonu Hazirla

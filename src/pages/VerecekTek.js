@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation,Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MDBDataTable } from "mdbreact";
 import { MainContext, useContext } from "../contex";
@@ -125,10 +125,12 @@ export default function VerecekTek(props) {
                 <label htmlFor="my-drawer" className="btn btn-square btn-ghost drawer-button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></label>
             </div>
             <div className="flex-1">
-                <a href="/home" className="btn btn-ghost normal-case text-xl">Biçerer Sigorta</a>
+                <Link to="/home" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
+                <img className='w-50' src={ require('../assets/images/logo.jpeg') } alt="" />
+                </Link>
             </div>
             <div className="flex-none">
-            <a className='btn btn-error hover:text-white' href="/logout">Çıkış Yap</a>
+            <Link className='btn btn-error hover:text-white' to="/logout">Çıkış Yap</Link>
             </div>
         </div>
         <div className="drawer ">

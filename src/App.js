@@ -46,6 +46,10 @@ import AlacakEkle from "./pages/AlacakEkle";
 import VerecekEkle from "./pages/VerecekEkle";
 import VerecekTek from "./pages/VerecekTek";
 import Teklif from "./pages/Teklif";
+import Bos from "./pages/Bos";
+import IsBireyselYaklasan from "./pages/IsBireyselYaklasan";
+import IsMusteriGoster from "./pages/IsMusteriGoster";
+import IsOrtakYaklasanIsler from "./pages/IsOrtakYaklasanIsler";
 
 export default function App() {
 	const [token, setToken] = useState(false);
@@ -68,10 +72,9 @@ export default function App() {
 	const [isTuru, setIsTuru] = useState();
 	const [alacakId, setAlacakId] = useState(-1);
 	const [verecekId, setVerecekId] = useState(-1);
-	const [erisimKodu, setErisimKodu] = useState(
-		"490888f3-a917-430f-8176-86da1a4a81c1"
-	);
+	const [erisimKodu, setErisimKodu] = useState();
 	const[page,setPage] = useState("<html></html>")
+	const[nextPage,setNextPage] = useState("");
 
 	const data = {
 		token,
@@ -116,13 +119,14 @@ export default function App() {
 		setIsTuru,
 		erisimKodu,
 		setErisimKodu,
-		page,setPage
+		page,setPage,nextPage,setNextPage
 	};
 
 	return (
 		<MainContext.Provider value={data}>
 			<Router>
 				<Routes>
+					<Route path="/login" element={<Login />} />
 					<Route path="/" element={<Root />} />
 					<Route path="/home" element={<Home />} />
 					<Route path="/kullanicilar" element={<TumKullanicilar />} />
@@ -151,6 +155,9 @@ export default function App() {
 					<Route path="/musteri/ekle" element={<MusteriEkle />} />
 					<Route path="/is/bireysel" element={<IsBireyselArsivGoster />} />
 					<Route path="/is/bireysel/ekle" element={<IsBireyselEkle />} />
+					<Route path="/is/bireysel/yaklasan" element={<IsBireyselYaklasan />} />
+					<Route path="/is/ortak/yaklasan" element={<IsOrtakYaklasanIsler />} />
+					<Route path="/is/musteri" element={<IsMusteriGoster />} />
 					<Route
 						path="/is/bireysel/guncelle"
 						element={<IsBireyselGuncelle />}
@@ -170,6 +177,7 @@ export default function App() {
 					<Route path="/verecek" element={<VerecekTek />} />
 					<Route path="/alacak/ekle" element={<AlacakEkle />} />
 					<Route path="/verecek/ekle" element={<VerecekEkle />} />
+					<Route path="/bos" element={<Bos />} />
 
 					<Route path="/is/ortak" element={<IsOrtakArsivGoster />} />
 					<Route path="/is/ortak/musteri" element={<IsOrtakMusteriGoster />} />

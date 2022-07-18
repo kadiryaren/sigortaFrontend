@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import {} from "react-router-dom";
+import {Link} from "react-router-dom";
 import { MDBDataTable } from "mdbreact";
 import { MainContext, useContext } from "../contex";
 import { useNavigate } from "react-router-dom";
@@ -148,10 +148,12 @@ export default function IsOrtakArsivGoster() {
                 <label htmlFor="my-drawer" className="btn btn-square btn-ghost drawer-button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></label>
             </div>
             <div className="flex-1">
-               <a href="/home" className="btn btn-ghost normal-case text-xl">Biçerer Sigorta</a>
+               <Link to="/home" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
+                <img className='w-50' src={ require('../assets/images/logo.jpeg') } alt="" />
+                </Link>
             </div>
             <div className="flex-none">
-               <a className='btn btn-error hover:text-white' href="/logout">Çıkış Yap</a>
+               <a className='btn btn-error hover:text-white' to="/logout">Çıkış Yap</a>
             </div>
         </div>
         <div className="drawer">
@@ -166,7 +168,7 @@ export default function IsOrtakArsivGoster() {
                         </h1>
                     </div>
                     <div className="d-flex justify-content-center align-items-center mt-3">
-                        <a href="/is/ortak/ekle" className='btn bg-green-400 text-black hover:bg-green-300 hover:text-white mx-2'>Ekle</a>
+                        <Link to="/is/ortak/ekle" className='btn bg-green-400 text-black hover:bg-green-300 hover:text-white mx-2'>Ekle</Link>
                     </div>
 
                     <MDBDataTable

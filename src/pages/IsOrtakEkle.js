@@ -6,6 +6,7 @@ import { MDBDataTable } from "mdbreact";
 import { MainContext, useContext } from "../contex";
 import SideBarLinks from "../components/SideBarLinks";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function IsOrtakEkle(props) {
 	const navigate = useNavigate();
@@ -125,17 +126,18 @@ export default function IsOrtakEkle(props) {
 					</label>
 				</div>
 				<div className="flex-1">
-					<a href="/home" className="btn btn-ghost normal-case text-xl">
-						Biçerer Sigorta
-					</a>
+					<Link to="/home" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
+                <img className='w-50' src={ require('../assets/images/logo.jpeg') } alt="" />
+                </Link>
 				</div>
 				<div className="flex-none">
-					<a className="btn btn-error hover:text-white" href="/logout">
+					<Link className="btn btn-error hover:text-white" to="/logout">
 						Çıkış Yap
-					</a>
+					</Link>
 				</div>
 			</div>
-			<div className="drawer ">
+			<div className="drawer">
+				<input id="my-drawer" type="checkbox" className="drawer-toggle" />
 				<div className="drawer-content w-screen h-screen flex flex-column  align-center">
 					{/* Toggle Button */}
 
@@ -152,7 +154,7 @@ export default function IsOrtakEkle(props) {
 
 						<div className="form d-flex flex-column align-items-center">
 							<div className="d-flex  flex-column justify-content-center align-items-center w-100">
-								<div className="m-3">
+								<div className="m-1">
 									<label htmlFor="musteriler" className="input-group">
 										<span className="w-40 flex justify-center">Müşteriler</span>
 										<select
@@ -178,7 +180,7 @@ export default function IsOrtakEkle(props) {
 									{/* initialData["musteriler"] = e.target.value */}
 								</div>
 
-								<div className="m-3">
+								<div className="m-1">
 									<label htmlFor="firmaAdi" className="input-group">
 										<span className="w-40 flex justify-center">Firma</span>
 										<select
@@ -201,7 +203,7 @@ export default function IsOrtakEkle(props) {
 										</select>
 									</label>
 								</div>
-								<div className="m-3">
+								<div className="m-1">
 									<label htmlFor="arsivKlasorleri" className="input-group">
 										<span className="w-40 flex justify-center">
 											Arşiv Klasörleri
@@ -227,7 +229,7 @@ export default function IsOrtakEkle(props) {
 										</select>
 									</label>
 								</div>
-								<div className="m-3">
+								<div className="m-1">
 									<label htmlFor="branslar" className="input-group">
 										<span className="w-40 flex justify-center">Branşlar</span>
 										<select
@@ -251,7 +253,7 @@ export default function IsOrtakEkle(props) {
 										</select>
 									</label>
 								</div>
-								<div className="m-3">
+								<div className="m-1">
 									<label htmlFor="sigortaSirketleri" className="input-group">
 										<span className="w-40 flex justify-center">
 											Sigorta Şirketleri
@@ -280,7 +282,7 @@ export default function IsOrtakEkle(props) {
 									</label>
 								</div>
 
-								<div class="mt-3">
+								<div class="mt-1">
 									<label htmlFor="plaka" className="input-group">
 										<span className="w-40 flex justify-center">Plaka</span>
 										<input
@@ -295,8 +297,8 @@ export default function IsOrtakEkle(props) {
 									</label>
 								</div>
 
-								<br />
-								<div class="mt-3">
+								
+								<div class="mt-1">
 									<label htmlFor="ruhsatSeriNo" className="input-group">
 										<span className="w-40 flex justify-center">
 											Ruhsat Seri No
@@ -313,9 +315,9 @@ export default function IsOrtakEkle(props) {
 									</label>
 								</div>
 
-								<br />
+								
 
-								<div class="mt-3">
+								<div class="mt-1">
 									<label htmlFor="komisyonOraniFirma" className="input-group">
 										<span className="w-40 flex justify-center">
 											Firma Komisyon
@@ -337,9 +339,9 @@ export default function IsOrtakEkle(props) {
 										/>
 									</label>
 								</div>
-								<br />
+						
 
-								<div class="mt-3">
+								<div class="mt-1">
 									<label htmlFor="policeNo" className="input-group">
 										<span class="w-40 flex justify-center">Poliçe No</span>
 										<input
@@ -354,8 +356,8 @@ export default function IsOrtakEkle(props) {
 									</label>
 								</div>
 
-								<br />
-								<div class="mt-3">
+								
+								<div class="mt-1">
 									<label htmlFor="policeBitisTarihi" className="input-group">
 										<span className="w-40 flex justify-center">
 											Poliçe Bitiş Tarihi
@@ -365,7 +367,7 @@ export default function IsOrtakEkle(props) {
 											onChange={(e) => {
 												initialData["policeBitisTarihi"] = e.target.value;
 											}}
-											value={initialData.policeBitisTarihi}
+											// value={initialData.policeBitisTarihi}
 											type="date"
 											name="policeBitisTarihi"
 										/>
@@ -381,6 +383,7 @@ export default function IsOrtakEkle(props) {
 							</div>
 						</div>
 					</div>
+				
 				</div>
 				<div className="drawer-side ">
 					<label htmlFor="my-drawer" className="drawer-overlay"></label>

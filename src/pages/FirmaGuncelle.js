@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect,useContext } from "react";
+import { useLocation,Link } from "react-router-dom";
 
 import { MDBDataTable } from "mdbreact";
-import { MainContext, useContext } from "../contex";
+import { MainContext } from "../contex";
 import SideBarLinks from "../components/SideBarLinks";
 import { useNavigate } from "react-router-dom";
 
@@ -69,14 +69,14 @@ export default function FirmaGuncelle(props) {
 					</label>
 				</div>
 				<div className="flex-1">
-					<a href="/home" className="btn btn-ghost normal-case text-xl">
-						Biçerer Sigorta
-					</a>
+					<Link to="/home" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
+                <img className='w-50' src={ require('../assets/images/logo.jpeg') } alt="" />
+                </Link>
 				</div>
 				<div className="flex-none">
-					<a className="btn btn-error hover:text-white" href="/logout">
+					<Link className="btn btn-error hover:text-white" to="/logout">
 						Çıkış Yap
-					</a>
+					</Link>
 				</div>
 			</div>
 			<div className="drawer ">
@@ -98,12 +98,12 @@ export default function FirmaGuncelle(props) {
 						<div className="form d-flex flex-column align-items-center mt-5">
 							<label htmlFor="" className="input-group">
 								<span className="w-40 flex justify-content">
-									Firma Güncelle
+									Firma Adi
 								</span>
 								<input
-									className="w-48"
+									
 									type="text"
-									className="form-control input input-sm input-secondary"
+									className="form-control input input-sm input-secondary w-48"
 									onChange={(e) => {
 										initialData.firmaAdi = e.target.value;
 									}}

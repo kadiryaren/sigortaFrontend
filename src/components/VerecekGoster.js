@@ -7,8 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function VerecekGoster(props) {
 
-
-
     const navigate = useNavigate();
     const [tableData2,setTableData2] = useState({});
     const{isId,setVerecekId,erisimKodu} = useContext(MainContext);

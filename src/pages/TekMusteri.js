@@ -1,64 +1,97 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { useEffect,useContext } from "react";
+import { Navigate, useLocation,Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MDBDataTable } from "mdbreact";
-import { MainContext, useContext } from "../contex";
+import { MainContext } from "../contex";
 import SideBarLinks from "../components/SideBarLinks";
 
 export default function TekMusteri(props) {
 	const navigate = useNavigate();
-	const { musteriId, setMusteriId, erisimKodu, musteriData, setMusteriData } =
+	const { musteriId, setMusteriId, erisimKodu, musteriData, setMusteriData,setNextPage } =
 		useContext(MainContext);
 	const [fetchedData, setFetchedData] = useState([]);
 	const location = useLocation();
 
-	// const fetchData = async () => {
-	//     const response = await fetch("http://127.0.0.1:5000/is/bireysel/musteri/goster/hepsi/",{
-	//         method:"POST",
-	//         mode:"cors",
-	//         headers:{
-	//             'Content-Type':'application/json'
-	//         },
-	//         body: JSON.stringify({
-	//             erisimKodu:"8008827b-8d15-48a0-b52b-569155ae5702"
-	//         })
-	//     })
+	const fetchUserData = async () => {
+	    const response = await fetch("http://127.0.0.1:5000/musteri/goster/tek/",{
+	        method:"POST",
+	        mode:"cors",
+	        headers:{
+	            'Content-Type':'application/json'
+	        },
+	        body: JSON.stringify({
+	            erisimKodu:erisimKodu,
+				musteriId:musteriId
+	        })
+	    })
 
-	//     const returnData = await response.json();
-	//     console.log(returnData);
-	//     const processedData = [];
-	//     for(let i = 1; i<Array.from(returnData.keys()).length;i++){
-	//         processedData.push({
-	//             ad: returnData[i].ad,
+	    const returnData = await response.json();
+	    console.log(returnData);
+	    const processedData = [];
 
-	//             clickEvent: () => click(returnData[i].id,returnData[i].ad)
-	//         });
-	//     }
-
-	// };
-
-	const getMusteriData = async () => {
-		const data = await fetch("http://127.0.0.1:5000/musteri/goster/tek/", {
-			method: "POST",
-			mode: "cors",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				erisimKodu: erisimKodu,
-				musteriId: musteriId,
-			}),
+		processedData.push({
+			ad: returnData.ad,
+			soyad:returnData.soyad,
+			tc: returnData.tc,
+			telefon:returnData.telefon,
+			mailAdresi: returnData.mailAdresi,
+			dogumTarihi: returnData.dogumTarihi
 		});
 
-		const customerData = await data.json();
-		setMusteriData(customerData);
-		console.log(customerData);
+		const data = {
+            columns:[
+                {
+                    label: 'Ad',
+                    field: 'ad',
+                    sort: 'asc',
+                    width: 150
+                },
+				{
+                    label: 'Soyad',
+                    field: 'soyad',
+                    sort: 'asc',
+                    width: 150
+                },
+				{
+                    label: 'TC Kimlik No',
+                    field: 'tc',
+                    sort: 'asc',
+                    width: 150
+                },
+				{
+                    label: 'Telefon',
+                    field: 'telefon',
+                    sort: 'asc',
+                    width: 150
+                },
+				{
+                    label: 'Mail Adresi',
+                    field: 'mailAdresi',
+                    sort: 'asc',
+                    width: 150
+                },
+				{
+                    label: 'Dogum Tarihi',
+                    field: 'dogumTarihi',
+                    sort: 'asc',
+                    width: 150
+                }
+            ],
+            rows: processedData
+             
+        }
+
+        setFetchedData(data);
+	   
+
 	};
 
+
 	useEffect(() => {
-		getMusteriData();
+		fetchUserData();
 	}, []);
+
 
 	const sil = async () => {
 		const response = await fetch("http://127.0.0.1:5000/musteri/sil/", {
@@ -80,7 +113,9 @@ export default function TekMusteri(props) {
 	const silClick = () => {
 		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
 			sil();
-			navigate("/musteriler");
+			setNextPage("/musteriler");
+			navigate("/bos");
+
 		}
 	};
 
@@ -113,14 +148,14 @@ export default function TekMusteri(props) {
 					</label>
 				</div>
 				<div className="flex-1">
-					<a href="/home" className="btn btn-ghost normal-case text-xl">
-						Biçerer Sigorta
-					</a>
+					<Link to="/home" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
+                <img className='w-50' src={ require('../assets/images/logo.jpeg') } alt="" />
+                </Link>
 				</div>
 				<div className="flex-none">
-					<a className="btn btn-error hover:text-white" href="/logout">
+					<Link className="btn btn-error hover:text-white" to="/logout">
 						Çıkış Yap
-					</a>
+					</Link>
 				</div>
 			</div>
 			<div className="drawer ">
@@ -128,8 +163,8 @@ export default function TekMusteri(props) {
 				<div className="drawer-content w-screen h-screen flex flex-column  align-center">
 					{/* Toggle Button */}
 
-					<div className="w-100 d-flex justify-content-center align-items-center  h-25">
-						<div className="d-flex flex-column justify-content-center align-items-center w-75 h-100  bg-yellow-300/[.1] rounded">
+					<div style={{"margin-top":"10vh"}} className="w-100 mt-5 d-flex flex-column justify-content-center align-items-center  h-25">
+						<div className="d-flex flex-column justify-content-center align-items-center w-75 h-100   rounded">
 							<div className="text-center my-5">
 								<h1>
 									<b style={{ fontSize: "30px" }}>
@@ -154,8 +189,32 @@ export default function TekMusteri(props) {
 										Güncelle
 									</a>
 								</div>
+								<div className="m-2">
+									<Link
+										to="/is/musteri"
+										className="btn btn-success text-black hover:bg-green-300 hover:text-white rounded-md"
+									>
+										Musteriye Yapilan Isleri Goruntule
+									</Link>
+								</div>
 							</div>
+							
 						</div>
+						<div className="d-flex flex-column justify-content-center  mt-5">
+								<div className="text-center">
+									<h1 style={{"font-size":"30px"}}>
+										Musteri Bilgileri
+									</h1>
+								</div>
+							<MDBDataTable
+								striped
+								bordered
+								hover
+							
+								data={fetchedData}
+								/>
+
+							</div>
 					</div>
 				</div>
 				<div className="drawer-side ">

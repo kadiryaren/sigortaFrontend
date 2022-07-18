@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import SideBarLinks from "../components/SideBarLinks";
 import { Link } from "react-router-dom";
 
-export default function IsBireyselArsivGoster() {
+export default function IsBireyselYaklasan() {
 	const navigate = useNavigate();
 	const { arsivId, musteriId, setMusteriId, isId, setIsId, erisimKodu } =
 		useContext(MainContext);
@@ -22,7 +22,7 @@ export default function IsBireyselArsivGoster() {
 
 	const fetchData = async () => {
 		const response = await fetch(
-			"http://127.0.0.1:5000/is/bireysel/arsiv/goster/hepsi/",
+			"http://127.0.0.1:5000/is/bireysel/yaklasan/ ",
 			{
 				method: "POST",
 				mode: "cors",
@@ -30,8 +30,8 @@ export default function IsBireyselArsivGoster() {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					erisimKodu: erisimKodu,
-					arsivId: arsivId,
+					erisimKodu: erisimKodu
+					
 				}),
 			}
 		);
@@ -39,20 +39,23 @@ export default function IsBireyselArsivGoster() {
 		const returnData = await response.json();
 		console.log(returnData);
 		const processedData = [];
-		for (let i = 1; i < Array.from(returnData.keys()).length; i++) {
-			processedData.push({
-				musteriAdi: returnData[i].musteriAdi,
-				bransAdi: returnData[i].bransAdi,
-				sigortaSirketiAdi: returnData[i].sigortaSirketiAdi,
-				arsivKlasoruAdi: returnData[i].arsivKlasoruAdi,
-				plaka: returnData[i].plaka,
-				ruhsatSeriNo: returnData[i].ruhsatSeriNo,
-				policeNo: returnData[i].policeNo,
-				policeBitisTarihi: returnData[i].policeBitisTarihi,
-
-				clickEvent: () => click(returnData[i].id, returnData[i].musteriId),
-			});
-		}
+        if(returnData.durum !== false){
+            for (let i = 0; i < Array.from(returnData.isler).length; i++) {
+                processedData.push({
+                    musteriAdi: returnData.isler[i].musteriAdi,
+                    bransAdi: returnData.isler[i].bransAdi,
+                    sigortaSirketiAdi: returnData.isler[i].sigortaSirketiAdi,
+                    arsivKlasoruAdi: returnData.isler[i].arsivKlasoruAdi,
+                    plaka: returnData.isler[i].plaka,
+                    ruhsatSeriNo: returnData.isler[i].ruhsatSeriNo,
+                    policeNo: returnData.isler[i].policeNo,
+                    policeBitisTarihi: returnData.isler[i].policeBitisTarihi,
+    
+                    clickEvent: () => click(returnData.isler[i].id, returnData.isler[i].musteriId),
+                });
+            }
+        }
+		
 
 		const data = {
 			columns: [
@@ -108,7 +111,7 @@ export default function IsBireyselArsivGoster() {
 			rows: processedData,
 		};
 
-		await setFetchedData(data);
+		setFetchedData(data);
 	};
 
 	useEffect(() => {

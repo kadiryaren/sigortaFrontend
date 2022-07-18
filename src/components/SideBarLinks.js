@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useEffect,useState } from "react";
 import { MainContext } from "../contex";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 export default function () {
 	const navigation = useNavigate();
 
-	const { arsivId, setArsivId,erisimKodu } = useContext(MainContext);
+	const { arsivId, setArsivId,erisimKodu,setNextPage } = useContext(MainContext);
 	const[arsivler,setArsivler] = useState([])
 
 	const getAllData = async () => {
@@ -51,20 +51,20 @@ export default function () {
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
 					<li className="my-2">
-						<a
-							href="/kullanicilar"
+						<Link
+							to="/kullanicilar"
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Tüm kullanıcılar
-						</a>
+						</Link>
 					</li>
 					<li className="my-2">
-						<a
-							href="/kullanici/ekle"
+						<Link
+							to="/kullanici/ekle"
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Ekle
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</div>
@@ -73,27 +73,27 @@ export default function () {
 					tabIndex="0"
 					className="btn btn-outline hover:btn-ghost w-full rounded"
 				>
-					Firma
+					Ortaklar
 				</label>
 				<ul
 					tabIndex="0"
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
 					<li className="my-2">
-						<a
-							href="/firmalar"
+						<Link
+							to="/firmalar"
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Tüm Firmalar
-						</a>
+						</Link>
 					</li>
 					<li className="my-2">
-						<a
-							href="/firma/ekle/ "
+						<Link
+							to="/firma/ekle/ "
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Ekle
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</div>
@@ -102,27 +102,27 @@ export default function () {
 					tabIndex="0"
 					className="btn btn-outline hover:btn-ghost w-full rounded"
 				>
-					Branslar
+					Ürünler
 				</label>
 				<ul
 					tabIndex="0"
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
 					<li className="my-2">
-						<a
-							href="/branslar"
+						<Link
+							to="/branslar"
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Tüm Branslar
-						</a>
+						</Link>
 					</li>
 					<li className="my-2">
-						<a
-							href="/brans/ekle/ "
+						<Link
+							to="/brans/ekle/ "
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Ekle
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</div>
@@ -139,53 +139,25 @@ export default function () {
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
 					<li className="my-2">
-						<a
-							href="/arsivler"
+						<Link
+							to="/arsivler"
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Tüm Arsivler
-						</a>
+						</Link>
 					</li>
 					<li className="my-2">
-						<a
-							href="/arsiv/ekle/ "
+						<Link
+							to="/arsiv/ekle/ "
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Ekle
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</div>
 
-			<div className="dropdown">
-				<label
-					tabIndex="0"
-					className="btn btn-outline hover:btn-ghost w-full rounded"
-				>
-					Sirketler
-				</label>
-				<ul
-					tabIndex="0"
-					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-				>
-					<li className="my-2">
-						<a
-							href="/sirketler"
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Tüm Sirketler
-						</a>
-					</li>
-					<li className="my-2">
-						<a
-							href="/sirket/ekle/ "
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Ekle
-						</a>
-					</li>
-				</ul>
-			</div>
+			
 			<div className="dropdown">
 				<label
 					tabIndex="0"
@@ -198,20 +170,20 @@ export default function () {
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
 					<li className="my-2">
-						<a
-							href="/musteriler"
+						<Link
+							to="/musteriler"
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Tüm Musteriler
-						</a>
+						</Link>
 					</li>
 					<li className="my-2">
-						<a
-							href="/musteri/ekle/ "
+						<Link
+							to="/musteri/ekle/ "
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Ekle
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</div>
@@ -221,31 +193,31 @@ export default function () {
 					tabIndex="0"
 					className="btn btn-outline hover:btn-ghost w-full rounded"
 				>
-					Sirketler
+					Sigorta Firmaları
 				</label>
 				<ul
 					tabIndex="0"
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
 					<li className="my-2">
-						<a
-							href="/sirketler"
+						<Link
+							to="/sirketler"
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Tüm Sirketler
-						</a>
+						</Link>
 					</li>
 					<li className="my-2">
-						<a
-							href="/sirket/ekle/ "
+						<Link
+							to="/sirket/ekle/ "
 							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
 						>
 							Ekle
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</div>
-
+			
 			<div className="dropdown">
 				<label
 					tabIndex="0"
@@ -257,6 +229,14 @@ export default function () {
 					tabIndex="0"
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
+					<li className="my-2">
+						<Link
+							to="/is/bireysel/yaklasan"
+							className=" bg-green-300 hover:bg-gray-500 hover:text-white"
+						>
+							Yaklasan Bireysel Isler
+						</Link>
+					</li>
 
 
 {
@@ -266,8 +246,8 @@ export default function () {
 									<button
 										onClick={() => {
 											setArsivId(item.id);
-
-											navigation("/is/ortak");
+											setNextPage("/is/bireysel");
+											navigation("/bos");
 										}}
 										className=" bg-yellow-300 hover:bg-gray-500 hover:text-white "
 									>
@@ -278,42 +258,7 @@ export default function () {
 
 						})
 					}
-					{/* <li className="my-2">
-						<button
-							onClick={() => {
-								setArsivId(0);
-
-								navigation("/is/bireysel");
-							}}
-							className=" bg-yellow-300 hover:bg-gray-500 hover:text-white"
-						>
-							Genel
-						</button>
-					</li>
-					<li className="my-2">
-						<button
-							onClick={() => {
-								setArsivId(1);
-
-								navigation("/is/bireysel");
-							}}
-							className=" bg-green-300 hover:bg-gray-500 hover:text-white"
-						>
-							Onemli
-						</button>
-					</li>
-					<li className="my-2">
-						<button
-							onClick={() => {
-								setArsivId(2);
-
-								navigation("/is/bireysel");
-							}}
-							className=" bg-red-200 hover:bg-gray-500 hover:text-white"
-						>
-							Silinmisler
-						</button>
-					</li> */}
+					
 				</ul>
 			</div>
 			<div className="dropdown">
@@ -327,6 +272,14 @@ export default function () {
 					tabIndex="0"
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
+					<li className="my-2">
+						<Link
+							to="/is/ortak/yaklasan"
+							className=" bg-green-300 hover:bg-gray-500 hover:text-white"
+						>
+							Yaklasan Ortak Isler
+						</Link>
+					</li>
 
 					{
 						arsivler.map((item) => {
@@ -335,8 +288,8 @@ export default function () {
 									<button
 										onClick={() => {
 											setArsivId(item.id);
-
-											navigation("/is/ortak");
+											setNextPage("/is/ortak");
+											navigation("/bos");
 										}}
 										className=" bg-yellow-300 hover:bg-gray-500 hover:text-white "
 									>
@@ -347,42 +300,7 @@ export default function () {
 
 						})
 					}
-					{/* <li className="my-2">
-						<button
-							onClick={() => {
-								setArsivId(0);
-
-								navigation("/is/ortak");
-							}}
-							className=" bg-yellow-300 hover:bg-gray-500 hover:text-white "
-						>
-							Genel
-						</button>
-					</li>
-					<li className="my-2">
-						<button
-							onClick={() => {
-								setArsivId(1);
-
-								navigation("/is/ortak");
-							}}
-							className=" bg-green-300 hover:bg-gray-500 hover:text-white"
-						>
-							Onemli
-						</button>
-					</li>
-					<li className="my-2">
-						<button
-							onClick={() => {
-								setArsivId(2);
-
-								navigation("/is/ortak");
-							}}
-							className=" bg-red-200 hover:bg-gray-500 hover:text-white"
-						>
-							Silinmisler
-						</button>
-					</li> */}
+					
 				</ul>
 			</div>
 			<button

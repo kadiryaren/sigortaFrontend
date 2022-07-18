@@ -1,24 +1,28 @@
 import React, { useState } from "react";
-import { useEffect,useContext } from "react";
-import {Link} from "react-router-dom";
+import { useEffect } from "react";
+import {} from "react-router-dom";
 import { MDBDataTable } from "mdbreact";
-import { MainContext } from "../contex";
+import { MainContext, useContext } from "../contex";
 import { useNavigate } from "react-router-dom";
 import SideBarLinks from "../components/SideBarLinks";
+import { Link } from "react-router-dom";
 
-export default function TumKullanicilar() {
+export default function IsMusteriGoster() {
 	const navigate = useNavigate();
-	const { token, userId,erisimKodu, setUserId } = useContext(MainContext);
+	const { arsivId, musteriId, setMusteriId, isId, setIsId, erisimKodu } =
+		useContext(MainContext);
 
 	const [fetchedData, setFetchedData] = useState([]);
-	const click = (id) => {
-		setUserId(id);
-		navigate("/kullanicilar/tek/");
+	const click = (id, musteriId) => {
+		setMusteriId(musteriId);
+		setIsId(id);
+
+		navigate("/is/bireysel/arsiv/tek");
 	};
 
 	const fetchData = async () => {
 		const response = await fetch(
-			"http://127.0.0.1:5000/kullanici/goster/hepsi/",
+			"http://127.0.0.1:5000/is/bireysel/musteri/goster/hepsi/",
 			{
 				method: "POST",
 				mode: "cors",
@@ -26,7 +30,8 @@ export default function TumKullanicilar() {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					erisimKodu:erisimKodu,
+					erisimKodu: erisimKodu,
+					musteriId: musteriId,
 				}),
 			}
 		);
@@ -36,19 +41,66 @@ export default function TumKullanicilar() {
 		const processedData = [];
 		for (let i = 1; i < Array.from(returnData.keys()).length; i++) {
 			processedData.push({
-				kullaniciAdi: returnData[i].kullaniciAdi,
+				musteriAdi: returnData[i].musteriAdi,
+				bransAdi: returnData[i].bransAdi,
+				sigortaSirketiAdi: returnData[i].sigortaSirketiAdi,
+				arsivKlasoruAdi: returnData[i].arsivKlasoruAdi,
+				plaka: returnData[i].plaka,
+				ruhsatSeriNo: returnData[i].ruhsatSeriNo,
+				policeNo: returnData[i].policeNo,
+				policeBitisTarihi: returnData[i].policeBitisTarihi,
 
-				clickEvent: () => click(returnData[i].id),
+				clickEvent: () => click(returnData[i].id, returnData[i].musteriId),
 			});
 		}
-
-		//setFetchedData(processedData);
 
 		const data = {
 			columns: [
 				{
-					label: "Kullanıcı",
-					field: "kullaniciAdi",
+					label: "Musteri Adi",
+					field: "musteriAdi",
+					sort: "asc",
+					width: 150,
+				},
+				{
+					label: "Brans Adi",
+					field: "bransAdi",
+					sort: "asc",
+					width: 150,
+				},
+				{
+					label: "Sigorta Sirketi",
+					field: "sigortaSirketiAdi",
+					sort: "asc",
+					width: 150,
+				},
+				{
+					label: "Arsiv",
+					field: "arsivKlasoruAdi",
+					sort: "asc",
+					width: 150,
+				},
+				{
+					label: "Plaka",
+					field: "plaka",
+					sort: "asc",
+					width: 150,
+				},
+				{
+					label: "Ruhsat Seri No",
+					field: "ruhsatSeriNo",
+					sort: "asc",
+					width: 150,
+				},
+				{
+					label: "Police No",
+					field: "policeNo",
+					sort: "asc",
+					width: 150,
+				},
+				{
+					label: "Police Bitis Tarihi",
+					field: "policeBitisTarihi",
 					sort: "asc",
 					width: 150,
 				},
@@ -62,9 +114,6 @@ export default function TumKullanicilar() {
 	useEffect(() => {
 		fetchData();
 	}, []);
-
-	console.log("tset");
-	console.log(fetchedData);
 
 	return (
 		<div>
@@ -109,16 +158,20 @@ export default function TumKullanicilar() {
 					<div className="container my-5">
 						<div className="flex justify-center align-center">
 							<h1>
-								<b style={{ fontSize: "30px" }}>Kullanıcılar</b>
+								<b style={{ fontSize: "30px" }}>Musteriye Yapilan Isler</b>
 							</h1>
+						</div>
+						<div className="d-flex justify-content-center align-items-center mt-3">
+							<Link
+								to="/is/bireysel/ekle"
+								className="btn btn-success rounded mx-2"
+							>
+								Ekle
+							</Link>
 						</div>
 
 						<MDBDataTable striped bordered hover data={fetchedData} />
 					</div>
-					{/* {fetchedData.map((item) =>(
-                    
-
-                ) )} */}
 				</div>
 				<div className="drawer-side ">
 					<label htmlFor="my-drawer" className="drawer-overlay"></label>
