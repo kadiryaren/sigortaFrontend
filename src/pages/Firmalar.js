@@ -100,11 +100,21 @@ export default function Firmalar() {
             <div className="drawer-content">
                  {/* Toggle Button */}
 
-                <div className="container my-5">
-                    <div className="flex justify-center align-center">
+                <div className="container text-center my-5">
+                    <div className="flex flex-column justify-center align-center">
                         <h1>
                             <b style={{'fontSize':'30px'}}>Firmalar</b>
                         </h1>
+                        
+                    
+                        <div className='mt-3'>
+                        <Link
+							to="/firma/ekle/ "
+							className=" btn text-black  bg-green-200 hover:bg-green-500 hover:text-white"
+						>
+							Ekle
+						</Link>
+                        </div>
                     </div>
 
                     <MDBDataTable

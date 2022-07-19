@@ -115,6 +115,12 @@ export default function Teklif(props) {
 	},[initialData])
 
 
+	useEffect(()=>{
+		console.log("bransid");
+		console.log(initialData.bransId);
+	},[initialData.bransId])
+
+
 	const sirketFiyatEkle = () => {
 		
 
@@ -179,9 +185,9 @@ export default function Teklif(props) {
 					</Link>
 				</div>
 			</div>
-			<div className="drawer ">
+			<div className="drawer h-100 ">
 				<input id="my-drawer" type="checkbox" className="drawer-toggle" />
-				<div className="drawer-content w-screen h-screen flex flex-column  align-center">
+				<div className="drawer-content  flex flex-column  align-center">
 					{/* Toggle Button */}
 
 					<div
@@ -267,15 +273,29 @@ export default function Teklif(props) {
 									<select
 										className="form-control w-7/12 select"
 										onChange={(e) => {
-											initialData["bransId"] = e.target.value;
+											// initialData["bransId"] = e.target.value;
+											setInitialData({
+												...initialData,
+												bransId : e.target.value
+											})
 										}}
 										id="branslar"
 										name="branslar"
 									>
-										{fetchedData["branslar"].map((branslar) => {
-											initialData["bransId"] = branslar["id"];
+										{/* {fetchedData["sigortaSirketleri"].map((sigortaSirketleri) => {
+											
 											return (
-												<option key={branslar["id"]} value={"" + branslar["id"]}>
+												<option key={sigortaSirketleri.id} value={"" + sigortaSirketleri["id"]}>
+													{sigortaSirketleri["ad"]}
+												</option>
+											);
+
+										})} */}
+
+										{fetchedData["branslar"].map((branslar) => {
+									
+											return (
+												<option key={branslar.id} value={branslar["id"]}>
 													{branslar["ad"]}
 												</option>
 											);

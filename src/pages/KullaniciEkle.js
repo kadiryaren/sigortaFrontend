@@ -53,6 +53,8 @@ export default function KullaniciEkle(props) {
 			ekle();
 			navigate("/kullanicilar");
 		}
+
+	
 	};
 
 	return (
@@ -90,9 +92,9 @@ export default function KullaniciEkle(props) {
 					</Link>
 				</div>
 			</div>
-			<div className="drawer ">
+			<div className="drawer h-100 ">
 				<input id="my-drawer" type="checkbox" className="drawer-toggle" />
-				<div className="drawer-content w-screen h-screen flex flex-column  align-center">
+				<div className="drawer-content  flex flex-column  align-center">
 					{/* Toggle Button */}
 
 					<div
@@ -152,7 +154,11 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.alacaklarDuzenle = e.target.checked;
+											if(e.target.checked){
+												initialData.alacaklarDuzenle = 1;
+											}else{
+												initialData.alacaklarDuzenle = 0;
+											}
 										}}
 									/>
 								</div>
@@ -163,7 +169,12 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.arsivKlasorleriDuzenle = e.target.checked;
+											if(e.target.checked){
+
+												initialData.arsivKlasorleriDuzenle = 1;
+											}else{
+												initialData.arsivKlasorleriDuzenle = 0;
+											}
 										}}
 									/>
 								</div>
@@ -174,7 +185,13 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.bireyselIslerDuzenle = e.target.checked;
+
+											if(e.target.checked){
+
+												initialData.bireyselIslerDuzenle = 1;
+											}else{
+												initialData.bireyselIslerDuzenle = 0;
+											}
 										}}
 									/>
 								</div>
@@ -185,7 +202,11 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.branslarDuzenle = e.target.checked;
+											if(e.target.checked){
+												initialData.branslarDuzenle = 1;
+											}else{
+												initialData.branslarDuzenle = 0;
+											}
 										}}
 									/>
 								</div>
@@ -196,7 +217,11 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.firmalarDuzenle = e.target.checked;
+											if(e.target.checked){
+												initialData.firmalarDuzenle =  1;
+											}else{
+												initialData.firmalarDuzenle =  0;
+											}
 										}}
 									/>
 								</div>
@@ -207,7 +232,12 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.kayitlarGoruntule = e.target.checked;
+											if(e.target.checked){
+
+												initialData.kayitlarGoruntule = 1;
+											}else{
+												initialData.kayitlarGoruntule = 0;
+											}
 										}}
 									/>
 								</div>
@@ -217,7 +247,12 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.kullanicilarDuzenle = e.target.checked;
+											if(e.target.checked){
+
+												initialData.kullanicilarDuzenle = 1;
+											}else{
+												initialData.kullanicilarDuzenle = 0;
+											}
 										}}
 									/>
 								</div>
@@ -227,7 +262,11 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.musterilerDuzenle = e.target.checked;
+											if(e.target.checked){
+												initialData.musterilerDuzenle = 1;
+											}else{
+												initialData.musterilerDuzenle = 0;
+											}
 										}}
 									/>
 								</div>
@@ -237,7 +276,12 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.ortakIslerDuzenle = e.target.checked;
+											if(e.target.checked){
+
+												initialData.ortakIslerDuzenle =1;
+											}else{
+												initialData.ortakIslerDuzenle =0;
+											}
 										}}
 									/>
 								</div>
@@ -247,7 +291,12 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.sigortaSirketleriDuzenle = e.target.checked;
+											if(e.target.checked){
+
+												initialData.sigortaSirketleriDuzenle = 1;
+											}else{
+												initialData.sigortaSirketleriDuzenle = 0;
+											}
 										}}
 									/>
 								</div>
@@ -257,7 +306,12 @@ export default function KullaniciEkle(props) {
 										type="checkbox"
 										className="checkbox checkbox-accent checkbox-md"
 										onChange={(e) => {
-											initialData.verilenlerDuzenle = e.target.checked;
+											if(e.target.checked){
+
+												initialData.verilenlerDuzenle = 1;
+											}else{
+												initialData.verilenlerDuzenle = 0;
+											}
 										}}
 									/>
 								</div>
