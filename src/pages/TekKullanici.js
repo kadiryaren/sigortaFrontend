@@ -28,7 +28,7 @@ export default function TekKullanici(props) {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				erisimKodu: erisimKodu,
+				erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 				kullaniciId: userId,
 			}),
 		});

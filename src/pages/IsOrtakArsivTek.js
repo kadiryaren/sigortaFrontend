@@ -24,7 +24,7 @@ export default function IsOrtakArsivTek(props) {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				erisimKodu: erisimKodu,
+				erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 				isId: isId,
 			}),
 		});
@@ -41,7 +41,7 @@ export default function IsOrtakArsivTek(props) {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				erisimKodu: erisimKodu,
+				erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 				isId: isId
 			}),
 		});
@@ -62,7 +62,7 @@ export default function IsOrtakArsivTek(props) {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				erisimKodu: erisimKodu,
+				erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 				isId: isId,
 				isTuru:1
 			}),

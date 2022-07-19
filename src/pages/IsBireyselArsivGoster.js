@@ -30,7 +30,7 @@ export default function IsBireyselArsivGoster() {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					erisimKodu: erisimKodu,
+					erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 					arsivId: arsivId,
 				}),
 			}

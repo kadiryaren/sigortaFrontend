@@ -15,11 +15,12 @@ export default function ArsivGuncelle(props) {
 		arsivKlasoruAdi,
 		erisimKodu,
 		setarsivKlasoruAdi,
+		setNextPage
 	} = useContext(MainContext);
 	const [setFetchedData] = useState([]);
 
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		arsivKlasoruId: arsivKlasoruId,
 		arsivKlasoruAdi: arsivKlasoruAdi,
 	};
@@ -43,7 +44,8 @@ export default function ArsivGuncelle(props) {
 			window.alert("Mutlaka bir sifre girmelisiniz!");
 		} else {
 			update();
-			navigate("/arsivler");
+			setNextPage("/arsivler");
+			navigate("/bos");
 		}
 	};
 

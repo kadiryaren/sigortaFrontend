@@ -15,7 +15,7 @@ export default function BransEkle(props) {
 	const [guncelleData, setGuncelleData] = useState({});
 
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		bransAdi: "",
 	};
 

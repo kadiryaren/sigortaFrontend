@@ -26,7 +26,7 @@ export default function TumKullanicilar() {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					erisimKodu:erisimKodu,
+					erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 				}),
 			}
 		);
@@ -56,7 +56,7 @@ export default function TumKullanicilar() {
 			rows: processedData,
 		};
 
-		await setFetchedData(data);
+		setFetchedData(data);
 	};
 
 	useEffect(() => {
@@ -106,12 +106,22 @@ export default function TumKullanicilar() {
 				<div className="drawer-content">
 					{/* Toggle Button */}
 
-					<div className="container my-5">
-						<div className="flex justify-center align-center">
-							<h1>
-								<b style={{ fontSize: "30px" }}>Kullanıcılar</b>
-							</h1>
-						</div>
+					<div className="container text-center my-5">
+					<div className="flex flex-column justify-center align-center">
+                        <h1>
+                            <b style={{'fontSize':'30px'}}>Tum Kullanicilar</b>
+                        </h1>
+                        
+                    
+                        <div className='mt-3'>
+                        <Link
+							to="/kullanici/ekle"
+							className=" btn text-black  bg-green-200 hover:bg-green-500 hover:text-white"
+						>
+							Ekle
+						</Link>
+                        </div>
+                    </div>
 
 						<MDBDataTable striped bordered hover data={fetchedData} />
 					</div>

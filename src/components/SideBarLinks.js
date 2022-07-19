@@ -17,7 +17,7 @@ export default function () {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				erisimKodu:erisimKodu
+				erisimKodu: window.sessionStorage.getItem("erisimKodu")
 			}),
 		});
 
@@ -39,222 +39,51 @@ export default function () {
 	},[arsivler])
 	return (
 		<div className="d-flex flex-column justify-content-center">
-			<div className="dropdown">
-				<label
-					tabIndex="0"
-					className="btn btn-outline hover:btn-ghost w-full rounded"
-				>
-					Kullanıcılar
-				</label>
-				<ul
-					tabIndex="0"
-					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-				>
-					<li className="my-2">
-						<Link
-							to="/kullanicilar"
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Tüm kullanıcılar
-						</Link>
-					</li>
-					<li className="my-2">
-						<Link
-							to="/kullanici/ekle"
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Ekle
-						</Link>
-					</li>
-				</ul>
-			</div>
-			<button className="btn btn-success hover:btn-green-500 my-2" onClick={() => {
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+				navigation("/kullanicilar");
+			}}>
+				Kullanicilar
+			</button>
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
 				navigation("/firmalar");
 			}}>
 				Ortaklar
 			</button>
 
-			<div className="dropdown">
-				<label
-					tabIndex="0"
-					className="btn btn-outline hover:btn-ghost w-full rounded"
-				>
-					Ortaklar
-				</label>
-				<ul
-					tabIndex="0"
-					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-				>
-					<li className="my-2">
-						<Link
-							to="/firmalar"
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Tüm Firmalar
-						</Link>
-					</li>
-					<li className="my-2">
-						<Link
-							to="/firma/ekle/ "
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Ekle
-						</Link>
-					</li>
-				</ul>
-			</div>
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+				navigation("/branslar");
+			}}>
+				Ürünler
+			</button>
 
-			<div className="dropdown">
-				<label
-					tabIndex="0"
-					className="btn btn-outline hover:btn-ghost w-full rounded"
-				>
-					Ortaklar
-				</label>
-				<ul
-					tabIndex="0"
-					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-				>
-					<li className="my-2">
-						<Link
-							to="/firmalar"
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Tüm Firmalar
-						</Link>
-					</li>
-					<li className="my-2">
-						<Link
-							to="/firma/ekle/ "
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Ekle
-						</Link>
-					</li>
-				</ul>
-			</div>
-			<div className="dropdown">
-				<label
-					tabIndex="0"
-					className="btn btn-outline hover:btn-ghost w-full rounded"
-				>
-					Ürünler
-				</label>
-				<ul
-					tabIndex="0"
-					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-				>
-					<li className="my-2">
-						<Link
-							to="/branslar"
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Tüm Branslar
-						</Link>
-					</li>
-					<li className="my-2">
-						<Link
-							to="/brans/ekle/ "
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Ekle
-						</Link>
-					</li>
-				</ul>
-			</div>
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+				navigation("/arsivler");
+			}}>
+				Arsivler
+			</button>
 
-			<div className="dropdown">
-				<label
-					tabIndex="0"
-					className="btn btn-outline hover:btn-ghost w-full rounded"
-				>
-					Arsivler
-				</label>
-				<ul
-					tabIndex="0"
-					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-				>
-					<li className="my-2">
-						<Link
-							to="/arsivler"
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Tüm Arsivler
-						</Link>
-					</li>
-					<li className="my-2">
-						<Link
-							to="/arsiv/ekle/ "
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Ekle
-						</Link>
-					</li>
-				</ul>
-			</div>
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+				navigation("/musteriler");
+			}}>
+				Musteriler
+			</button>
 
-			
-			<div className="dropdown">
-				<label
-					tabIndex="0"
-					className="btn btn-outline hover:btn-ghost w-full rounded"
-				>
-					Musteriler
-				</label>
-				<ul
-					tabIndex="0"
-					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-				>
-					<li className="my-2">
-						<Link
-							to="/musteriler"
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Tüm Musteriler
-						</Link>
-					</li>
-					<li className="my-2">
-						<Link
-							to="/musteri/ekle/ "
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Ekle
-						</Link>
-					</li>
-				</ul>
-			</div>
-
-			<div className="dropdown">
-				<label
-					tabIndex="0"
-					className="btn btn-outline hover:btn-ghost w-full rounded"
-				>
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+				navigation("/sirketler");
+			}}>
 					Sigorta Firmaları
-				</label>
-				<ul
-					tabIndex="0"
-					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-				>
-					<li className="my-2">
-						<Link
-							to="/sirketler"
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
+			</button>
+			<button
+							onClick={() => {
+								
+								navigation("/teklif");
+							}}
+							className=" btn text-black bg-yellow-300 hover:bg-gray-500 hover:text-white my-2"
 						>
-							Tüm Sirketler
-						</Link>
-					</li>
-					<li className="my-2">
-						<Link
-							to="/sirket/ekle/ "
-							className=" bg-gray-200 hover:bg-gray-500 hover:text-white"
-						>
-							Ekle
-						</Link>
-					</li>
-				</ul>
-			</div>
-			
-			<div className="dropdown">
+							Teklif Ver
+						</button>
+
+			<div className="dropdown dropdown-top " >
 				<label
 					tabIndex="0"
 					className="btn btn-outline hover:btn-ghost w-full rounded"
@@ -263,6 +92,7 @@ export default function () {
 				</label>
 				<ul
 					tabIndex="0"
+					style={{"position":"relative","top":"-50%"}}
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
 					<li className="my-2">
@@ -297,15 +127,16 @@ export default function () {
 					
 				</ul>
 			</div>
-			<div className="dropdown">
+			<div className="dropdown ">
 				<label
 					tabIndex="0"
-					className="btn btn-outline hover:btn-ghost w-full rounded"
+					style={{"position":"relative","top":"-88%","z-index":"3"}}
+					className="btn btn-outline hover:btn-ghost w-full rounded my-2"
 				>
 					Ortak Isler
 				</label>
 				<ul
-					tabIndex="0"
+					tabIndex="0" style={{"position":"relative","top":"-150%"}}
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
 					<li className="my-2">
@@ -316,7 +147,6 @@ export default function () {
 							Yaklasan Ortak Isler
 						</Link>
 					</li>
-
 					{
 						arsivler.map((item) => {
 							return (
@@ -339,15 +169,7 @@ export default function () {
 					
 				</ul>
 			</div>
-			<button
-							onClick={() => {
-								
-								navigation("/teklif");
-							}}
-							className=" btn text-black bg-yellow-300 hover:bg-gray-500 hover:text-white "
-						>
-							Teklif Ver
-						</button>
+			
 		</div>
 	);
 }

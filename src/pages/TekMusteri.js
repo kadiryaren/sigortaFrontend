@@ -21,7 +21,7 @@ export default function TekMusteri(props) {
 	            'Content-Type':'application/json'
 	        },
 	        body: JSON.stringify({
-	            erisimKodu:erisimKodu,
+	            erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 				musteriId:musteriId
 	        })
 	    })
@@ -101,7 +101,7 @@ export default function TekMusteri(props) {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				erisimKodu: erisimKodu,
+				erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 				musteriId: musteriId,
 			}),
 		});

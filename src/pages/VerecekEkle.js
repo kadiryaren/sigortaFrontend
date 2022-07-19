@@ -13,7 +13,7 @@ export default function VerecekEkle(props) {
 	const { token, userId, setArsivId, isTuru, isId, erisimKodu, setNextPage } =
 		useContext(MainContext);
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 	};
 	console.log(isTuru);
 

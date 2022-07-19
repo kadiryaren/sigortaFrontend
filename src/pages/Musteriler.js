@@ -34,7 +34,7 @@ export default function Musteriler() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:erisimKodu
+                erisimKodu: window.sessionStorage.getItem("erisimKodu")
             })
         })
 
@@ -127,11 +127,21 @@ export default function Musteriler() {
             <div className="drawer-content">
                  {/* Toggle Button */}
 
-                <div className="container my-5">
-                    <div className="flex justify-center align-center">
+                <div className="container text-center my-5">
+                    <div className="flex flex-column justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Musteriler</b>
+                            <b style={{'fontSize':'30px'}}>Müşteriler</b>
                         </h1>
+                        
+                    
+                        <div className='mt-3'>
+                        <Link
+                            to="/musteri/ekle/ "
+                            className=" btn text-black  bg-green-200 hover:bg-green-500 hover:text-white"
+                        >
+                            Ekle
+                        </Link>
+                        </div>
                     </div>
 
                  

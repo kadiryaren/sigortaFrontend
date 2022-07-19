@@ -19,7 +19,7 @@ export default function ArsivEkle(props) {
 	const [fetchedData, setFetchedData] = useState([]);
 
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		arsivKlasoruAdi: "",
 	};
 
@@ -34,7 +34,7 @@ export default function ArsivEkle(props) {
 		});
 
 		const returnData = await response.json();
-		await setFetchedData(returnData);
+		setFetchedData(returnData);
 	};
 
 	const ekleClick = () => {

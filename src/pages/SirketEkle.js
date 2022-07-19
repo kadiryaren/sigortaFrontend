@@ -12,7 +12,7 @@ export default function SirketEkle(props) {
 	const {erisimKodu,setNextPage} = useContext( MainContext);
 
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		sigortaSirketiAdi: "",
 		fotograf: "",
 	};
@@ -103,7 +103,7 @@ export default function SirketEkle(props) {
 							style={{ fontSize: "30px" }}
 							className="border-y-2 border-indigo-500 flex justify-center py-2  w-1/4 mt-10 mb-5"
 						>
-							Şirket Ekle
+							Sigorta Firması Ekle
 						</h1>
 						<div className="form d-flex flex-column align-items-center">
 							<label htmlhtmlFor="">Şirket Adi</label>

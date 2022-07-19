@@ -9,16 +9,16 @@ import { useNavigate } from "react-router-dom";
 
 export default function MusteriEkle(props) {
 	const navigate = useNavigate();
-	const {erisimKodu} = useContext(MainContext);
+	const {setNextPage} = useContext(MainContext);
 
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 
 		musteriAdi: "",
 		musteriSoyadi: "",
 		musteriTc: "",
 		musteriTelefon: "",
-		musteriDogumTarihi: "1970-01-01",
+		musteriDogumTarihi: "",
 		musteriMailAdresi: "",
 	};
 
@@ -35,7 +35,8 @@ export default function MusteriEkle(props) {
 
 	const guncelle = () => {
 		ekle();
-		navigate("/musteriler");
+		setNextPage("/musteriler");
+		navigate("/bos");
 	};
 
 	return (

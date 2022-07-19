@@ -15,7 +15,7 @@ export default function IsOrtakGuncelle(props) {
 	const { token, userId, setArsivId, isId, setIsId, erisimKodu } =
 		useContext(MainContext);
 	const [initialData, setInitialData] = useState({
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		arsivId: "",
 		musteriId: "",
 		bransId: "",

@@ -12,19 +12,19 @@ export default function IsOrtakEkle(props) {
 	const navigate = useNavigate();
 	const [tumFirmalar, setTumFirmalar] = useState([]);
 
-	const { token, userId, setArsivId, isId, setIsId, erisimKodu } =
+	const { token, userId, setArsivId, isId, setIsId, erisimKodu,setNextPage } =
 		useContext(MainContext);
 	const [initialData, setInitialData] = useState({
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		arsivId: "",
 		musteriId: "",
 		bransId: "",
 		sigortaSirketiId: "",
-		plaka: "default Data",
+		plaka: "",
 		ruhsatSeriNo: "",
 		policeNo: "",
 		firmaId: "",
-		policeBitisTarihi: "1970-01-01",
+		policeBitisTarihi: "",
 		komisyonOraniKendisi: 0,
 		isId: isId,
 	});
@@ -98,7 +98,8 @@ export default function IsOrtakEkle(props) {
 		ekle();
 
 		setArsivId(initialData["arsivId"]);
-		navigate("/is/ortak");
+		setNextPage("/is/ortak");
+		navigate("/bos");
 	};
 
 	return (

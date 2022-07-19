@@ -9,12 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function BransGuncelle(props) {
 	const navigate = useNavigate();
-	const { bransId, bransAdi, setBransId, setBransAdi, erisimKodu } =
+	const { bransId, bransAdi, setBransId, setBransAdi, erisimKodu,setNextPage } =
 		useContext(MainContext);
 	const [setFetchedData] = useState([]);
 
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		bransId: bransId,
 		bransAdi: bransAdi,
 	};
@@ -38,7 +38,8 @@ export default function BransGuncelle(props) {
 			window.alert("Mutlaka bir sifre girmelisiniz!");
 		} else {
 			update();
-			navigate("/branslar");
+			setNextPage("/branslar");
+			navigate("/bos");
 		}
 	};
 

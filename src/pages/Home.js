@@ -10,10 +10,10 @@ export default function Home() {
 
     useEffect(() => {
 
-        console.log("erisimKodu");
-        console.log(erisimKodu);
+        console.log("erisimKodu : " +  window.sessionStorage.getItem("erisimKodu"));
+      
 
-    },[erisimKodu])
+    },[])
     
 
 
@@ -32,7 +32,7 @@ export default function Home() {
             </div>
             <div className="flex-none">
                 {
-                    erisimKodu === undefined ? (
+                    window.sessionStorage.getItem("erisimKodu") == "undefined" ? (
                        <Link to="/login" className="link link-hover btn btn-success">Giriş Yap</Link>
                     ):(
                         <Link to="/logout" className="link link-hover btn bg-red-700">Cikis Yap</Link>

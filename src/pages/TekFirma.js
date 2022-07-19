@@ -21,7 +21,7 @@ export default function TekFirma(props) {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				erisimKodu: erisimKodu,
+				erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 				firmaId: firmaId,
 			}),
 		});

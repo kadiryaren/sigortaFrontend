@@ -29,7 +29,7 @@ export default function Firmalar() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:erisimKodu,
+                erisimKodu: window.sessionStorage.getItem("erisimKodu"),
             })
         });
 
@@ -54,7 +54,7 @@ export default function Firmalar() {
         const data = {
             columns:[
                 {
-                    label: 'Firma Adi',
+                    label: 'Ortak Adi',
                     field: 'ad',
                     sort: 'asc',
                     width: 150
@@ -66,7 +66,7 @@ export default function Firmalar() {
              
         }
 
-        await setFetchedData(data);
+        setFetchedData(data);
 
     };
 
@@ -103,7 +103,7 @@ export default function Firmalar() {
                 <div className="container text-center my-5">
                     <div className="flex flex-column justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Firmalar</b>
+                            <b style={{'fontSize':'30px'}}>Ortaklar</b>
                         </h1>
                         
                     

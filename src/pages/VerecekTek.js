@@ -14,7 +14,7 @@ export default function VerecekTek(props) {
     const{alacakId,isId,verecekId,erisimKodu,isTuru} = useContext(MainContext);
     const [verecekData,setVerecekData] = useState({});
     const [initialData,setInitialData] = useState({
-        erisimKodu: erisimKodu,
+        erisimKodu: window.sessionStorage.getItem("erisimKodu"),
         isId:isId,
         verecekId: verecekId,
         isTuru:isTuru
@@ -71,7 +71,7 @@ export default function VerecekTek(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:erisimKodu,
+                erisimKodu: window.sessionStorage.getItem("erisimKodu"),
                 verecekId: verecekId
             })
         })

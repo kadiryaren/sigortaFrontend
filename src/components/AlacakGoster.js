@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import { useContext } from 'react';
 import { MainContext } from '../contex';
 import { MDBDataTable } from 'mdbreact';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function AlacakGoster(props) {
@@ -29,7 +29,7 @@ export default function AlacakGoster(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu: erisimKodu,
+                erisimKodu: window.sessionStorage.getItem("erisimKodu"),
                 isId:isId,
                 isTuru: props.propIsTuru
             })

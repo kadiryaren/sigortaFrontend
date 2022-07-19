@@ -8,6 +8,7 @@ export default function CikisYap() {
     useEffect(() => {
 
         setToken(false);
+        window.sessionStorage.setItem("erisimKodu",undefined);
         window.location.href='/login';
 
     },[]);

@@ -9,14 +9,14 @@ import { useNavigate } from "react-router-dom";
 
 export default function FirmaGuncelle(props) {
 	const navigate = useNavigate();
-	const { token, userId, firmaId, firmaAdi, erisimKodu } =
+	const { token, userId, firmaId, firmaAdi, erisimKodu,setNextPage} =
 		useContext(MainContext);
 	const [fetchedData, setFetchedData] = useState([]);
 	const location = useLocation();
 	const [guncelleData, setGuncelleData] = useState({});
 
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		firmaId: firmaId,
 		firmaAdi: firmaAdi,
 	};
@@ -32,7 +32,7 @@ export default function FirmaGuncelle(props) {
 		});
 
 		const returnData = await response.json();
-		await setFetchedData(returnData);
+		setFetchedData(returnData);
 	};
 
 	const guncelle = () => {
@@ -40,7 +40,8 @@ export default function FirmaGuncelle(props) {
 			window.alert("Mutlaka bir sifre girmelisiniz!");
 		} else {
 			update();
-			navigate("/firmalar");
+			setNextPage("/firmalar");
+			navigate("/bos");
 		}
 	};
 

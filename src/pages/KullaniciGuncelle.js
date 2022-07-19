@@ -25,7 +25,7 @@ export default function KullaniciGuncelle(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:erisimKodu,
+                erisimKodu: window.sessionStorage.getItem("erisimKodu"),
                 kullaniciId:userId
             })
         })
@@ -42,7 +42,7 @@ export default function KullaniciGuncelle(props) {
     },[])
 
     const initialData = {
-        erisimKodu:erisimKodu,
+        erisimKodu: window.sessionStorage.getItem("erisimKodu"),
         kullaniciId:userId,
         sifre:"",
         alacaklarDuzenle: fetchedData.alacaklarDuzenle,

@@ -26,7 +26,7 @@ export default function TekArsiv(props) {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				erisimKodu: erisimKodu,
+				erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 				arsivKlasoruId: arsivKlasoruId,
 			}),
 		});

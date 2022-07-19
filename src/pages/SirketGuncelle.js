@@ -20,7 +20,7 @@ export default function SirketGuncelle(props) {
 	} = useContext(MainContext);
 
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		sigortaSirketiId: sigortaSirketiId,
 		sigortaSirketiAdi: sigortaSirketiAdi,
 		fotograf: sirketPhoto,

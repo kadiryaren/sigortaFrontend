@@ -28,7 +28,7 @@ export default function Teklif(props) {
 	const [guncelleData, setGuncelleData] = useState({});
 	const[teklif,setTeklif] = useState([]);
 	const[initialData,setInitialData] = useState({
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		sigortaIsimleri:[],
 		sigortaSirketleri: [],
 		fiyatBilgileri:[]
@@ -90,7 +90,7 @@ export default function Teklif(props) {
 
 	const ekleClick = () => {
 		const data = {
-			erisimKodu: erisimKodu,
+			erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 			bransId: initialData.bransId,
 			ad: initialData.ad,
 			soyad:initialData.soyad,

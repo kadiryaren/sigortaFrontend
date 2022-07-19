@@ -9,12 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function MusteriGuncelle(props) {
 	const navigate = useNavigate();
-	const { musteriId, setMusteriId, musteriData, setMusteriData, erisimKodu } =
+	const { musteriId, setMusteriId, musteriData, setMusteriData, erisimKodu,setNextPage } =
 		useContext(MainContext);
 
 	let defaultDate = null;
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		musteriId: musteriId,
 		musteriAdi: musteriData.ad,
 		musteriSoyadi: musteriData.soyad,
@@ -23,16 +23,6 @@ export default function MusteriGuncelle(props) {
 		musteriDogumTarihi: musteriData.dogumTarihi,
 		musteriMailAdresi: musteriData.mailAdresi,
 	};
-
-	// useEffect(() => {
-	// 	defaultDate = new Date(
-	// 		musteriData.dogumTarihi.split("-")[2] +
-	// 			"-" +
-	// 			musteriData.dogumTarihi.split("-")[1] +
-	// 			"-" +
-	// 			musteriData.dogumTarihi.split("-")[0]
-	// 	);
-	// }, []);
 
 	useEffect(() => {
 		defaultDate = new Date(musteriData.dogumTarihi);
@@ -51,7 +41,8 @@ export default function MusteriGuncelle(props) {
 
 	const guncelle = () => {
 		update();
-		navigate("/musteriler");
+		setNextPage("/musteriler");
+		navigate("/bos");
 	};
 
 	return (

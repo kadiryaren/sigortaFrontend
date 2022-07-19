@@ -9,13 +9,13 @@ import { useNavigate,Link } from "react-router-dom";
 
 export default function KullaniciEkle(props) {
 	const navigate = useNavigate();
-	const { token, userId ,erisimKodu} = useContext(MainContext);
+	const { token, userId ,erisimKodu,setNextPage} = useContext(MainContext);
 	const [fetchedData, setFetchedData] = useState([]);
 
 	const [guncelleData, setGuncelleData] = useState({});
 
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		kullaniciAdi: "",
 		sifre: "",
 		alacaklarDuzenle: "",
@@ -42,20 +42,24 @@ export default function KullaniciEkle(props) {
 		});
 
 		const returnData = await response.json();
-		await setFetchedData(returnData);
+		setFetchedData(returnData);
 	};
 
 	const ekleClick = () => {
 		if (initialData.sifre === "") {
 			window.alert("Mutlaka bir sifre girmelisiniz!");
 		} else {
-			console.log("object");
-			ekle();
-			navigate("/kullanicilar");
-		}
-
 	
+			ekle();
+			setNextPage("/kullanicilar");
+			navigate("/bos");
+		}
 	};
+
+	useEffect(() => {
+		
+		console.log("session storage" + window.sessionStorage.getItem("erisimKodu"));
+	},[])
 
 	return (
 		<div>

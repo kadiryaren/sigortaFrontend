@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 export default function IsBireyselEkle(props) {
 	const navigate = useNavigate();
 	const [counter, setCounter] = useState(0);
-	const { token, userId, setArsivId, erisimKodu } = useContext(MainContext);
+	const { token, userId, setArsivId, erisimKodu,setNextPage } = useContext(MainContext);
 
 	const [fetchedData, setFetchedData] = useState({
 		musteriler: [],
@@ -19,16 +19,16 @@ export default function IsBireyselEkle(props) {
 		arsivKlasorleri: [],
 	});
 	const initialData = {
-		erisimKodu: erisimKodu,
-		arsivId: false,
-		musteriId: false,
-		bransId: false,
-		sigortaSirketiId: false,
-		arsivId: false,
-		plaka: false,
-		ruhsatSeriNo: false,
-		policeNo: false,
-		policeBitisTarihi: false,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
+		arsivId: "",
+		musteriId: "",
+		bransId: "",
+		sigortaSirketiId: "",
+		arsivId: "",
+		plaka: "",
+		ruhsatSeriNo: "",
+		policeNo: "",
+		policeBitisTarihi: "",
 	};
 
 	document.addEventListener(
@@ -71,7 +71,8 @@ export default function IsBireyselEkle(props) {
 	const ekle = () => {
 		postData();
 		setArsivId(initialData["arsivId"]);
-		navigate("/is/bireysel");
+		setNextPage("/is/bireysel")
+		navigate("/bos");
 	};
 
 	return (

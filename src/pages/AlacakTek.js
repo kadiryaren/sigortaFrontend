@@ -16,7 +16,7 @@ export default function AlacakTek(props) {
     const{alacakId,isId,erisimKodu,isTuru} = useContext(MainContext);
     const [alacakdata,setAlacakData] = useState({});
     const [initialData,setInitialData] = useState({
-        erisimKodu:erisimKodu ,
+        erisimKodu: window.sessionStorage.getItem("erisimKodu") ,
         isId:isId,
         alacakId: alacakId,
         isTuru:isTuru
@@ -75,7 +75,7 @@ export default function AlacakTek(props) {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu:erisimKodu,
+                erisimKodu: window.sessionStorage.getItem("erisimKodu"),
                 alacakId: alacakId
             })
         })

@@ -15,7 +15,7 @@ export default function FirmaEkle(props) {
 	const [guncelleData, setGuncelleData] = useState({});
 
 	const initialData = {
-		erisimKodu: erisimKodu,
+		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		firmaAdi: "",
 	};
 
@@ -30,7 +30,7 @@ export default function FirmaEkle(props) {
 		});
 
 		const returnData = await response.json();
-		await setFetchedData(returnData);
+		setFetchedData(returnData);
 	};
 
 	const ekleClick = () => {
@@ -88,12 +88,12 @@ export default function FirmaEkle(props) {
 							style={{ fontSize: "30px" }}
 							className="border-y-2 border-indigo-500 flex justify-center py-2  w-1/4 mt-10"
 						>
-							Firma Ekle
+							 Ortak Ekle
 						</h1>
 
 						<div className="form d-flex flex-column align-items-center w-1/4">
 							<label htmlFor="" className="my-4 text-lg">
-								Firma Adı
+								Ortak Adı
 							</label>
 							<input
 								type="text"
