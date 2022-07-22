@@ -116,7 +116,7 @@ export default function MusteriEkle(props) {
 
 							<br />
 							<label htmlFor="" className="input-group">
-								<span className="w-20">TC</span>
+								<span className="w-20">TC/Vergi Numarasi</span>
 								<input
 									type="text"
 									className="form-control"

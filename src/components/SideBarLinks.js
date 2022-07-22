@@ -73,11 +73,20 @@ export default function () {
 			</button>
 
 			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
+				navigation("/borclular");
+			}}>
+				Borclular
+				<AiOutlineRight className="absolute right-10"/>
+			</button>
+
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/sirketler");
 			}}>
 					Sigorta Firmaları
 				<AiOutlineRight className="absolute right-10"/>
 			</button>
+
+			
 			
 
 			<button
@@ -88,14 +97,16 @@ export default function () {
 							className=" btn bg-yellow-300 text-dark hover:bg-yellow-500 my-2 round-it flex justify-content-center relative"
 						>
 							Teklif Ver
+							<AiOutlineRight className="absolute right-10"/>
 						</button>
 
 			<div className="dropdown dropdown-top " >
 				<label
 					tabIndex="0"
-					className="btn btn-outline hover:btn-ghost w-full rounded"
+					className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative"
 				>
 					Bireysel Isler
+					<AiOutlineRight className="absolute right-10"/>
 				</label>
 				<ul
 					tabIndex="0"
@@ -137,10 +148,11 @@ export default function () {
 			<div className="dropdown ">
 				<label
 					tabIndex="0"
-					style={{"position":"relative","top":"-88%","z-index":"3"}}
-					className="btn btn-outline hover:btn-ghost w-full rounded my-2"
+					style={{"position":"relative","top":"-82%","z-index":"3"}}
+					className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative"
 				>
 					Ortak Isler
+					<AiOutlineRight className="absolute right-10"/>
 				</label>
 				<ul
 					tabIndex="0" style={{"position":"relative","top":"-150%"}}

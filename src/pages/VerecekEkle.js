@@ -26,6 +26,15 @@ export default function VerecekEkle(props) {
 			},
 			body: JSON.stringify(initialData),
 		});
+		if (isTuru === 0) {
+			setNextPage("/is/bireysel/arsiv/tek");
+			navigate("/bos");
+	
+		} else if (isTuru === 1) {
+			setNextPage("/is/ortak/arsiv/tek");
+			navigate("/bos");
+
+		}
 	};
 
 	useEffect(() => {
@@ -46,15 +55,7 @@ export default function VerecekEkle(props) {
 
 	const ekleClick = () => {
 		ekle();
-		if (isTuru === 0) {
-			setNextPage("/is/bireysel/arsiv/tek");
-			navigate("/bos");
-	
-		} else if (isTuru === 1) {
-			setNextPage("/is/ortak/arsiv/tek");
-			navigate("/bos");
-
-		}
+		
 	};
 
 	return (

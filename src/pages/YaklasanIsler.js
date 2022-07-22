@@ -7,22 +7,29 @@ import { useNavigate } from "react-router-dom";
 import SideBarLinks from "../components/SideBarLinks";
 import { Link } from "react-router-dom";
 
-export default function IsMusteriGoster() {
+export default function YaklasanIsler() {
 	const navigate = useNavigate();
-	const { arsivId, musteriId, setMusteriId, isId, setIsId, erisimKodu } =
+	const { arsivId, musteriId, setMusteriId, isId, setIsId, erisimKodu, setNextPage } =
 		useContext(MainContext);
 
 	const [fetchedData, setFetchedData] = useState([]);
-	const click = (id, musteriId) => {
+	const click = (id, musteriId,isTipi) => {
 		setMusteriId(musteriId);
 		setIsId(id);
 
-		navigate("/is/bireysel/arsiv/tek");
+        if(isTipi === "ortak"){
+            setNextPage("/is/ortak/arsiv/tek");
+            navigate("/bos");
+        }
+        if(isTipi === "bireysel"){
+            setNextPage("/is/bireysel/arsiv/tek");
+            navigate("/bos");
+        }
 	};
 
 	const fetchData = async () => {
 		const response = await fetch(
-			"http://127.0.0.1:5000/is/bireysel/musteri/goster/hepsi/",
+			"http://127.0.0.1:5000/is/yaklasan/",
 			{
 				method: "POST",
 				mode: "cors",
@@ -30,8 +37,7 @@ export default function IsMusteriGoster() {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					erisimKodu: window.sessionStorage.getItem("erisimKodu"),
-					musteriId: musteriId,
+					erisimKodu: window.sessionStorage.getItem("erisimKodu")
 				}),
 			}
 		);
@@ -39,23 +45,51 @@ export default function IsMusteriGoster() {
 		const returnData = await response.json();
 		console.log(returnData);
 		const processedData = [];
-		for (let i = 1; i < Array.from(returnData.keys()).length; i++) {
-			processedData.push({
-				musteriAdi: returnData[i].musteriAdi + " " + returnData[i].musteriSoyadi ,
-				bransAdi: returnData[i].bransAdi,
-				sigortaSirketiAdi: returnData[i].sigortaSirketiAdi,
-				arsivKlasoruAdi: returnData[i].arsivKlasoruAdi,
-				plaka: returnData[i].plaka,
-				ruhsatSeriNo: returnData[i].ruhsatSeriNo,
-				policeNo: returnData[i].policeNo,
-				policeBitisTarihi: returnData[i].policeBitisTarihi,
+        if(returnData.durum !== false){
+            for (let i = 0; i < Array.from(returnData.isler).length; i++) {
+                try{
+                    var ortak = returnData.isler[i].firmaAdi ? returnData.isler[i].firmaAdi : "Yok";
+                }
+                catch(err){
+                    var ortak = "YOK";
+                }
 
-				clickEvent: () => click(returnData[i].id, returnData[i].musteriId),
-			});
-		}
+
+                try{
+                    
+                    var isTipi = returnData.isler[i].firmaAdi ? "Ortak" : "Bireysel";
+                    
+                }
+                catch(err){
+                    var isTipi = "Bireysel";
+                }
+
+                processedData.push({
+                    isTipi: isTipi,
+                    musteriAdi: returnData.isler[i].musteriAdi,
+                    bransAdi: returnData.isler[i].bransAdi,
+                    sigortaSirketiAdi: returnData.isler[i].sigortaSirketiAdi,
+                    arsivKlasoruAdi: returnData.isler[i].arsivKlasoruAdi,
+                    ortak: ortak,
+                    plaka: returnData.isler[i].plaka,
+                    ruhsatSeriNo: returnData.isler[i].ruhsatSeriNo,
+                    policeNo: returnData.isler[i].policeNo,
+                    policeBitisTarihi: returnData.isler[i].policeBitisTarihi,
+                    kalanGun: returnData.isler[i].kalanGun,
+                    clickEvent: () => click(returnData.isler[i].id, returnData.isler[i].musteriId,isTipi = returnData.isler[i].firmaAdi ? "ortak" : "bireysel"),
+                });
+            }
+        }
+		
 
 		const data = {
 			columns: [
+                {
+					label: "Is Tipi",
+					field: "isTipi",
+					sort: "asc",
+					width: 150,
+				},
 				{
 					label: "Musteri Adi",
 					field: "musteriAdi",
@@ -74,9 +108,16 @@ export default function IsMusteriGoster() {
 					sort: "asc",
 					width: 150,
 				},
+               
 				{
 					label: "Arsiv",
 					field: "arsivKlasoruAdi",
+					sort: "asc",
+					width: 150,
+				},
+                {
+					label: "Ortak",
+					field: "ortak",
 					sort: "asc",
 					width: 150,
 				},
@@ -104,11 +145,17 @@ export default function IsMusteriGoster() {
 					sort: "asc",
 					width: 150,
 				},
+                {
+					label: "Kalan Gun",
+					field: "kalanGun",
+					sort: "asc",
+					width: 150,
+				}
 			],
 			rows: processedData,
 		};
 
-		await setFetchedData(data);
+		setFetchedData(data);
 	};
 
 	useEffect(() => {
@@ -158,17 +205,10 @@ export default function IsMusteriGoster() {
 					<div className="container my-5">
 						<div className="flex justify-center align-center">
 							<h1>
-								<b style={{ fontSize: "30px" }}>Musteriye Yapilan Isler</b>
+								<b style={{ fontSize: "30px" }}>Yaklasan Isler</b>
 							</h1>
 						</div>
-						<div className="d-flex justify-content-center align-items-center mt-3">
-							<Link
-								to="/is/bireysel/ekle"
-								className="btn btn-success rounded mx-2"
-							>
-								Ekle
-							</Link>
-						</div>
+						
 
 						<MDBDataTable striped bordered hover data={fetchedData} />
 					</div>

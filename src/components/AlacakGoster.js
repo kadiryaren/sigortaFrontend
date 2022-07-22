@@ -15,7 +15,6 @@ export default function AlacakGoster(props) {
     const click =  (alacakId) => {
         setAlacakId(alacakId);
         setIsTuru(props.propIsTuru);
-
         navigate("/alacak");
     };
 

@@ -44,6 +44,7 @@ export default function Musteriler() {
         const processedData = [];
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
             processedData.push({
+                id:returnData[i].id,
                 ad: returnData[i].ad,
                 soyad: returnData[i].soyad,
                 tc:returnData[i].tc,
@@ -53,7 +54,8 @@ export default function Musteriler() {
                     ad: returnData[i].ad,
                     soyad: returnData[i].soyad,
                     tc:returnData[i].tc,
-                    telefon:returnData[i].telefon
+                    telefon:returnData[i].telefon,
+                    mailAdresi:returnData[i].mailAdresi
                 })
             });
 
@@ -63,6 +65,12 @@ export default function Musteriler() {
 
         const data = {
             columns:[
+                {
+                    label: 'Id',
+                    field: 'id',
+                    sort: 'asc',
+                    width: 150
+                },
                 {
                     label: 'Musteri Adi',
                     field: 'ad',
@@ -76,7 +84,7 @@ export default function Musteriler() {
                     width: 150
                 },
                 {
-                    label: 'TC Kimlik',
+                    label: 'TC/Vergi No',
                     field: 'tc',
                     sort: 'asc',
                     width: 150

@@ -10,10 +10,8 @@ import VerecekGoster from "../components/AlacakGoster";
 
 export default function AlacakTek(props) {
 
-	
-
     const navigate = useNavigate();
-    const{alacakId,isId,erisimKodu,isTuru} = useContext(MainContext);
+    const{alacakId,isId,erisimKodu,isTuru,setNextPage} = useContext(MainContext);
     const [alacakdata,setAlacakData] = useState({});
     const [initialData,setInitialData] = useState({
         erisimKodu: window.sessionStorage.getItem("erisimKodu") ,
@@ -82,19 +80,19 @@ export default function AlacakTek(props) {
 
         const returnVAL = await response.json();
         console.log(returnVAL.durum);
+		if(isTuru === 0){
+			setNextPage("/is/bireysel/arsiv/tek");
+			navigate("/bos");
+		}else if(isTuru === 1){
+			setNextPage("/is/ortak/arsiv/tek");
+			navigate("/bos");
+		}
         
     }
     
 
     const silClick = () => {
-        if(window.confirm("Alacak Silinecek Emin Misiniz?") == true){
-            sil();
-            if(isTuru === 0){
-                navigate("/is/bireysel/arsiv/tek");
-            }else if(isTuru === 1){
-                navigate("/is/ortak/arsiv/tek");
-            }
-        }
+    	sil();
     }
 
     const guncelleClick = () => {
@@ -150,7 +148,7 @@ return (
                 </Link>
 				</div>
 				<div className="flex-none">
-					<Link className="btn btn-error hover:text-white" to="/logout">
+					<Link  to="/logout" className="btn btn-error hover:text-white" >
 						Çıkış Yap
 					</Link>
 				</div>
@@ -202,12 +200,12 @@ return (
 
 								<div>
 									<div className="d-flex justify-content-center">
-										<Link
+										<a
 											onClick={silClick}
 											className="btn btn-error rounded mx-2"
 										>
 											Sil
-										</Link>
+										</a>
 										<button
 											onClick={guncelleClick}
 											className="btn btn-success rounded"

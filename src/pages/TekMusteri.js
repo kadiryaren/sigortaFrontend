@@ -31,6 +31,7 @@ export default function TekMusteri(props) {
 	    const processedData = [];
 
 		processedData.push({
+			id: returnData.id,
 			ad: returnData.ad,
 			soyad:returnData.soyad,
 			tc: returnData.tc,
@@ -41,6 +42,12 @@ export default function TekMusteri(props) {
 
 		const data = {
             columns:[
+				{
+                    label: 'Id',
+                    field: 'id',
+                    sort: 'asc',
+                    width: 150
+                },
                 {
                     label: 'Ad',
                     field: 'ad',
@@ -90,7 +97,12 @@ export default function TekMusteri(props) {
 
 	useEffect(() => {
 		fetchUserData();
-	}, []);
+		
+		}, []);
+
+		useEffect(()=> {
+			console.log("Musteri ID--> ",musteriId);
+		},[musteriId])
 
 
 	const sil = async () => {

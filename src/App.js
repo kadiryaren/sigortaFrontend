@@ -50,6 +50,8 @@ import Bos from "./pages/Bos";
 import IsBireyselYaklasan from "./pages/IsBireyselYaklasan";
 import IsMusteriGoster from "./pages/IsMusteriGoster";
 import IsOrtakYaklasanIsler from "./pages/IsOrtakYaklasanIsler";
+import YaklasanIsler from "./pages/YaklasanIsler";
+import Borclular from "./pages/Borclular";
 
 export default function App() {
 	const [token, setToken] = useState(false);
@@ -128,7 +130,7 @@ export default function App() {
 				<Routes>
 					<Route path="/login" element={<Login />} />
 					<Route path="/" element={<Root />} />
-					<Route path="/home" element={<Home />} />
+					<Route path="/home" element={<YaklasanIsler />} />
 					<Route path="/kullanicilar" element={<TumKullanicilar />} />
 					<Route path="/kullanicilar/tek" element={<TekKullanici />} />
 					<Route path="/kullanici/ekle" element={<KullaniciEkle />} />
@@ -158,6 +160,9 @@ export default function App() {
 					<Route path="/is/bireysel/yaklasan" element={<IsBireyselYaklasan />} />
 					<Route path="/is/ortak/yaklasan" element={<IsOrtakYaklasanIsler />} />
 					<Route path="/is/musteri" element={<IsMusteriGoster />} />
+					<Route path="/borclular" element={<Borclular />} />
+					
+					
 					<Route
 						path="/is/bireysel/guncelle"
 						element={<IsBireyselGuncelle />}

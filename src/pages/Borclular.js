@@ -1,79 +1,104 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom';
+
 import { MDBDataTable } from 'mdbreact';
 import { MainContext, useContext } from '../contex'
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import SideBarLinks from '../components/SideBarLinks';
 
 
 
-export default function Firmalar() {
+export default function Borclular() {
     const navigate = useNavigate();
-    const {token,userId ,setUserId,firmaId,setFirmaId,firmaAdi,setFirmaAdi,erisimKodu} = useContext(MainContext);
+    
+    const {musteriId,setMusteriId, musteriData,erisimKodu,setNextPage,
+        setMusteriData} = useContext(MainContext);
+
+        const[rowSelected,setRowSelected] = useState(false);
 
     const [fetchedData,setFetchedData] = useState([]);
-    const click =  (id,firmaName) => {
-            
-        setFirmaId(id);
-        setFirmaAdi(firmaName);
-        navigate("/is/ortak/firma");
+    const click =  (id,musteriData) => {
+        setRowSelected(true);
+        setMusteriId(id);
+        setMusteriData(musteriData);
+        
+        setNextPage("/is/musteri");
+        navigate("/bos");
 
     };
 
+    useEffect(() => {
+        console.log("musteri id --> ",musteriId);
+    },[musteriId]);
+
     const fetchData = async () => {
-        const response = await fetch("http://127.0.0.1:5000/firma/goster/hepsi/",{
+        const response = await fetch("http://127.0.0.1:5000/borclular/",{
             method:"POST",
             mode:"cors",
             headers:{
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                erisimKodu: window.sessionStorage.getItem("erisimKodu"),
+                erisimKodu: window.sessionStorage.getItem("erisimKodu")
             })
-        });
+        })
 
         
         const returnData = await response.json();
         console.log(returnData);
         const processedData = [];
-        for(let i = 1; i<Array.from(returnData.keys()).length;i++){
+        for(let i = 0; i<Array.from(returnData.borclular.keys()).length;i++){
             processedData.push({
-                id: returnData[i].id,
-                ad: returnData[i].ad,
+                ad:returnData.borclular[i].ad,
+                borc: returnData.borclular[i].borc,
+                tc:returnData.borclular[i].tc,
+                telefon:returnData.borclular[i].telefon,
                 
-                clickEvent: () => click(returnData[i].id,returnData[i].ad)
+                clickEvent: () => click(returnData.borclular[i].musteriId,{
+                    ad: returnData.borclular[i].ad,
+                    borc: returnData.borclular[i].borc,
+                    tc:returnData.borclular[i].tc,
+                    telefon:returnData.borclular[i].telefon
+                })
             });
 
             
         }
 
-        //setFetchedData(processedData);
-
-   
 
         const data = {
             columns:[
                 {
-                    label: 'Id',
-                    field: 'id',
+                    label: 'Ad',
+                    field: 'ad',
                     sort: 'asc',
                     width: 150
                 },
                 {
-                    label: 'Ortak Adi',
-                    field: 'ad',
+                    label: 'Borc',
+                    field: 'borc',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Tc/Vergi No',
+                    field: 'tc',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Telefon',
+                    field: 'telefon',
                     sort: 'asc',
                     width: 150
                 }
-               
                
             ],
             rows: processedData
              
         }
 
-        setFetchedData(data);
+        await setFetchedData(data);
 
     };
 
@@ -82,8 +107,7 @@ export default function Firmalar() {
         fetchData();
     },[])
     
-    console.log("tset");
-    console.log(fetchedData);
+
 
     return (
     <div>
@@ -99,7 +123,7 @@ export default function Firmalar() {
                 </Link>
             </div>
             <div className="flex-none">
-               <Link className='btn btn-error hover:text-white' to="/logout">Çıkış Yap</Link>
+               <a className='btn btn-error hover:text-white' to="/logout">Çıkış Yap</a>
             </div>
         </div>
         <div className="drawer">
@@ -110,19 +134,22 @@ export default function Firmalar() {
                 <div className="container text-center my-5">
                     <div className="flex flex-column justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Ortaklar</b>
+                            <b style={{'fontSize':'30px'}}>Borclular</b>
                         </h1>
                         
                     
                         <div className='mt-3'>
                         <Link
-							to="/firma/ekle/ "
-							className=" btn text-black  bg-green-200 hover:bg-green-500 hover:text-white"
-						>
-							Ekle
-						</Link>
+                            to="/musteri/ekle/ "
+                            className=" btn text-black  bg-green-200 hover:bg-green-500 hover:text-white"
+                        >
+                            Ekle
+                        </Link>
                         </div>
                     </div>
+
+                 
+                   
 
                     <MDBDataTable
                         striped
@@ -132,11 +159,10 @@ export default function Firmalar() {
                         data={fetchedData}
                         />
 
-                </div>
-                {/* {fetchedData.map((item) =>(
-                    
+                       
 
-                ) )} */}
+                </div>
+            
 
                 
                  

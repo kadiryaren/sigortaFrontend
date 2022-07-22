@@ -46,6 +46,7 @@ export default function Sirketler() {
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
             processedData.push({
                 ad: returnData[i].ad,
+                id: returnData[i].id,
                 clickEvent: () => click(returnData[i].id,returnData[i].sigortaSirketiAdi,returnData[i].fotograf)
             });
 
@@ -55,6 +56,12 @@ export default function Sirketler() {
 
         const data = {
             columns:[
+                {
+                    label: 'ID',
+                    field: 'id',
+                    sort: 'asc',
+                    width: 50
+                },
                 {
                     label: 'Sirket Adi',
                     field: 'ad',

@@ -76,6 +76,7 @@ export default function IsBireyselArsivTek(props) {
 	useEffect(() => {
 		setIsTuru(0);
 		fetchBorc();
+		console.log("isID=>>>",isId);
 	}, []);
 
 	return (
