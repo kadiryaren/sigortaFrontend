@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useEffect,useState } from "react";
 import { MainContext } from "../contex";
 import { useNavigate,Link } from "react-router-dom";
+import {AiOutlineRight} from 'react-icons/ai'
 
 export default function () {
 	const navigation = useNavigate();
@@ -39,46 +40,52 @@ export default function () {
 	},[arsivler])
 	return (
 		<div className="d-flex flex-column justify-content-center">
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/kullanicilar");
 			}}>
-				Kullanicilar
+				<p>Kullanicilar</p>
+				<AiOutlineRight className="absolute right-10"/>
 			</button>
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/firmalar");
 			}}>
 				Ortaklar
+				<AiOutlineRight className="absolute right-10"/>
 			</button>
-
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/branslar");
 			}}>
 				Ürünler
+				<AiOutlineRight className="absolute right-10"/>
 			</button>
-
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/arsivler");
 			}}>
 				Arsivler
+				<AiOutlineRight className="absolute right-10"/>
 			</button>
 
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/musteriler");
 			}}>
 				Musteriler
+				<AiOutlineRight className="absolute right-10"/>
 			</button>
 
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2" onClick={() => {
+			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/sirketler");
 			}}>
 					Sigorta Firmaları
+				<AiOutlineRight className="absolute right-10"/>
 			</button>
+			
+
 			<button
 							onClick={() => {
 								
 								navigation("/teklif");
 							}}
-							className=" btn text-black bg-yellow-300 hover:bg-gray-500 hover:text-white my-2"
+							className=" btn bg-yellow-300 text-dark hover:bg-yellow-500 my-2 round-it flex justify-content-center relative"
 						>
 							Teklif Ver
 						</button>

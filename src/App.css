@@ -44,3 +44,7 @@ tr:nth-child(even) > td{
 tr:hover > td{
   background-color: rgb(136, 135, 135);
 }
+
+.round-it {
+  border-radius: 20px;
+}
