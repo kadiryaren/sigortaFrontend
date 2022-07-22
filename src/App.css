@@ -48,3 +48,13 @@ tr:hover > td{
 .round-it {
   border-radius: 20px;
 }
+
+
+.btn-grad{
+  background: rgb(129,135,240);
+background: linear-gradient(180deg, rgb(71, 134, 235) 0%, rgb(2, 52, 91) 47%, rgb(71, 134, 235) 100%);
+font-weight: 700;
+color: #ffffff;
+letter-spacing: 1px;
+text-shadow: hoff voff blur rgb(255, 0, 0);
+}

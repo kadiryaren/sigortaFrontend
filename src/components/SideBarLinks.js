@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useEffect,useState } from "react";
 import { MainContext } from "../contex";
 import { useNavigate,Link } from "react-router-dom";
-import {AiOutlineRight} from 'react-icons/ai'
+import {AiOutlineRight, AiOutlineDown} from 'react-icons/ai'
 
 export default function () {
 	const navigation = useNavigate();
@@ -40,50 +40,50 @@ export default function () {
 	},[arsivler])
 	return (
 		<div className="d-flex flex-column justify-content-center">
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
+			<button className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/kullanicilar");
 			}}>
 				<p>Kullanicilar</p>
-				<AiOutlineRight className="absolute right-10"/>
+				<AiOutlineRight className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 			</button>
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
+			<button className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/firmalar");
 			}}>
 				Ortaklar
-				<AiOutlineRight className="absolute right-10"/>
+				<AiOutlineRight className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 			</button>
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
+			<button className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/branslar");
 			}}>
 				Ürünler
-				<AiOutlineRight className="absolute right-10"/>
+				<AiOutlineRight className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 			</button>
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
+			<button className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/arsivler");
 			}}>
 				Arsivler
-				<AiOutlineRight className="absolute right-10"/>
+				<AiOutlineRight className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 			</button>
 
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
+			<button className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/musteriler");
 			}}>
 				Musteriler
-				<AiOutlineRight className="absolute right-10"/>
+				<AiOutlineRight className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 			</button>
 
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
+			<button className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/borclular");
 			}}>
 				Borclular
-				<AiOutlineRight className="absolute right-10"/>
+				<AiOutlineRight className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 			</button>
 
-			<button className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative" onClick={() => {
+			<button className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/sirketler");
 			}}>
 					Sigorta Firmaları
-				<AiOutlineRight className="absolute right-10"/>
+				<AiOutlineRight className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 			</button>
 
 			
@@ -94,19 +94,19 @@ export default function () {
 								
 								navigation("/teklif");
 							}}
-							className=" btn bg-yellow-300 text-dark hover:bg-yellow-500 my-2 round-it flex justify-content-center relative"
+							className=" btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative"
 						>
 							Teklif Ver
-							<AiOutlineRight className="absolute right-10"/>
+							<AiOutlineRight className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 						</button>
 
 			<div className="dropdown dropdown-top " >
 				<label
 					tabIndex="0"
-					className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative"
+					className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative"
 				>
 					Bireysel Isler
-					<AiOutlineRight className="absolute right-10"/>
+					<AiOutlineDown className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" />
 				</label>
 				<ul
 					tabIndex="0"
@@ -116,7 +116,7 @@ export default function () {
 					<li className="my-2">
 						<Link
 							to="/is/bireysel/yaklasan"
-							className=" bg-green-300 hover:bg-gray-500 hover:text-white"
+							className=" bg-blue-500 hover:bg-blue-800 rounded text-white hover:text-white"
 						>
 							Yaklasan Bireysel Isler
 						</Link>
@@ -133,7 +133,7 @@ export default function () {
 											setNextPage("/is/bireysel");
 											navigation("/bos");
 										}}
-										className=" bg-yellow-300 hover:bg-gray-500 hover:text-white "
+										className=" bg-blue-500 hover:bg-blue-800 rounded text-white hover:text-white "
 									>
 										{item.ad}
 									</button>
@@ -149,10 +149,10 @@ export default function () {
 				<label
 					tabIndex="0"
 					style={{"position":"relative","top":"-82%","z-index":"3"}}
-					className="btn bg-gray-50 text-dark hover:bg-gray-300 my-2 round-it flex justify-content-center relative"
+					className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative"
 				>
 					Ortak Isler
-					<AiOutlineRight className="absolute right-10"/>
+					<AiOutlineDown className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 				</label>
 				<ul
 					tabIndex="0" style={{"position":"relative","top":"-150%"}}
@@ -161,7 +161,7 @@ export default function () {
 					<li className="my-2">
 						<Link
 							to="/is/ortak/yaklasan"
-							className=" bg-green-300 hover:bg-gray-500 hover:text-white"
+							className="bg-blue-500 hover:bg-blue-800 rounded text-white hover:text-white"
 						>
 							Yaklasan Ortak Isler
 						</Link>
@@ -176,7 +176,7 @@ export default function () {
 											setNextPage("/is/ortak");
 											navigation("/bos");
 										}}
-										className=" bg-yellow-300 hover:bg-gray-500 hover:text-white "
+										className=" bg-blue-500 hover:bg-blue-800 rounded text-white hover:text-white"
 									>
 										{item.ad}
 									</button>
