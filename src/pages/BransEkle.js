@@ -31,12 +31,13 @@ export default function BransEkle(props) {
 
 		const returnData = await response.json();
 		setFetchedData(returnData);
+		setNextPage("/branslar");
+		navigate("/bos");
 	};
 
 	const ekleClick = () => {
 		ekle();
-		setNextPage("/branslar");
-		navigate("/bos");
+		
 		
 	};
 
@@ -88,12 +89,12 @@ export default function BransEkle(props) {
 							style={{ fontSize: "30px" }}
 							className="border-y-2 border-indigo-500 flex justify-center py-2  w-1/4 mt-10"
 						>
-							Branş Ekle
+							Ürün Ekle
 						</h1>
 
 						<div className="form d-flex flex-column align-items-center w-1/4">
 							<label htmlFor="" className="my-4">
-								Branş Adi
+								Ürün Adi
 							</label>
 							<input
 								type="text"

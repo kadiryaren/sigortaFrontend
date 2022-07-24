@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 export default function IsBireyselGuncelle(props) {
 	const navigate = useNavigate();
 
-	const { token, userId, setArsivId, isId, setIsId, erisimKodu } =
+	const { token, userId, setArsivId, isId, setIsId, erisimKodu ,setNextPage} =
 		useContext(MainContext);
 	const [initialData, setInitialData] = useState({
 		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
@@ -76,6 +76,9 @@ export default function IsBireyselGuncelle(props) {
 				body: JSON.stringify(initialData),
 			}
 		);
+		setArsivId(initialData["arsivId"]);
+		setNextPage("/is/bireysel")
+		navigate("/bos");
 	};
 
 	useEffect(() => {
@@ -84,10 +87,6 @@ export default function IsBireyselGuncelle(props) {
 
 	const guncelle = () => {
 		postData();
-		console.log("initial Data");
-		console.log(initialData);
-		setArsivId(initialData["arsivId"]);
-		navigate("/is/bireysel");
 	};
 
 	return (

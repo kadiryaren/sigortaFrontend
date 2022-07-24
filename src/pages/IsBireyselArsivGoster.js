@@ -108,7 +108,7 @@ export default function IsBireyselArsivGoster() {
 			rows: processedData,
 		};
 
-		await setFetchedData(data);
+		setFetchedData(data);
 	};
 
 	useEffect(() => {

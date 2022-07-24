@@ -34,13 +34,14 @@ export default function TekSirket(props) {
 
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
+		setNextPage("/sirketler");
+		navigate("/bos");
 	};
 
 	const silClick = () => {
 		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
 			sil();
-			setNextPage("/sirketler");
-			navigate("/bos");
+			
 
 			
 		}

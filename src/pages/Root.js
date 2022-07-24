@@ -10,7 +10,7 @@ export default function Root() {
     const navigate = useNavigate();
     const {token,setToken,basePath,setBasePath, userId} = useContext(MainContext);
     useEffect(()=>{
-        navigate("/home");
+        navigate("/login");
     },[])
 
     return (

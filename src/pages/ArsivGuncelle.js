@@ -34,19 +34,16 @@ export default function ArsivGuncelle(props) {
 			},
 			body: JSON.stringify(initialData),
 		});
-
+		setNextPage("/arsivler");
+		navigate("/bos");
 		const returnData = await response.json();
 		await setFetchedData(returnData);
 	};
 
 	const guncelle = () => {
-		if (initialData.sifre === "") {
-			window.alert("Mutlaka bir sifre girmelisiniz!");
-		} else {
-			update();
-			setNextPage("/arsivler");
-			navigate("/bos");
-		}
+		update();
+			
+		
 	};
 
 	return (

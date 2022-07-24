@@ -31,12 +31,13 @@ export default function FirmaEkle(props) {
 
 		const returnData = await response.json();
 		setFetchedData(returnData);
+		setNextPage("/firmalar");
+		navigate("/bos");
 	};
 
 	const ekleClick = () => {
 		ekle();
-		setNextPage("/firmalar");
-		navigate("/bos");
+		
 	
 	};
 

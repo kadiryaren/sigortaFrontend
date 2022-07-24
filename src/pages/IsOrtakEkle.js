@@ -14,7 +14,8 @@ export default function IsOrtakEkle(props) {
 
 	const { token, userId, setArsivId, isId, setIsId, erisimKodu,setNextPage } =
 		useContext(MainContext);
-	const [initialData, setInitialData] = useState({
+
+	const initialData = {
 		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		arsivId: "",
 		musteriId: "",
@@ -27,7 +28,7 @@ export default function IsOrtakEkle(props) {
 		policeBitisTarihi: "",
 		komisyonOraniKendisi: 0,
 		isId: isId,
-	});
+	}
 
 	const [fetchedData, setFetchedData] = useState({
 		musteriler: [],
@@ -64,15 +65,7 @@ export default function IsOrtakEkle(props) {
 		const firmalar = await firmaResponse.json();
 		setTumFirmalar(firmalar);
 
-		setInitialData({
-			...initialData,
-			plaka: "",
-			ruhsatSeriNo: "",
-			policeNo: "",
-			komisyonOraniFirma: "",
-			firmaId: "",
-			policeBitisTarihi: "",
-		});
+		
 	};
 
 	const ekle = async () => {
@@ -91,16 +84,17 @@ export default function IsOrtakEkle(props) {
 	}, []);
 
 	const ekleClick = () => {
-		setInitialData({
-			...initialData,
-			komisyonOraniKendisi: 100 - initialData.komisyonOraniFirma,
-		});
+		initialData.komisyonOraniKendisi =  100 - initialData.komisyonOraniFirma;
 		ekle();
 
 		setArsivId(initialData["arsivId"]);
 		setNextPage("/is/ortak");
 		navigate("/bos");
 	};
+
+	useEffect(() => {
+		console.log("inital data",initialData);
+	},[initialData])
 
 	return (
 		<div>
@@ -167,6 +161,7 @@ export default function IsOrtakEkle(props) {
 											name="musteriler"
 										>
 											{fetchedData["musteriler"].map((musteriler) => {
+												initialData["musteriId"] = musteriler["id"];
 												return (
 													<option
 														key={musteriler["id"]}
@@ -187,13 +182,15 @@ export default function IsOrtakEkle(props) {
 										<select
 											className="w-48"
 											onChange={(e) => {
-												initialData["firmaId"] = e.target.value;
+												initialData.firmaId = e.target.value;
+											
 											}}
 											id="firmaId"
 											name="firmaId"
 										>
 											{tumFirmalar.map((firma) => {
 												if (!("durum" in firma)) {
+													initialData["firmaId"] = firma["id"];
 													return (
 														<option key={firma["id"]} value={"" + firma["id"]}>
 															{firma["ad"]}
@@ -218,6 +215,7 @@ export default function IsOrtakEkle(props) {
 											name="arsivId"
 										>
 											{fetchedData["arsivKlasorleri"].map((arsivKlasorleri) => {
+												initialData["arsivId"] = arsivKlasorleri["id"];
 												return (
 													<option
 														key={arsivKlasorleri["id"]}
@@ -242,6 +240,7 @@ export default function IsOrtakEkle(props) {
 											name="branslar"
 										>
 											{fetchedData["branslar"].map((branslar) => {
+												initialData["bransId"] = branslar["id"];
 												return (
 													<option
 														key={branslar["id"]}
@@ -269,6 +268,7 @@ export default function IsOrtakEkle(props) {
 										>
 											{fetchedData["sigortaSirketleri"].map(
 												(sigortaSirketleri) => {
+													initialData["sigortaSirketiId"] = sigortaSirketleri["id"];
 													return (
 														<option
 															key={sigortaSirketleri["id"]}

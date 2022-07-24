@@ -11,7 +11,6 @@ export default function Home() {
     useEffect(() => {
 
         console.log("erisimKodu : " +  window.sessionStorage.getItem("erisimKodu"));
-      
 
     },[])
     

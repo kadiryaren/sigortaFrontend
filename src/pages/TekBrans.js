@@ -33,17 +33,16 @@ export default function TekBrans(props) {
 			}),
 		});
 
+		setNextPage("/branslar")
+		navigate("/bos");
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
 	};
 
 	const silClick = () => {
-		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
-			sil();
-			setNextPage("/branslar")
-			navigate("/bos");
-			
-		}
+		
+		sil();
+		
 	};
 
 	const guncelle = () => {
@@ -98,7 +97,7 @@ export default function TekBrans(props) {
 							style={{ fontSize: "30px" }}
 							className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10"
 						>
-							Branş İşlemleri
+							Ürün İşlemleri
 						</h1>
 						<div className="d-flex w-100 h-100">
 							<div

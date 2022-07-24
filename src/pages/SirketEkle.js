@@ -28,12 +28,13 @@ export default function SirketEkle(props) {
 		});
 
 		const returnData = await response.json();
+		setNextPage("/sirketler")
+		navigate("/bos");
 	};
 
 	const ekleClick = () => {
 		ekle();
-		setNextPage("/sirketler")
-		navigate("/bos");
+		
 	};
 
 	const convertToBase64 = (file) => {

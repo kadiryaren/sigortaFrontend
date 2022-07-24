@@ -33,14 +33,15 @@ export default function ArsivEkle(props) {
 			body: JSON.stringify(initialData),
 		});
 
+		setNextPage("/arsivler");
+		navigate("/bos");
 		const returnData = await response.json();
 		setFetchedData(returnData);
 	};
 
 	const ekleClick = () => {
 		ekle();
-		setNextPage("/arsivler");
-		navigate("/bos");
+		
 	
 	};
 

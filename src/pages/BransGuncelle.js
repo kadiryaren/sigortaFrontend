@@ -28,19 +28,17 @@ export default function BransGuncelle(props) {
 			},
 			body: JSON.stringify(initialData),
 		});
+		setNextPage("/branslar");
+		navigate("/bos");
 
 		const returnData = await response.json();
 		await setFetchedData(returnData);
 	};
 
 	const guncelle = () => {
-		if (initialData.sifre === "") {
-			window.alert("Mutlaka bir sifre girmelisiniz!");
-		} else {
-			update();
-			setNextPage("/branslar");
-			navigate("/bos");
-		}
+		update();
+			
+		
 	};
 
 	return (
@@ -91,12 +89,12 @@ export default function BransGuncelle(props) {
 							style={{ fontSize: "30px" }}
 							className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10 mb-4"
 						>
-							Branş Güncelle
+							Ürün Güncelle
 						</h1>
 
 						<div className="form d-flex flex-column align-items-center">
 							<label htmlFor="" className="input-group">
-								<span>Branş Adı</span>
+								<span>Ürün Adı</span>
 								<input
 									type="text"
 									className="form-control"

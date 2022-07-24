@@ -31,7 +31,8 @@ export default function Teklif(props) {
 		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		sigortaIsimleri:[],
 		sigortaSirketleri: [],
-		fiyatBilgileri:[]
+		fiyatBilgileri:[],
+		altBilgi: "BİÇERER SİGORTA - 0 546 660 23 23 <br/>Nailbey Mah. Yeşildere Sok. No : 20B -Elazığ - Merkez<br/>bicerersigorta@gmail.com",
 	
 		
 	});
@@ -198,7 +199,7 @@ export default function Teklif(props) {
 							style={{ fontSize: "30px" }}
 							className="border-y-2 border-indigo-500 flex justify-center py-2  w-1/4 mt-10"
 						>
-							Kullanıcı Ekleme
+							Teklif Sayfasi
 						</h1>
 
 						<div className="form d-flex flex-column align-items-center mt-4 w-1/2">
@@ -247,7 +248,7 @@ export default function Teklif(props) {
 										}}
 									/>
 								</div>
-                                <br />
+                                {/* <br />
                                 <div className="flex">
 									<div className="flex justify-start w-5/12  flex">
 										<label htmlFor="" className="my-auto  flex justify-center ">
@@ -260,8 +261,10 @@ export default function Teklif(props) {
 										onChange={(e) => {
 											initialData.altBilgi = e.target.value;
 										}}
+										defaultValue="BİÇERER SİGORTA - 0 546 660 23 23 <br/>Nailbey Mah. Yeşildere Sok. No : 20B -Elazığ - Merkez<br/>bicerersigorta@gmail.com"
+										
 									/>
-								</div>
+								</div> */}
 
 								<br />
                                 <div className="flex">

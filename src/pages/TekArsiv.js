@@ -33,18 +33,21 @@ export default function TekArsiv(props) {
 
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
-	};
-
-	const silClick = () => {
 		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
-			sil();
+		
 			setNextPage("/arsivler");
 			navigate("/bos");
 		}
 	};
 
+	const silClick = () => {
+		sil();
+		
+	};
+
 	const guncelle = () => {
-		navigate("/arsiv/guncelle/");
+		setNextPage("/arsiv/guncelle/");
+		navigate("/bos");
 	};
 
 	return (

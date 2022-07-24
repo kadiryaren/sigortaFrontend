@@ -43,17 +43,13 @@ export default function KullaniciEkle(props) {
 
 		const returnData = await response.json();
 		setFetchedData(returnData);
+		setNextPage("/kullanicilar");
+		navigate("/bos");
+		
 	};
 
 	const ekleClick = () => {
-		if (initialData.sifre === "") {
-			window.alert("Mutlaka bir sifre girmelisiniz!");
-		} else {
-	
-			ekle();
-			setNextPage("/kullanicilar");
-			navigate("/bos");
-		}
+		ekle();
 	};
 
 	useEffect(() => {

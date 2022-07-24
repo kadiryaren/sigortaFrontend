@@ -35,15 +35,12 @@ export default function TekKullanici(props) {
 
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
+		setNextPage("/kullanicilar");
+		navigate("/bos");
 	};
 
 	const silClick = () => {
-		if (window.confirm("Kullanici Silinecek Emin Misiniz?") == true) {
-			sil();
-			setNextPage("/kullanicilar");
-			navigate("/bos");
-
-		}
+		sil();
 	};
 
 

@@ -79,10 +79,10 @@ export default function () {
 				<AiOutlineRight className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 			</button>
 
-			<button className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative" onClick={() => {
+			<button className="btn btn-primary btn-grad my-2 round-it flex justify-content-center relative" onClick={() => {
 				navigation("/sirketler");
 			}}>
-					Sigorta Firmaları
+					Sigorta Firması
 				<AiOutlineRight className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 			</button>
 
@@ -110,17 +110,9 @@ export default function () {
 				</label>
 				<ul
 					tabIndex="0"
-					style={{"position":"relative","top":"-50%"}}
+					// style={{"position":"relative","top":"-50%"}}
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
-					<li className="my-2">
-						<Link
-							to="/is/bireysel/yaklasan"
-							className=" bg-blue-500 hover:bg-blue-800 rounded text-white hover:text-white"
-						>
-							Yaklasan Bireysel Isler
-						</Link>
-					</li>
 
 
 {
@@ -145,27 +137,21 @@ export default function () {
 					
 				</ul>
 			</div>
-			<div className="dropdown ">
+			<div className="dropdown dropdown-top ">
 				<label
 					tabIndex="0"
-					style={{"position":"relative","top":"-82%","z-index":"3"}}
+					// style={{"position":"relative","top":"-82%","z-index":"3"}}
 					className="btn  btn-primary btn-grad my-2 round-it flex justify-content-center relative"
 				>
 					Ortak Isler
 					<AiOutlineDown className="absolute right-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"/>
 				</label>
 				<ul
-					tabIndex="0" style={{"position":"relative","top":"-150%"}}
+				tabIndex="0" 
+					// style={{"position":"relative","top":"-150%"}}
 					className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
-					<li className="my-2">
-						<Link
-							to="/is/ortak/yaklasan"
-							className="bg-blue-500 hover:bg-blue-800 rounded text-white hover:text-white"
-						>
-							Yaklasan Ortak Isler
-						</Link>
-					</li>
+					
 					{
 						arsivler.map((item) => {
 							return (

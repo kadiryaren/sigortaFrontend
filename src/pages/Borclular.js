@@ -138,14 +138,6 @@ export default function Borclular() {
                         </h1>
                         
                     
-                        <div className='mt-3'>
-                        <Link
-                            to="/musteri/ekle/ "
-                            className=" btn text-black  bg-green-200 hover:bg-green-500 hover:text-white"
-                        >
-                            Ekle
-                        </Link>
-                        </div>
                     </div>
 
                  

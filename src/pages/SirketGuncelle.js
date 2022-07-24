@@ -37,12 +37,13 @@ export default function SirketGuncelle(props) {
 		});
 
 		const returnData = await response.json();
+		setNextPage("/sirketler");
+		navigate("/bos");
 	};
 
 	const guncelle = () => {
 		update();
-		setNextPage("/sirketler");
-		navigate("/bos");
+		
 	};
 
 	const convertToBase64 = (file) => {
