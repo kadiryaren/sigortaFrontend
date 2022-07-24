@@ -158,7 +158,7 @@ export default function IsBireyselArsivGoster() {
 					<div className="container my-5">
 						<div className="flex justify-center align-center">
 							<h1>
-								<b style={{ fontSize: "30px" }}>Bireysel Isler</b>
+								<b style={{ fontSize: "30px" }}>BİREYSEL İŞLER</b>
 							</h1>
 						</div>
 						<div className="d-flex justify-content-center align-items-center mt-3">

@@ -51,7 +51,7 @@ export default function Branslar() {
         const data = {
             columns:[
                 {
-                    label: 'Brans Adi',
+                    label: 'ÜRÜN ADI',
                     field: 'ad',
                     sort: 'asc',
                     width: 150
@@ -101,7 +101,7 @@ export default function Branslar() {
                 <div className="container text-center my-5">
                 <div className="flex flex-column justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Ürünler</b>
+                            <b style={{'fontSize':'30px'}}>ÜRÜNLER</b>
                         </h1>
                         
                     

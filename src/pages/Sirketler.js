@@ -109,7 +109,7 @@ export default function Sirketler() {
                 <div className="container text-center my-5">
                 <div className="flex flex-column justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Sigorta Firmalari</b>
+                            <b style={{'fontSize':'30px'}}>SİGORTA FİRMALARI</b>
                         </h1>
                         
                     

@@ -270,7 +270,7 @@ export default function Teklif(props) {
                                 <div className="flex">
 									<div className="flex justify-start w-5/12  flex">
 										<label htmlFor="" className="my-auto  flex justify-center ">
-											Branslar 
+											Ürünler 
 										</label>
 									</div>
 									<select
@@ -294,9 +294,12 @@ export default function Teklif(props) {
 											);
 
 										})} */}
+											<option value="">
+													
+												</option>
 
 										{fetchedData["branslar"].map((branslar) => {
-									
+										
 											return (
 												<option key={branslar.id} value={branslar["id"]}>
 													{branslar["ad"]}

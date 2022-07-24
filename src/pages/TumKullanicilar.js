@@ -109,7 +109,7 @@ export default function TumKullanicilar() {
 					<div className="container text-center my-5">
 					<div className="flex flex-column justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Tum Kullanicilar</b>
+                            <b style={{'fontSize':'30px'}}>TÜM KULLANICILAR</b>
                         </h1>
                         
                     

@@ -110,7 +110,7 @@ export default function Firmalar() {
                 <div className="container text-center my-5">
                     <div className="flex flex-column justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Ortaklar</b>
+                            <b style={{'fontSize':'30px'}}>ORTAKLAR</b>
                         </h1>
                         
                     

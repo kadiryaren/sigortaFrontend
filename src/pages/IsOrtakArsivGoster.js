@@ -164,7 +164,7 @@ export default function IsOrtakArsivGoster() {
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Ortak Isler</b>
+                            <b style={{'fontSize':'30px'}}>ORTAK İŞLER</b>
                         </h1>
                     </div>
                     <div className="d-flex justify-content-center align-items-center mt-3">

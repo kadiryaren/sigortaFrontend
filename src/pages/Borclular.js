@@ -134,7 +134,7 @@ export default function Borclular() {
                 <div className="container text-center my-5">
                     <div className="flex flex-column justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Borclular</b>
+                            <b style={{'fontSize':'30px'}}>BORÇLULAR</b>
                         </h1>
                         
                     

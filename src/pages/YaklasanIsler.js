@@ -97,7 +97,7 @@ export default function YaklasanIsler() {
 					width: 150,
 				},
 				{
-					label: "Brans Adi",
+					label: "ÜRÜN",
 					field: "bransAdi",
 					sort: "asc",
 					width: 150,
@@ -205,7 +205,7 @@ export default function YaklasanIsler() {
 					<div className="container my-5">
 						<div className="flex justify-center align-center">
 							<h1>
-								<b style={{ fontSize: "30px" }}>Yaklasan Isler</b>
+								<b style={{ fontSize: "30px" }}>YAKLAŞAN İŞLER</b>
 							</h1>
 						</div>
 						

@@ -105,7 +105,7 @@ export default function Arsivler() {
                 <div className="container text-center my-5">
                 <div className="flex flex-column justify-center align-center">
                         <h1>
-                            <b style={{'fontSize':'30px'}}>Arşivler</b>
+                            <b style={{'fontSize':'30px'}}>ARŞİVLER</b>
                         </h1>
                         
                     
