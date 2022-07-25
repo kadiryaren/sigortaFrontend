@@ -113,34 +113,35 @@ export default function IsBireyselEkle(props) {
         </div>
       </div>
       <div className="drawer ">
-        <div className="drawer-content w-screen h-screen flex flex-column  align-center">
-          {/* Toggle Button */}
+				<div className="drawer-content w-screen h-screen flex flex-column  align-center">
+					{/* Toggle Button */}
 
-          <div
-            style={{ height: "100%" }}
-            className="container mx-auto my-5 flex flex-column   items-center border-2 "
-          >
-            <h1
-              style={{ fontSize: "30px" }}
-              className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10 mb-4"
-            >
-              Bireysel İş Ekle
-            </h1>
+					<div
+						style={{ height: "100%" }}
+						className="container mx-auto my-5 flex flex-col  items-center border-2 bg-gray-200"
+					>
+						<h1
+							style={{ fontSize: "30px" }}
+							className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10 mb-4"
+						>
+							BIREYSEL IS EKLE
+						</h1>
 
-            <div className="form d-flex flex-column align-center w-1/3">
-              <div className="flex justify-center w-full  mt-3">
-                <label htmlFor="musteriler" className="input-group ">
-                  <span className="w-40 flex justify-center">Müşteriler</span>
-                </label>
-                <select
-                  className="w-48"
-                  onChange={(e) => {
-                    initialData["musteriId"] = e.target.value;
-                  }}
-                  id="musteriler"
-                  name="musteriler"
-                >
-                  {fetchedData["musteriler"].map((musteriler) => {
+						<div className="form d-flex flex-column align-items-center mt-5">
+							<label htmlFor="musteriler" className="input-group">
+								<span className="w-40 flex justify-center">Müşteriler</span>
+								<select
+									className="w-52"
+									onChange={(e) => {
+										initialData["musteriId"] = e.target.value;
+									}}
+									id="musteriler"
+									name="musteriler"
+								>
+                  <option
+                       value=""
+                      ></option>
+									{fetchedData["musteriler"].map((musteriler) => {
                     initialData["musteriId"] = musteriler["id"];
                     return (
                       <option
@@ -151,23 +152,24 @@ export default function IsBireyselEkle(props) {
                       </option>
                     );
                   })}
-                </select>
-              </div>
-              {/* initialData["musteriler"] = e.target.value */}
-              <div className="flex justify-center mt-3  w-full">
-                <label htmlFor="branslar" className="input-group ">
-                  <span className="w-40 flex justify-center">Ürünler</span>
-                </label>
+								</select>
+							</label>
+							{/* initialData["musteriler"] = e.target.value */}
 
-                <select
-                  className="w-48"
-                  onChange={(e) => {
-                    initialData["bransId"] = e.target.value;
-                  }}
-                  id="branslar"
-                  name="branslar"
-                >
-                  {fetchedData["branslar"].map((branslar) => {
+							<label htmlFor="branslar" className="input-group mt-3">
+								<span className="w-40 flex justify-center">Ürünler</span>
+								<select
+									className="w-52"
+									onChange={(e) => {
+										initialData["bransId"] = e.target.value;
+									}}
+									id="branslar"
+									name="branslar"
+								>
+                  <option
+                       value=""
+                      ></option>
+									 {fetchedData["branslar"].map((branslar) => {
                     initialData["bransId"] = branslar["id"];
                     return (
                       <option key={branslar["id"]} value={"" + branslar["id"]}>
@@ -175,53 +177,25 @@ export default function IsBireyselEkle(props) {
                       </option>
                     );
                   })}
-                </select>
-              </div>
+								</select>
+							</label>
 
-              <div className="flex justify-center mt-3  w-full">
-                <label htmlFor="sigortaSirketleri" className="input-group ">
-                  <span className="w-40 flex justify-center">
-                    Sigorta Şirketleri
-                  </span>
-                </label>
-                <select
-                  className="w-48"
-                  onChange={(e) => {
-                    initialData["sigortaSirketiId"] = e.target.value;
-                  }}
-                  id="sigortaSirketleri"
-                  name="sigortaSirketleri"
-                >
-                  {fetchedData["sigortaSirketleri"].map((sigortaSirketleri) => {
-                    initialData["sigortaSirketiId"] = sigortaSirketleri["id"];
-                    return (
-                      <option
-                        key={sigortaSirketleri["id"]}
-                        value={"" + sigortaSirketleri["id"]}
-                      >
-                        {sigortaSirketleri["ad"]}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-
-              <div className="flex justify-center mt-3  w-full">
-                <label htmlFor="arsivKlasorleri" className="input-group ">
-                  <span className="w-40 flex justify-center">
-                    Arşiv Klasörü
-                  </span>{" "}
-                </label>
-
-                <select
-                  className="w-48"
-                  onChange={(e) => {
-                    initialData["arsivId"] = e.target.value;
-                  }}
-                  id="arsivKlasorleri"
-                  name="arsivKlasorleri"
-                >
-                  {fetchedData["arsivKlasorleri"].map((arsivKlasorleri) => {
+							<label htmlFor="arsivKlasorleri" className="input-group mt-3">
+								<span className="w-40 flex justify-center">
+									Arşiv Klasörleri
+								</span>
+								<select
+									className="w-52"
+									onChange={(e) => {
+										initialData["arsivId"] = e.target.value;
+									}}
+									id="arsivId"
+									name="arsivId"
+								>
+                  <option
+                       value=""
+                      ></option>
+									{fetchedData["arsivKlasorleri"].map((arsivKlasorleri) => {
                     initialData["arsivId"] = arsivKlasorleri["id"];
                     return (
                       <option
@@ -232,93 +206,112 @@ export default function IsBireyselEkle(props) {
                       </option>
                     );
                   })}
-                </select>
-              </div>
+								</select>
+							</label>
 
-              <div className="flex justify-center mt-3  w-full ">
-                <label htmlFor="plaka" className="input-group ">
-                  <span className="w-40 flex justify-center">Plaka</span>
-                </label>
+							<label htmlFor="sigortaSirketleri" className="input-group mt-3">
+								<span className="w-40 flex justify-center">
+									Sigorta Şirketleri
+								</span>
+								<select
+									className="w-52"
+									onChange={(e) => {
+										initialData["sigortaSirketiId"] = e.target.value;
+									}}
+									id="sigortaSirketleri"
+									name="sigortaSirketleri"
+								>
+                  <option
+                       value=""
+                      ></option>
+									{fetchedData["sigortaSirketleri"].map((sigortaSirketleri) => {
+                    initialData["sigortaSirketiId"] = sigortaSirketleri["id"];
+                    return (
+                      <option
+                        key={sigortaSirketleri["id"]}
+                        value={"" + sigortaSirketleri["id"]}
+                      >
+                        {sigortaSirketleri["ad"]}
+                      </option>
+                    );
+                  })}
+								</select>
+							</label>
 
-                <input
-                  className="w-48 input-sm input-secondary"
-                  onChange={(e) => {
-                    initialData["plaka"] = e.target.value;
-                  }}
-                  type="text"
-                  name="plaka"
-                  placeholder="Plaka Giriniz:"
-                />
-              </div>
+							<label htmlFor="plaka" className="input-group mt-3">
+								<span className="w-40 flex justify-center">Plaka</span>
+								<input
+									className="w-52"
+									onChange={(e) => {
+										initialData["plaka"] = e.target.value;
+									}}
+								
+									type="text"
+									name="plaka"
+								/>
+							</label>
 
-              <div className="flex justify-center mt-3  w-full">
-                <label htmlFor="ruhsatSeriNo" className="input-group ">
-                  <span className="w-40 flex justify-center p-1">
-                    Ruhsat Seri No
-                  </span>
-                </label>
+							<br />
+							<label htmlFor="ruhsatSeriNo" className="input-group ">
+								<span className="w-40 flex justify-center">Ruhsat Seri No</span>
+								<input
+									className="w-52"
+									type="text"
+									onChange={(e) => {
+										initialData["ruhsatSeriNo"] = e.target.value;
+									}}
+									
+									name="ruhsatSeriNo"
+								/>
+							</label>
+							<br />
 
-                <input
-                  className="w-48 input-sm input-secondary"
-                  type="text"
-                  onChange={(e) => {
-                    initialData["ruhsatSeriNo"] = e.target.value;
-                  }}
-                  name="ruhsatSeriNo"
-                  placeholder="Ruhsat Seri No Giriniz:"
-                />
-              </div>
+							<label htmlFor="policeNo" className="input-group">
+								<span className="w-40 flex justify-center">Poliçe no</span>
+								<input
+									className="w-52"
+									onChange={(e) => {
+										initialData["policeNo"] = e.target.value;
+									}}
+									
+									type="text"
+									name="policeNo"
+								/>
+								<br />
+							</label>
 
-              <div className="flex justify-center mt-3  w-full">
-                <label htmlFor="policeNo" className="input-group">
-                  <span className="w-40 flex justify-center">Poliçe No</span>
-                </label>
+							<label htmlFor="policeBitisTarihi" className="input-group mt-3">
+								<span className="w-40 flex justify-center">
+									Poliçe Biriş Tarihi
+								</span>
+								<input
+									className="w-52"
+									onChange={(e) => {
+										initialData["policeBitisTarihi"] = e.target.value;
+									}}
+									
+									type="date"
+									name="policeBitisTarihi"
+								/>
+							</label>
 
-                <input
-                  className="w-48 input-sm input-secondary"
-                  onChange={(e) => {
-                    initialData["policeNo"] = e.target.value;
-                  }}
-                  type="text"
-                  name="policeNo"
-                  placeholder="Police No Giriniz:"
-                />
-              </div>
-
-              <div className="flex justify-center mt-3  w-full">
-                <label htmlFor="policeBitisTarihi" className="input-group">
-                  <span className="w-40 flex justify-center">
-                    Poliçe Bitiş Tarihi
-                  </span>
-                </label>
-
-                <input
-                  className="w-48 input-sm input-secondary"
-                  onChange={(e) => {
-                    initialData["policeBitisTarihi"] = e.target.value;
-                  }}
-                  type="date"
-                  name="policeBitisTarihi"
-                />
-              </div>
-
-              {/* <button onClick={() => {ekle()}} className='btn bg-green-200' >Ekle</button> */}
-              <button
-                onClick={ekle}
-                className="btn btn-success rounded-md hover:btn-ghost "
-              >
-                Ekle
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="drawer-side ">
-          <label htmlFor="my-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-            <SideBarLinks></SideBarLinks>
-          </ul>
-        </div>
-      </div>
+							{/* <button onClick={() => {guncelle()}} className='btn bg-green-200' >Guncelle</button> */}
+							<button
+								onClick={ekle}
+								className="btn btn-success rounded mt-3"
+							>
+								Ekle
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="drawer-side ">
+					<label htmlFor="my-drawer" className="drawer-overlay"></label>
+					<ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+						<SideBarLinks></SideBarLinks>
+					</ul>
+				</div>
+			</div>
     </div>
   );
 }

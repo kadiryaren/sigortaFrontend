@@ -46,6 +46,7 @@ export default function Login() {
         else{
             setErisimKodu(access_token.erisimKodu);
             window.sessionStorage.setItem("erisimKodu",access_token.erisimKodu);
+            window.sessionStorage.setItem("kullanici",username);
         }
     
     }
@@ -60,6 +61,10 @@ export default function Login() {
     useEffect(() => {
         console.log(durum);
     },[durum])
+
+    useEffect(() => {
+        console.log("test  ",window.sessionStorage.getItem("test"));
+    },[])
 
 
 

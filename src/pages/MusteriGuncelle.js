@@ -24,9 +24,7 @@ export default function MusteriGuncelle(props) {
 		musteriMailAdresi: musteriData.mailAdresi,
 	};
 
-	useEffect(() => {
-		defaultDate = new Date(musteriData.dogumTarihi);
-	}, []);
+
 
 	const update = async () => {
 		const response = await fetch("http://127.0.0.1:5000/musteri/guncelle/", {
@@ -37,12 +35,12 @@ export default function MusteriGuncelle(props) {
 			},
 			body: JSON.stringify(initialData),
 		});
+		setNextPage("/musteriler");
+		navigate("/bos");
 	};
 
 	const guncelle = () => {
 		update();
-		setNextPage("/musteriler");
-		navigate("/bos");
 	};
 
 	return (
@@ -160,8 +158,9 @@ export default function MusteriGuncelle(props) {
 									<input
 										type="date"
 										className="form-control"
-										defaultValue={defaultDate}
+										defaultValue={initialData.musteriDogumTarihi}
 										onChange={(e) => {
+											
 											initialData.musteriDogumTarihi = e.target.value;
 										}}
 									/>

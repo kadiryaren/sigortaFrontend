@@ -55,6 +55,7 @@ export default function Musteriler() {
                     soyad: returnData[i].soyad,
                     tc:returnData[i].tc,
                     telefon:returnData[i].telefon,
+                    dogumTarihi:returnData[i].dogumTarihi,
                     mailAdresi:returnData[i].mailAdresi
                 })
             });

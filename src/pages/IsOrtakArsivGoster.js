@@ -74,7 +74,7 @@ export default function IsOrtakArsivGoster() {
                     width: 150
                 },
                 {
-                    label: 'Firma Adi',
+                    label: 'Ortak Adı',
                     field: 'firmaAdi',
                     sort: 'asc',
                     width: 150

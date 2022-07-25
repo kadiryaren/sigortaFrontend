@@ -105,7 +105,7 @@ export default function IsOrtakFirmaGoster() {
 					width: 150,
 				},
 				{
-					label: "Firma Adi",
+					label: "Ortak Adı",
 					field: "firmaAdi",
 					sort: "asc",
 					width: 150,
@@ -198,7 +198,7 @@ export default function IsOrtakFirmaGoster() {
 					<div className="container my-5">
 						<div className="flex justify-center align-center">
 							<h1>
-								<b style={{ fontSize: "30px" }}>Firma Ortak Isler</b>
+								<b style={{ fontSize: "30px" }}>ORTAK İLE YAPILAN İŞLER</b>
 							</h1>
 						</div>
 						<div className="d-flex w-100 justify-content-center align-items-center mt-4">
@@ -206,13 +206,13 @@ export default function IsOrtakFirmaGoster() {
 								onClick={silClick}
 								className="btn btn-error mx-2 hover:bg-red-300 hover:text-white rounded-md"
 							>
-								Firma Sil
+								Ortak Sil
 							</a>
 							<a
 								onClick={guncelle}
 								className="btn btn-success mx-2 mx-2 hover:bg-green-300 hover:text-white rounded-md"
 							>
-								Firma Güncelle
+								Ortak Güncelle
 							</a>
 						</div>
 

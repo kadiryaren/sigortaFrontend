@@ -31,12 +31,13 @@ export default function MusteriEkle(props) {
 			},
 			body: JSON.stringify(initialData),
 		});
+		setNextPage("/musteriler");
+		navigate("/bos");
 	};
 
 	const guncelle = () => {
 		ekle();
-		setNextPage("/musteriler");
-		navigate("/bos");
+		
 	};
 
 	return (

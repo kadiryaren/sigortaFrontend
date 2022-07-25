@@ -61,6 +61,7 @@ export default function TumKullanicilar() {
 
 	useEffect(() => {
 		fetchData();
+		console.log("erisin kodu-->",window.sessionStorage.getItem("erisimKodu"));
 	}, []);
 
 	console.log("tset");

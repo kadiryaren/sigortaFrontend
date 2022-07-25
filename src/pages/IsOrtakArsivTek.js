@@ -140,7 +140,7 @@ export default function IsOrtakArsivTek(props) {
 							<div className="text-center my-5">
 								<h1>
 									<b style={{ fontSize: "30px" }}>
-										Yapmak Istediginiz islemi seciniz:
+										YAPMAK İSTEDİĞİNİZ İŞLEMİ SEÇİNİZ:
 									</b>
 								</h1>
 							</div>
@@ -149,10 +149,10 @@ export default function IsOrtakArsivTek(props) {
 									onClick={firmaortak}
 									className="btn btn-primary rounded mx-2"
 								>
-									Firma ile yapilan ortak isleri gor
+									Ortak ile yapılan işleri gör
 								</a>
 								<a onClick={goruntule} className="btn btn-success rounded mx-2">
-									Musteriye Yapilan Isleri Gor
+									Müşteriye Yapılan İsleri gör
 								</a>
 								<a onClick={guncelle} className="btn btn-info rounded mx-2">
 									Güncelle

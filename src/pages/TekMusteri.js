@@ -90,6 +90,7 @@ export default function TekMusteri(props) {
         }
 
         setFetchedData(data);
+		setMusteriData(processedData[0]);
 	   
 
 	};
@@ -97,12 +98,11 @@ export default function TekMusteri(props) {
 
 	useEffect(() => {
 		fetchUserData();
+		console.log("musteri Data ==>",musteriData);
 		
 		}, []);
 
-		useEffect(()=> {
-			console.log("Musteri ID--> ",musteriId);
-		},[musteriId])
+		
 
 
 	const sil = async () => {
@@ -118,16 +118,16 @@ export default function TekMusteri(props) {
 			}),
 		});
 
+
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
+		setNextPage("/musteriler");
+		navigate("/bos");
 	};
 
 	const silClick = () => {
 		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
 			sil();
-			setNextPage("/musteriler");
-			navigate("/bos");
-
 		}
 	};
 

@@ -1,0 +1,224 @@
+<div className="drawer ">
+        <div className="drawer-content w-screen h-screen flex flex-column  align-center">
+          {/* Toggle Button */}
+
+          <div
+            style={{ height: "100%" }}
+            className="container mx-auto my-5 flex flex-column   items-center border-2 "
+          >
+            <h1
+              style={{ fontSize: "30px" }}
+              className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10 mb-4"
+            >
+              BİREYSEL İŞ EKLE
+            </h1>
+
+            <div className="form d-flex flex-column align-center w-1/3">
+              <div className="flex justify-center w-full  mt-3">
+                <label htmlFor="musteriler" className="input-group ">
+                  <span className="w-40 flex justify-center">Müşteriler</span>
+                </label>
+                <select
+                  className="w-96 form-control"
+                  onChange={(e) => {
+                    initialData["musteriId"] = e.target.value;
+                  }}
+                  id="musteriler"
+                  name="musteriler"
+                >
+                  <option
+                       value=""
+                      >
+                        
+                      </option>
+                  {fetchedData["musteriler"].map((musteriler) => {
+                    initialData["musteriId"] = musteriler["id"];
+                    return (
+                      <option
+                        key={musteriler["id"]}
+                        value={"" + musteriler["id"]}
+                      >
+                        {musteriler["ad"]}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              {/* initialData["musteriler"] = e.target.value */}
+              <div className="flex justify-center mt-3  w-full">
+                <label htmlFor="branslar" className="input-group ">
+                  <span className="w-40 flex justify-center">Ürünler</span>
+                </label>
+
+                <select
+                  className="w-96 form-control"
+                  onChange={(e) => {
+                    initialData["bransId"] = e.target.value;
+                  }}
+                  id="branslar"
+                  name="branslar"
+                ><option
+                value=""
+               >
+                 
+               </option>
+                  {fetchedData["branslar"].map((branslar) => {
+                    initialData["bransId"] = branslar["id"];
+                    return (
+                      <option key={branslar["id"]} value={"" + branslar["id"]}>
+                        {branslar["ad"]}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+
+              <div className="flex justify-center mt-3  w-full">
+                <label htmlFor="sigortaSirketleri" className="input-group ">
+                  <span className="w-40 flex justify-center">
+                    Sigorta Şirketleri
+                  </span>
+                </label>
+                <select
+                  className="w-96 form-control"
+                  onChange={(e) => {
+                    initialData["sigortaSirketiId"] = e.target.value;
+                  }}
+                  id="sigortaSirketleri"
+                  name="sigortaSirketleri"
+                ><option
+                value=""
+               >
+                 
+               </option>
+                  {fetchedData["sigortaSirketleri"].map((sigortaSirketleri) => {
+                    initialData["sigortaSirketiId"] = sigortaSirketleri["id"];
+                    return (
+                      <option
+                        key={sigortaSirketleri["id"]}
+                        value={"" + sigortaSirketleri["id"]}
+                      >
+                        {sigortaSirketleri["ad"]}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+
+              <div className="flex justify-center mt-3  w-full">
+                <label htmlFor="arsivKlasorleri" className="input-group ">
+                  <span className="w-40 flex justify-center">
+                    Arşiv Klasörü
+                  </span>{" "}
+                </label>
+
+                <select
+                  className="w-96 form-control"
+                  onChange={(e) => {
+                    initialData["arsivId"] = e.target.value;
+                  }}
+                  id="arsivKlasorleri"
+                  name="arsivKlasorleri"
+                ><option
+                value=""
+               >
+                 
+               </option>
+                  {fetchedData["arsivKlasorleri"].map((arsivKlasorleri) => {
+                    initialData["arsivId"] = arsivKlasorleri["id"];
+                    return (
+                      <option
+                        key={arsivKlasorleri["id"]}
+                        value={"" + arsivKlasorleri["id"]}
+                      >
+                        {arsivKlasorleri["ad"]}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+
+              <div className="flex justify-center mt-3  w-full ">
+                <label htmlFor="plaka" className="input-group ">
+                  <span className="w-40 flex justify-center">Plaka</span>
+                </label>
+
+                <input
+                  className="w-96 form-control input-sm input-secondary"
+                  onChange={(e) => {
+                    initialData["plaka"] = e.target.value;
+                  }}
+                  type="text"
+                  name="plaka"
+                  placeholder="Plaka Giriniz:"
+                />
+              </div>
+
+              <div className="flex justify-center mt-3  w-full">
+                <label htmlFor="ruhsatSeriNo" className="input-group ">
+                  <span className="w-40 flex justify-center p-1">
+                    Ruhsat Seri No
+                  </span>
+                </label>
+
+                <input
+                  className="w-96 form-control input-sm input-secondary"
+                  type="text"
+                  onChange={(e) => {
+                    initialData["ruhsatSeriNo"] = e.target.value;
+                  }}
+                  name="ruhsatSeriNo"
+                  placeholder="Ruhsat Seri No Giriniz:"
+                />
+              </div>
+
+              <div className="flex justify-center mt-3  w-full">
+                <label htmlFor="policeNo" className="input-group">
+                  <span className="w-40 flex justify-center">Poliçe No</span>
+                </label>
+
+                <input
+                  className="w-96 form-control input-sm input-secondary"
+                  onChange={(e) => {
+                    initialData["policeNo"] = e.target.value;
+                  }}
+                  type="text"
+                  name="policeNo"
+                  placeholder="Police No Giriniz:"
+                />
+              </div>
+
+              <div className="flex justify-center mt-3  w-full">
+                <label htmlFor="policeBitisTarihi" className="input-group">
+                  <span className="w-40 flex justify-center">
+                    Poliçe Bitiş Tarihi
+                  </span>
+                </label>
+
+                <input
+                  className="w-96 form-control input-sm input-secondary"
+                  onChange={(e) => {
+                    initialData["policeBitisTarihi"] = e.target.value;
+                  }}
+                  type="date"
+                  name="policeBitisTarihi"
+                />
+              </div>
+
+              {/* <button onClick={() => {ekle()}} className='btn bg-green-200' >Ekle</button> */}
+              <button
+                onClick={ekle}
+                className="btn btn-success rounded-md hover:btn-ghost my-3"
+              >
+                Ekle
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="drawer-side ">
+          <label htmlFor="my-drawer" className="drawer-overlay"></label>
+          <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+            <SideBarLinks></SideBarLinks>
+          </ul>
+        </div>
+      </div>

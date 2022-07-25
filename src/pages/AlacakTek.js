@@ -92,7 +92,9 @@ export default function AlacakTek(props) {
     
 
     const silClick = () => {
-    	sil();
+		if(window.confirm("Alacak Silinecek Emin Misiniz?") == true){
+			sil();
+        }
     }
 
     const guncelleClick = () => {

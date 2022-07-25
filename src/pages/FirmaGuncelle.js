@@ -33,6 +33,8 @@ export default function FirmaGuncelle(props) {
 
 		const returnData = await response.json();
 		setFetchedData(returnData);
+		setNextPage("/firmalar");
+			navigate("/bos");
 	};
 
 	const guncelle = () => {
@@ -40,8 +42,6 @@ export default function FirmaGuncelle(props) {
 			window.alert("Mutlaka bir sifre girmelisiniz!");
 		} else {
 			update();
-			setNextPage("/firmalar");
-			navigate("/bos");
 		}
 	};
 
@@ -93,13 +93,13 @@ export default function FirmaGuncelle(props) {
 							style={{ fontSize: "30px" }}
 							className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10"
 						>
-							Firma Güncelle
+							ORTAK GÜNCELLE
 						</h1>
 
 						<div className="form d-flex flex-column align-items-center mt-5">
 							<label htmlFor="" className="input-group">
 								<span className="w-40 flex justify-content">
-									Firma Adi
+									Ortak Adı
 								</span>
 								<input
 									
@@ -115,7 +115,7 @@ export default function FirmaGuncelle(props) {
 								className="btn btn-success rounded mt-3"
 								onClick={guncelle}
 							>
-								Guncelle
+								Güncelle
 							</button>
 						</div>
 					</div>

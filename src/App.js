@@ -138,71 +138,84 @@ export default function App() {
 		
 		<MainContext.Provider value={data}>
 			<Router>
+			{
+							window.sessionStorage.getItem("erisimKodu") == "undefined" ? (
+								<Routes>
+									<Route path="/login" element={<Login />} />
+								</Routes>
+							
+							):(
+								<Routes>
+
+								<Route path="/" element={<Root />} />
+								<Route path="/home" element={<YaklasanIsler />} />
+								<Route path="/kullanicilar" element={<TumKullanicilar />} />
+								<Route path="/kullanicilar/tek" element={<TekKullanici />} />
+								<Route path="/kullanici/ekle" element={<KullaniciEkle />} />
+								<Route path="/kullanici/guncelle" element={<KullaniciGuncelle />} />
+								<Route path="/firmalar" element={<Firmalar />} />
+								<Route path="/firma/tek" element={<TekFirma />} />
+								<Route path="/firma/guncelle" element={<FirmaGuncelle />} />
+								<Route path="/firma/ekle" element={<FirmaEkle />} />
+								<Route path="/arsivler" element={<Arsivler />} />
+								<Route path="/arsiv/ekle" element={<ArsivEkle />} />
+								<Route path="/arsiv/tek" element={<TekArsiv />} />
+								<Route path="/arsiv/guncelle" element={<ArsivGuncelle />} />
+								<Route path="/branslar" element={<Branslar />} />
+								<Route path="/brans/tek" element={<TekBrans />} />
+								<Route path="/brans/ekle" element={<BransEkle />} />
+								<Route path="/brans/guncelle" element={<BransGuncelle />} />
+								<Route path="/sirketler" element={<Sirketler />} />
+								<Route path="/sirket/tek" element={<TekSirket />} />
+								<Route path="/sirket/ekle" element={<SirketEkle />} />
+								<Route path="/sirket/guncelle/" element={<SirketGuncelle />} />
+								<Route path="/musteriler" element={<Musteriler />} />
+								<Route path="/musteri/tek" element={<TekMusteri />} />
+								<Route path="/musteri/guncelle" element={<MusteriGuncelle />} />
+								<Route path="/musteri/ekle" element={<MusteriEkle />} />
+								<Route path="/is/bireysel" element={<IsBireyselArsivGoster />} />
+								<Route path="/is/bireysel/ekle" element={<IsBireyselEkle />} />
+								<Route path="/is/bireysel/yaklasan" element={<IsBireyselYaklasan />} />
+								<Route path="/is/ortak/yaklasan" element={<IsOrtakYaklasanIsler />} />
+								<Route path="/is/musteri" element={<IsMusteriGoster />} />
+								<Route path="/borclular" element={<Borclular />} />
+								
+								
+								<Route
+									path="/is/bireysel/guncelle"
+									element={<IsBireyselGuncelle />}
+								/>
+								<Route
+									path="/is/bireysel/musteri"
+									element={<IsBireyselMusteriGoster />}
+								/>
+								<Route
+									path="/is/bireysel/arsiv/tek"
+									element={<IsBireyselArsivTek />}
+								/>
+								<Route path="/is/ortak/arsiv/tek" element={<IsOrtakArsivTek />} />
+								<Route path="/is/ortak/guncelle/" element={<IsOrtakGuncelle />} />
+								<Route path="/is/ortak/ekle/" element={<IsOrtakEkle />} />
+								<Route path="/alacak" element={<AlacakTek />} />
+								<Route path="/verecek" element={<VerecekTek />} />
+								<Route path="/alacak/ekle" element={<AlacakEkle />} />
+								<Route path="/verecek/ekle" element={<VerecekEkle />} />
+								<Route path="/bos" element={<Bos />} />
+
+								<Route path="/is/ortak" element={<IsOrtakArsivGoster />} />
+								<Route path="/is/ortak/musteri" element={<IsOrtakMusteriGoster />} />
+								<Route path="/is/ortak/firma" element={<IsOrtakFirmaGoster />} />
+								<Route path="/teklif" element={<Teklif />} />
+								<Route path="/login" element={<Login />} />
+								<Route path="/logout" element={<CikisYap />} />
+								</Routes>
+							)
+						}
 	
 				<Routes>
 					
-						<Route path="/login" element={<Login />} />
-						<Route path="/" element={<Root />} />
-						<Route path="/home" element={<YaklasanIsler />} />
-						<Route path="/kullanicilar" element={<TumKullanicilar />} />
-						<Route path="/kullanicilar/tek" element={<TekKullanici />} />
-						<Route path="/kullanici/ekle" element={<KullaniciEkle />} />
-						<Route path="/kullanici/guncelle" element={<KullaniciGuncelle />} />
-						<Route path="/firmalar" element={<Firmalar />} />
-						<Route path="/firma/tek" element={<TekFirma />} />
-						<Route path="/firma/guncelle" element={<FirmaGuncelle />} />
-						<Route path="/firma/ekle" element={<FirmaEkle />} />
-						<Route path="/arsivler" element={<Arsivler />} />
-						<Route path="/arsiv/ekle" element={<ArsivEkle />} />
-						<Route path="/arsiv/tek" element={<TekArsiv />} />
-						<Route path="/arsiv/guncelle" element={<ArsivGuncelle />} />
-						<Route path="/branslar" element={<Branslar />} />
-						<Route path="/brans/tek" element={<TekBrans />} />
-						<Route path="/brans/ekle" element={<BransEkle />} />
-						<Route path="/brans/guncelle" element={<BransGuncelle />} />
-						<Route path="/sirketler" element={<Sirketler />} />
-						<Route path="/sirket/tek" element={<TekSirket />} />
-						<Route path="/sirket/ekle" element={<SirketEkle />} />
-						<Route path="/sirket/guncelle/" element={<SirketGuncelle />} />
-						<Route path="/musteriler" element={<Musteriler />} />
-						<Route path="/musteri/tek" element={<TekMusteri />} />
-						<Route path="/musteri/guncelle" element={<MusteriGuncelle />} />
-						<Route path="/musteri/ekle" element={<MusteriEkle />} />
-						<Route path="/is/bireysel" element={<IsBireyselArsivGoster />} />
-						<Route path="/is/bireysel/ekle" element={<IsBireyselEkle />} />
-						<Route path="/is/bireysel/yaklasan" element={<IsBireyselYaklasan />} />
-						<Route path="/is/ortak/yaklasan" element={<IsOrtakYaklasanIsler />} />
-						<Route path="/is/musteri" element={<IsMusteriGoster />} />
-						<Route path="/borclular" element={<Borclular />} />
 						
 						
-						<Route
-							path="/is/bireysel/guncelle"
-							element={<IsBireyselGuncelle />}
-						/>
-						<Route
-							path="/is/bireysel/musteri"
-							element={<IsBireyselMusteriGoster />}
-						/>
-						<Route
-							path="/is/bireysel/arsiv/tek"
-							element={<IsBireyselArsivTek />}
-						/>
-						<Route path="/is/ortak/arsiv/tek" element={<IsOrtakArsivTek />} />
-						<Route path="/is/ortak/guncelle/" element={<IsOrtakGuncelle />} />
-						<Route path="/is/ortak/ekle/" element={<IsOrtakEkle />} />
-						<Route path="/alacak" element={<AlacakTek />} />
-						<Route path="/verecek" element={<VerecekTek />} />
-						<Route path="/alacak/ekle" element={<AlacakEkle />} />
-						<Route path="/verecek/ekle" element={<VerecekEkle />} />
-						<Route path="/bos" element={<Bos />} />
-
-						<Route path="/is/ortak" element={<IsOrtakArsivGoster />} />
-						<Route path="/is/ortak/musteri" element={<IsOrtakMusteriGoster />} />
-						<Route path="/is/ortak/firma" element={<IsOrtakFirmaGoster />} />
-						<Route path="/teklif" element={<Teklif />} />
-						<Route path="/login" element={<Login />} />
-						<Route path="/logout" element={<CikisYap />} />
 					
 				</Routes>
 			

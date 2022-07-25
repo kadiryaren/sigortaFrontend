@@ -466,7 +466,7 @@ export default function IsOrtakGuncelle(props) {
 												onChange={(e) => {
 													initialData["policeBitisTarihi"] = e.target.value;
 												}}
-												value={initialData.policeBitisTarihi}
+												placeholder={initialData.policeBitisTarihi}
 												type="date"
 												name="policeBitisTarihi"
 											/>

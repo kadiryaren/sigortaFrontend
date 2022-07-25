@@ -26,7 +26,7 @@ export default function IsOrtakEkle(props) {
 		policeNo: "",
 		firmaId: "",
 		policeBitisTarihi: "",
-		komisyonOraniKendisi: 0,
+		komisyonOraniFirma: 0,
 		isId: isId,
 	}
 
@@ -160,6 +160,9 @@ export default function IsOrtakEkle(props) {
 											id="musteriler"
 											name="musteriler"
 										>
+											<option></option>
+														
+														
 											{fetchedData["musteriler"].map((musteriler) => {
 												initialData["musteriId"] = musteriler["id"];
 												return (
@@ -178,7 +181,7 @@ export default function IsOrtakEkle(props) {
 
 								<div className="m-1">
 									<label htmlFor="firmaAdi" className="input-group">
-										<span className="w-40 flex justify-center">Firma</span>
+										<span className="w-40 flex justify-center">Ortak</span>
 										<select
 											className="w-48"
 											onChange={(e) => {
@@ -187,7 +190,7 @@ export default function IsOrtakEkle(props) {
 											}}
 											id="firmaId"
 											name="firmaId"
-										>
+										>	<option></option>
 											{tumFirmalar.map((firma) => {
 												if (!("durum" in firma)) {
 													initialData["firmaId"] = firma["id"];
@@ -214,8 +217,9 @@ export default function IsOrtakEkle(props) {
 											id="arsivId"
 											name="arsivId"
 										>
-											{fetchedData["arsivKlasorleri"].map((arsivKlasorleri) => {
-												initialData["arsivId"] = arsivKlasorleri["id"];
+												<option></option>
+											{fetchedData["arsivKlasorleri"].map((arsivKlasorleri,index) => {
+												initialData["arsivId"] = fetchedData["arsivKlasorleri"][index]["id"];
 												return (
 													<option
 														key={arsivKlasorleri["id"]}
@@ -230,7 +234,7 @@ export default function IsOrtakEkle(props) {
 								</div>
 								<div className="m-1">
 									<label htmlFor="branslar" className="input-group">
-										<span className="w-40 flex justify-center">Branşlar</span>
+										<span className="w-40 flex justify-center">Ürünler</span>
 										<select
 											className="w-48"
 											onChange={(e) => {
@@ -238,7 +242,7 @@ export default function IsOrtakEkle(props) {
 											}}
 											id="branslar"
 											name="branslar"
-										>
+										>	<option></option>
 											{fetchedData["branslar"].map((branslar) => {
 												initialData["bransId"] = branslar["id"];
 												return (
@@ -265,7 +269,7 @@ export default function IsOrtakEkle(props) {
 											}}
 											id="sigortaSirketleri"
 											name="sigortaSirketleri"
-										>
+										>	<option></option>
 											{fetchedData["sigortaSirketleri"].map(
 												(sigortaSirketleri) => {
 													initialData["sigortaSirketiId"] = sigortaSirketleri["id"];
@@ -291,7 +295,7 @@ export default function IsOrtakEkle(props) {
 											onChange={(e) => {
 												initialData["plaka"] = e.target.value;
 											}}
-											placeholder={initialData.plaka}
+								
 											type="text"
 											name="plaka"
 										/>
@@ -321,7 +325,7 @@ export default function IsOrtakEkle(props) {
 								<div class="mt-1">
 									<label htmlFor="komisyonOraniFirma" className="input-group">
 										<span className="w-40 flex justify-center">
-											Firma Komisyon
+											Ortak Komisyon
 										</span>
 										<input
 											className="w-48"
@@ -335,7 +339,7 @@ export default function IsOrtakEkle(props) {
 													alert("komisyon orani metinsel ifade olamaz!");
 												}
 											}}
-											placeholder={initialData.komisyonOraniFirma}
+										
 											name="komisyonOraniFirma"
 										/>
 									</label>
@@ -368,6 +372,7 @@ export default function IsOrtakEkle(props) {
 											onChange={(e) => {
 												initialData["policeBitisTarihi"] = e.target.value;
 											}}
+											
 											// value={initialData.policeBitisTarihi}
 											type="date"
 											name="policeBitisTarihi"

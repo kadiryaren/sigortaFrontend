@@ -31,10 +31,13 @@ export default function Home() {
             </div>
             <div className="flex-none">
                 {
-                    window.sessionStorage.getItem("erisimKodu") == "undefined" ? (
+                    window.sessionStorage.getItem("erisimKodu") == null ? (
                        <Link to="/login" className="link link-hover btn btn-success">Giriş Yap</Link>
                     ):(
-                        <Link to="/logout" className="link link-hover btn bg-red-700">Cikis Yap</Link>
+                        <div>
+                            <span className="link link-hover btn bg-red-700">test</span>
+                            <Link to="/logout" className="link link-hover btn bg-red-700">Cikis Yap</Link>
+                            </div>
                     )
                 }
                
