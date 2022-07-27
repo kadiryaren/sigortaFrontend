@@ -53,6 +53,7 @@ export default function IsOrtakArsivGoster() {
                 policeBitisTarihi: returnData[i].policeBitisTarihi,
                 komisyonOraniFirma:returnData[i].komisyonOraniFirma,
                 firmaAdi:returnData[i].firmaAdi,
+                id:returnData[i].id,
                 
                 clickEvent: () => click(returnData[i].id,returnData[i].musteriId,returnData[i].firmaId)
             });
@@ -63,6 +64,12 @@ export default function IsOrtakArsivGoster() {
 
         const data = {
             columns:[
+                {
+                    label: 'ID',
+                    field: 'id',
+                    sort: 'asc',
+                    width: 150
+                },
                 {
                     label: 'Musteri Adi',
                     field: 'musteriAdi',
@@ -112,7 +119,7 @@ export default function IsOrtakArsivGoster() {
                     width: 150
                 },
                 {
-                    label: 'Firma Komisyon Orani',
+                    label: 'Ortak Komisyon Orani',
                     field: 'komisyonOraniFirma',
                     sort: 'asc',
                     width: 150
@@ -169,6 +176,7 @@ export default function IsOrtakArsivGoster() {
                 <div className="container my-5">
                     <div className="flex justify-center align-center">
                         <h1>
+                        
                             <b style={{'fontSize':'30px'}}>ORTAK İŞLER</b>
                         </h1>
                     </div>

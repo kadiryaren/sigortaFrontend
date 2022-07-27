@@ -41,6 +41,7 @@ export default function IsBireyselArsivGoster() {
 		const processedData = [];
 		for (let i = 1; i < Array.from(returnData.keys()).length; i++) {
 			processedData.push({
+				id:returnData[i].id,
 				musteriAdi: returnData[i].musteriAdi,
 				bransAdi: returnData[i].bransAdi,
 				sigortaSirketiAdi: returnData[i].sigortaSirketiAdi,
@@ -56,6 +57,12 @@ export default function IsBireyselArsivGoster() {
 
 		const data = {
 			columns: [
+				{
+					label: "ID",
+					field: "id",
+					sort: "asc",
+					width: 150,
+				},
 				{
 					label: "Musteri Adi",
 					field: "musteriAdi",

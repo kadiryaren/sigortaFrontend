@@ -27,17 +27,17 @@ export default function TekFirma(props) {
 			
 		});
 
-
-		const returnVAL = await response.json();
-		console.log(returnVAL.durum);
-		setNextPage("/firmalar")
+		setNextPage("/yaklasan");
+		setTimeout(() => {
 			navigate("/bos");
+		},500)
+		
+		
 	};
 
 	const silClick = () => {
 		if (window.confirm("Ortak Silinecek Emin Misiniz?") == true) {
 			sil();
-	
 		}
 	};
 

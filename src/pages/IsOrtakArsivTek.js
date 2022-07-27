@@ -148,8 +148,8 @@ export default function IsOrtakArsivTek(props) {
 						<div className="d-flex flex-column justify-content-center align-items-center w-75 h-100  rounded">
 							<div className="text-center my-5">
 								<h1>
-									<b style={{ fontSize: "30px" }}>
-										YAPMAK İSTEDİĞİNİZ İŞLEMİ SEÇİNİZ:
+								<b style={{ fontSize: "30px" }}>
+										ID: <span className="text-red-600">{isId}</span> Yapmak Istediginiz islemi seciniz:
 									</b>
 								</h1>
 							</div>

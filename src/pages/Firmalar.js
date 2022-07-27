@@ -48,10 +48,6 @@ export default function Firmalar() {
             
         }
 
-        //setFetchedData(processedData);
-
-   
-
         const data = {
             columns:[
                 {

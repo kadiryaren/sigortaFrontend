@@ -38,6 +38,7 @@ export default function IsOrtakEkle(props) {
 		islerBireysel: [],
 	});
 
+
 	const getAllData = async () => {
 		const response = await fetch("http://127.0.0.1:5000/goster/hepsi/", {
 			method: "POST",
@@ -86,14 +87,40 @@ export default function IsOrtakEkle(props) {
 		getAllData();
 	}, []);
 
+	// const initialData = {
+	// 	erisimKodu: window.sessionStorage.getItem("erisimKodu"),
+	// 	arsivId: "",
+	// 	musteriId: "",
+	// 	bransId: "",
+	// 	sigortaSirketiId: "",
+	// 	plaka: "",
+	// 	ruhsatSeriNo: "",
+	// 	policeNo: "",
+	// 	firmaId: "",
+	// 	policeBitisTarihi: "",
+	// 	komisyonOraniFirma: 0,
+	// 	isId: isId,
+	// }
 	const ekleClick = () => {
-		initialData.komisyonOraniKendisi =  100 - initialData.komisyonOraniFirma;
-		ekle();		
+		if(initialData.arsivId ==="" || initialData.musteriId === ""  || initialData.arsivId ==="" || initialData.bransId === "" || initialData.sigortaSirketiId === "" || initialData.arsivId === "" || initialData.plaka === "" || initialData.ruhsatSeriNo === "" || initialData.policeNo === "" || initialData.policeBitisTarihi === ""|| initialData.firmaId === ""|| initialData.komisyonOraniFirma === ""){
+			alert("Lütfen eksik alanları doldurun!");
+		}else{
+			initialData.komisyonOraniKendisi =  100 - initialData.komisyonOraniFirma;
+			ekle();	
+		}
+			
 	};
 
 	useEffect(() => {
 		console.log("inital data",initialData);
 	},[initialData])
+
+	useEffect(() => {
+	  console.log("fetched data==>",fetchedData);
+	
+	  
+	}, [fetchedData])
+	
 
 	return (
 		<div>
@@ -161,8 +188,7 @@ export default function IsOrtakEkle(props) {
 											name="musteriler"
 										>
 											<option></option>
-														
-														
+															
 											{fetchedData["musteriler"].map((musteriler) => {
 												initialData["musteriId"] = musteriler["id"];
 												return (
@@ -170,7 +196,7 @@ export default function IsOrtakEkle(props) {
 														key={musteriler["id"]}
 														value={"" + musteriler["id"]}
 													>
-														{musteriler["ad"]}
+														{musteriler["ad"] + " " + musteriler["soyad"]}
 													</option>
 												);
 											})}

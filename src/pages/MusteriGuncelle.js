@@ -88,12 +88,13 @@ export default function MusteriGuncelle(props) {
 					{/* Toggle Button */}
 
 					<div className="container d-flex flex-column align-items-center  mt-3 rounded">
-						<h1
+					<h1
 							style={{ fontSize: "30px" }}
-							className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10 mb-4"
+							className="border-y-2 border-indigo-500  py-4 text-center  w-1/2 mt-10 mb-4"
 						>
-							Müşteri Güncelle
+							ID: <span className="text-red-600">{musteriId + " "}</span> <br/>Müşteri Güncelle
 						</h1>
+							
 
 						<div className="form d-flex flex-column align-items-center w-100 mt-3">
 							<div className="flex justify-center w-1/2">

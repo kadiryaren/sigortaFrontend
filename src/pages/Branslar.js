@@ -39,6 +39,7 @@ export default function Branslar() {
         const processedData = [];
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
             processedData.push({
+                id: returnData[i].id,
                 ad: returnData[i].ad,
                 
                 clickEvent: () => click(returnData[i].id,returnData[i].ad)
@@ -50,6 +51,12 @@ export default function Branslar() {
 
         const data = {
             columns:[
+                {
+                    label: 'ID',
+                    field: 'id',
+                    sort: 'asc',
+                    width: 150
+                },
                 {
                     label: 'ÜRÜN ADI',
                     field: 'ad',

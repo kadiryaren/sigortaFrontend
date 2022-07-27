@@ -139,9 +139,9 @@ export default function IsBireyselGuncelle(props) {
 					>
 						<h1
 							style={{ fontSize: "30px" }}
-							className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10 mb-4"
+							className="border-y-2 border-indigo-500  py-4 text-center  w-1/2 mt-10 mb-4"
 						>
-							Bireysel İş Güncelle
+							ID: <span className="text-red-600">{isId + " "}</span> <br/> Bireysel İş Güncelle
 						</h1>
 
 						<div className="form d-flex flex-column align-items-center mt-5">
@@ -170,7 +170,7 @@ export default function IsBireyselGuncelle(props) {
 													value={"" + musteriler["id"]}
 													selected
 												>
-													{musteriler["ad"]}
+													{musteriler["ad"] + " "+ musteriler["soyad"]}
 												</option>
 											);
 										} else {
@@ -179,7 +179,7 @@ export default function IsBireyselGuncelle(props) {
 													key={musteriler["id"]}
 													value={"" + musteriler["id"]}
 												>
-													{musteriler["ad"]}
+													{musteriler["ad"] + " "+ musteriler["soyad"]}
 												</option>
 											);
 										}

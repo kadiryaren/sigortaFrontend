@@ -35,8 +35,22 @@ export default function MusteriEkle(props) {
 		navigate("/bos");
 	};
 
-	const guncelle = () => {
-		ekle();
+
+	// musteriAdi: "",
+	// musteriSoyadi: "",
+	// musteriTc: "",
+	// musteriTelefon: "",
+	// musteriDogumTarihi: "",
+	// musteriMailAdresi: "",
+
+	const ekleClick = () => {
+		if(initialData.musteriAdi ==="" || initialData.musteriSoyadi === ""  || initialData.musteriTc ==="" || initialData.musteriTelefon=== "" || initialData.musteriDogumTarihi === "" || initialData.musteriMailAdresi === ""){
+			alert("Lütfen eksik alanları doldurun!");
+		}
+			else{
+				ekle();
+			}
+		
 		
 	};
 
@@ -167,7 +181,7 @@ export default function MusteriEkle(props) {
 							</label>
 
 							<br />
-							<button className="btn btn-secondary" onClick={guncelle}>
+							<button className="btn btn-secondary" onClick={ekleClick}>
 								Ekle
 							</button>
 						</div>

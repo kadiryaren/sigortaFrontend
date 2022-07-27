@@ -105,22 +105,17 @@ export default function Teklif(props) {
 			})
 
 		}
-		window.location.href = 'http://127.0.0.1:5000/teklif/?data=' + JSON.stringify(data);
+		if(data.bransId == "" || data.ad == "" || data.soyad == "" || data.ustBilgi == "" ||
+		data.altBilgi == "" ||	data.sigortaSirketleri == "" ||	data.fiyatBilgileri == ""  
+		){
+			alert("Lutfen tum alanlari doldurun!");
+
+		}else{
+
+			window.location.href = 'http://127.0.0.1:5000/teklif/?data=' + JSON.stringify(data);
+		}
 		
 	};
-
-	useEffect(() => {
-		console.log("initial data");
-		console.log(initialData);
-		
-	},[initialData])
-
-
-	useEffect(()=>{
-		console.log("bransid");
-		console.log(initialData.bransId);
-	},[initialData.bransId])
-
 
 	const sirketFiyatEkle = () => {
 		

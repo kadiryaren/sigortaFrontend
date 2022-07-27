@@ -18,17 +18,17 @@ export default function KullaniciEkle(props) {
 		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		kullaniciAdi: "",
 		sifre: "",
-		alacaklarDuzenle: "",
-		arsivKlasorleriDuzenle: "",
-		bireyselIslerDuzenle: "",
-		branslarDuzenle: "",
-		firmalarDuzenle: "",
-		kayitlarGoruntule: "",
-		kullanicilarDuzenle: "",
-		musterilerDuzenle: "",
-		ortakIslerDuzenle: "",
-		sigortaSirketleriDuzenle: "",
-		verilenlerDuzenle: "",
+		alacaklarDuzenle: 0,
+		arsivKlasorleriDuzenle: 0,
+		bireyselIslerDuzenle: 0,
+		branslarDuzenle: 0,
+		firmalarDuzenle: 0,
+		kayitlarGoruntule: 0,
+		kullanicilarDuzenle: 0,
+		musterilerDuzenle: 0,
+		ortakIslerDuzenle: 0,
+		sigortaSirketleriDuzenle: 0,
+		verilenlerDuzenle: 0,
 	};
 
 	const ekle = async () => {
@@ -51,12 +51,6 @@ export default function KullaniciEkle(props) {
 	const ekleClick = () => {
 		ekle();
 	};
-
-	useEffect(() => {
-		
-		console.log("session storage" + window.sessionStorage.getItem("erisimKodu"));
-	},[])
-
 	return (
 		<div>
 			{/* navbar */}

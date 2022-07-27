@@ -95,9 +95,9 @@ export default function TekSirket(props) {
 					>
 						<h1
 							style={{ fontSize: "30px" }}
-							className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10"
+							className="border-y-2 border-indigo-500  py-4 text-center  w-1/2 mt-10 mb-4"
 						>
-							Şirket
+							ID: <span className="text-red-600">{sigortaSirketiId + " "}</span> <br/>Sigorta Firmasi
 						</h1>
 						<div className="d-flex w-100 h-100">
 							<div

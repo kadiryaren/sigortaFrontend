@@ -63,11 +63,30 @@ export default function IsBireyselEkle(props) {
     getAllData();
   }, []);
 
+  // const initialData = {
+  //   erisimKodu: window.sessionStorage.getItem("erisimKodu"),
+  //   arsivId: "",
+  //   musteriId: "",
+  //   bransId: "",
+  //   sigortaSirketiId: "",
+  //   arsivId: "",
+  //   plaka: "",
+  //   ruhsatSeriNo: "",
+  //   policeNo: "",
+  //   policeBitisTarihi: "",
+  // };
+
   const ekle = () => {
-    postData();
-    setArsivId(initialData["arsivId"]);
-    setNextPage("/is/bireysel");
-    navigate("/bos");
+
+    if(initialData.arsivId ==="" || initialData.musteriId === ""  || initialData.arsivId ==="" || initialData.bransId === "" || initialData.sigortaSirketiId === "" || initialData.arsivId === "" || initialData.plaka === "" || initialData.ruhsatSeriNo === "" || initialData.policeNo === "" || initialData.policeBitisTarihi === ""){
+      alert("Lütfen eksik alanları doldurun!");
+    }else{
+      postData();
+      setArsivId(initialData["arsivId"]);
+      setNextPage("/is/bireysel");
+      navigate("/bos");
+    }
+    
   };
 
   return (
@@ -114,6 +133,7 @@ export default function IsBireyselEkle(props) {
 				</div>
       </div>
       <div className="drawer ">
+      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
 				<div className="drawer-content w-screen h-screen flex flex-column  align-center">
 					{/* Toggle Button */}
 
@@ -149,7 +169,7 @@ export default function IsBireyselEkle(props) {
                         key={musteriler["id"]}
                         value={"" + musteriler["id"]}
                       >
-                        {musteriler["ad"]}
+                        {musteriler["ad"] + " " + musteriler["soyad"]}
                       </option>
                     );
                   })}

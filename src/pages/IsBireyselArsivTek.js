@@ -128,7 +128,7 @@ export default function IsBireyselArsivTek(props) {
 							<div className="text-center my-5">
 								<h1>
 									<b style={{ fontSize: "30px" }}>
-										Yapmak Istediginiz islemi seciniz:
+										ID: <span className="text-red-600">{isId}</span> Yapmak Istediginiz islemi seciniz:
 									</b>
 								</h1>
 							</div>

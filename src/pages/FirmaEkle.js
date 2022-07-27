@@ -29,14 +29,19 @@ export default function FirmaEkle(props) {
 			body: JSON.stringify(initialData),
 		});
 
-		const returnData = await response.json();
-		setFetchedData(returnData);
+		
+	
 		setNextPage("/firmalar");
 		navigate("/bos");
 	};
 
 	const ekleClick = () => {
-		ekle();
+		if(initialData.firmaAdi ==="" ){
+			alert("Lütfen eksik alanları doldurun!");
+		}
+			else{
+				ekle();
+			}
 		
 	
 	};

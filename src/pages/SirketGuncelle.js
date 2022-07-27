@@ -114,10 +114,11 @@ export default function SirketGuncelle(props) {
 					>
 						<h1
 							style={{ fontSize: "30px" }}
-							className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10 mb-4"
+							className="border-y-2 border-indigo-500  py-4 text-center  w-1/2 mt-10 mb-4"
 						>
-							Şirket Güncelle
+							ID: <span className="text-red-600">{sigortaSirketiId + " "}</span> <br/>Şirket Güncelle
 						</h1>
+							
 						<div className="form d-flex flex-column align-items-center">
 							<label htmlFor="" className="input-group">
 								<span>Şirket Adı</span>

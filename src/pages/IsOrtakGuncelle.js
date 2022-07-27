@@ -170,9 +170,9 @@ export default function IsOrtakGuncelle(props) {
 					>
 						<h1
 							style={{ fontSize: "30px" }}
-							className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10 mb-4"
+							className="border-y-2 border-indigo-500  py-4 text-center  w-1/2 mt-10 mb-4"
 						>
-							Ortak İş Güncelle
+							ID: <span className="text-red-600">{isId + " "}</span> <br/>İş ortak güncelle
 						</h1>
 
 						<div className="form d-flex flex-column align-items-center">
@@ -307,7 +307,7 @@ export default function IsOrtakGuncelle(props) {
 									</div>
 									<div className="m-3">
 										<label htmlFor="branslar" className="input-group">
-											<span class="w-40 flex justify-center">Branşlar</span>
+											<span class="w-40 flex justify-center">Ürünler</span>
 											<select
 												className="w-48"
 												onChange={(e) => {

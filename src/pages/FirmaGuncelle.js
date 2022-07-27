@@ -98,9 +98,9 @@ export default function FirmaGuncelle(props) {
 					>
 						<h1
 							style={{ fontSize: "30px" }}
-							className="border-y-2 border-indigo-500 flex justify-center py-4  w-1/4 mt-10"
+							className="border-y-2 border-indigo-500  py-4 text-center  w-1/2 mt-10 mb-4"
 						>
-							ORTAK GÜNCELLE
+							ID: <span className="text-red-600">{firmaId + " "}</span> <br/>Ortak Güncelle
 						</h1>
 
 						<div className="form d-flex flex-column align-items-center mt-5">

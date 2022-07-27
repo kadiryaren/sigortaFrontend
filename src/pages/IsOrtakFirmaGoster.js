@@ -17,7 +17,7 @@ export default function IsOrtakFirmaGoster() {
 		isId,
 		setIsId,
 		firmaId,
-		setFirmaId,
+		setFirmaId,setNextPage
 	} = useContext(MainContext);
 
 	const [fetchedData, setFetchedData] = useState([]);
@@ -44,12 +44,14 @@ export default function IsOrtakFirmaGoster() {
 
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
+		setNextPage("/firmalar");
+		navigate("/bos");
 	};
 
 	const silClick = () => {
 		if (window.confirm("Ortak Silinecek Emin Misiniz?") == true) {
 			sil();
-			navigate("/firmalar");
+			
 		}
 	};
 
@@ -86,6 +88,7 @@ export default function IsOrtakFirmaGoster() {
 				ruhsatSeriNo: returnData[i].ruhsatSeriNo,
 				policeBitisTarihi: returnData[i].policeBitisTarihi,
 				firmaAdi: returnData[i].firmaAdi,
+				id: returnData[i].id,
 
 				clickEvent: () => click(returnData[i].id, returnData[i].musteriId),
 			});
@@ -93,6 +96,12 @@ export default function IsOrtakFirmaGoster() {
 
 		const data = {
 			columns: [
+				{
+					label: "ID",
+					field: "id",
+					sort: "asc",
+					width: 150,
+				},
 				{
 					label: "Musteri Adi",
 					field: "musteriAdi",
@@ -200,7 +209,7 @@ export default function IsOrtakFirmaGoster() {
 					<div className="container my-5">
 						<div className="flex justify-center align-center">
 							<h1>
-								<b style={{ fontSize: "30px" }}>ORTAK İLE YAPILAN İŞLER</b>
+								<b style={{ fontSize: "30px" }}> ID:<span className="text-red-600"> {firmaId}</span> ORTAK İLE YAPILAN İŞLER</b>
 							</h1>
 						</div>
 						<div className="d-flex w-100 justify-content-center align-items-center mt-4">

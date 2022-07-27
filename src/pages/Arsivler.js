@@ -46,6 +46,7 @@ export default function Arsivler() {
         for(let i = 1; i<Array.from(returnData.keys()).length;i++){
             processedData.push({
                 ad: returnData[i].ad,
+                id: returnData[i].id,
                 
                 clickEvent: () => click(returnData[i].id,returnData[i].ad)
             });
@@ -56,6 +57,12 @@ export default function Arsivler() {
 
         const data = {
             columns:[
+                {
+                    label: 'ID',
+                    field: 'id',
+                    sort: 'asc',
+                    width: 150
+                },
                 {
                     label: 'Arsiv Adi',
                     field: 'ad',
