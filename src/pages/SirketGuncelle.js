@@ -42,7 +42,9 @@ export default function SirketGuncelle(props) {
 	};
 
 	const guncelle = () => {
-		update();
+		if (window.confirm("Sirket Guncellenecek Emin Misiniz?") == true) {
+			update();
+		}
 		
 	};
 

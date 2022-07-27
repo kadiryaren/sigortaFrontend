@@ -28,17 +28,21 @@ export default function BransGuncelle(props) {
 			},
 			body: JSON.stringify(initialData),
 		});
+		
 		setNextPage("/branslar");
-		navigate("/bos");
+			navigate("/bos");
+		
 
 		const returnData = await response.json();
 		await setFetchedData(returnData);
 	};
 
 	const guncelle = () => {
-		update();
+		if (window.confirm("Urun Guncellenecek Emin Misiniz?") == true) {
+			update();
 			
-		
+		}
+	
 	};
 
 	return (

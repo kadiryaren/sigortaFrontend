@@ -35,13 +35,19 @@ export default function FirmaGuncelle(props) {
 		setFetchedData(returnData);
 		setNextPage("/firmalar");
 			navigate("/bos");
+		
+		
 	};
 
 	const guncelle = () => {
 		if (initialData.sifre === "") {
 			window.alert("Mutlaka bir sifre girmelisiniz!");
 		} else {
-			update();
+			if (window.confirm("Ortak Guncellenecek Emin Misiniz?") == true) {
+		
+				update();
+			}
+			
 		}
 	};
 

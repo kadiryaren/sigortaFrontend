@@ -126,7 +126,7 @@ export default function TekMusteri(props) {
 	};
 
 	const silClick = () => {
-		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
+		if (window.confirm("Musteri  Silinecek Emin Misiniz?") == true) {
 			sil();
 		}
 	};

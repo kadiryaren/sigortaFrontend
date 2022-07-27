@@ -20,12 +20,12 @@ export default function IsOrtakGuncelle(props) {
 		musteriId: "",
 		bransId: "",
 		sigortaSirketiId: "",
-		plaka: "default Data",
+		plaka: "",
 		ruhsatSeriNo: "",
 		policeNo: "",
 		firmaId: "",
-		policeBitisTarihi: "1970-01-01",
-		komisyonOraniKendisi: 0,
+		policeBitisTarihi: "",
+		komisyonOraniKendisi: "",
 		isId: isId,
 	});
 
@@ -107,6 +107,8 @@ export default function IsOrtakGuncelle(props) {
 			},
 			body: JSON.stringify(initialData),
 		});
+		setArsivId(initialData["arsivId"]);
+		navigate("/is/ortak");
 	};
 
 	useEffect(() => {
@@ -114,14 +116,12 @@ export default function IsOrtakGuncelle(props) {
 	}, []);
 
 	const guncelle = () => {
-		setInitialData({
-			...initialData,
-			komisyonOraniKendisi: 100 - initialData.komisyonOraniFirma,
-		});
-		postData();
+		initialData["komisyonOraniKendisi"] = 100 - initialData.komisyonOraniFirma;
+		if (window.confirm("Is  Guncellenecek Emin Misiniz?") == true) {
+			postData();
+		}
 
-		setArsivId(initialData["arsivId"]);
-		navigate("/is/ortak");
+		
 	};
 
 	return (
@@ -221,11 +221,11 @@ export default function IsOrtakGuncelle(props) {
 									</div>
 									<div className="m-3">
 										<label htmlFor="firmaAdi" className="input-group">
-											<span class="w-40 flex justify-center">Firma</span>
+											<span class="w-40 flex justify-center">Ortak</span>
 											<select
 												className="w-48"
 												onChange={(e) => {
-													initialData["firmaAdi"] = e.target.value;
+													initialData["firmaId"] = e.target.value;
 												}}
 												id="firmaAdi"
 												name="firmaAdi"
@@ -428,7 +428,7 @@ export default function IsOrtakGuncelle(props) {
 									<div class="m-3">
 										<label htmlFor="komisyonOraniFirma" className="input-group">
 											<span class="flex justify-center w-40">
-												Firma Komisyon
+												Ortak Komisyon
 											</span>
 											<input
 												className="w-48"
@@ -465,9 +465,13 @@ export default function IsOrtakGuncelle(props) {
 											<input
 												className="w-48"
 												onChange={(e) => {
-													initialData["policeBitisTarihi"] = e.target.value;
+													setInitialData({
+														...initialData,
+														policeBitisTarihi:e.target.value
+													})
+													
 												}}
-												placeholder={initialData.policeBitisTarihi}
+												value={initialData.policeBitisTarihi}
 												type="date"
 												name="policeBitisTarihi"
 											/>

@@ -29,9 +29,11 @@ export default function IsBireyselArsivTek(props) {
 				isId: isId,
 			}),
 		});
+		
 
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
+		navigate("/is/bireysel");
 	};
 
 	const fetchBorc = async () => {
@@ -55,9 +57,10 @@ export default function IsBireyselArsivTek(props) {
 
 
 	const silClick = () => {
-		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
+		
+		if (window.confirm("Is  Silinecek Emin Misiniz?") == true) {
 			sil();
-			navigate("/is/bireysel");
+			
 		}
 	};
 

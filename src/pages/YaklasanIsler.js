@@ -6,8 +6,11 @@ import { MainContext, useContext } from "../contex";
 import { useNavigate } from "react-router-dom";
 import SideBarLinks from "../components/SideBarLinks";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function YaklasanIsler() {
+	
 	const navigate = useNavigate();
 	const { arsivId, musteriId, setMusteriId, isId, setIsId, erisimKodu, setNextPage } =
 		useContext(MainContext);
@@ -76,6 +79,7 @@ export default function YaklasanIsler() {
                     policeNo: returnData.isler[i].policeNo,
                     policeBitisTarihi: returnData.isler[i].policeBitisTarihi,
                     kalanGun: returnData.isler[i].kalanGun,
+					musteriTc: returnData.isler[i].musteriTc,
                     clickEvent: () => click(returnData.isler[i].id, returnData.isler[i].musteriId,isTipi = returnData.isler[i].firmaAdi ? "ortak" : "bireysel"),
                 });
             }
@@ -128,6 +132,12 @@ export default function YaklasanIsler() {
 					width: 150,
 				},
 				{
+					label: "TC/Vergi No",
+					field: "musteriTc",
+					sort: "asc",
+					width: 150,
+				},
+				{
 					label: "Ruhsat Seri No",
 					field: "ruhsatSeriNo",
 					sort: "asc",
@@ -161,6 +171,10 @@ export default function YaklasanIsler() {
 	useEffect(() => {
 		fetchData();
 	}, []);
+
+	useEffect(()=>{
+		console.log("fetchedData-->",fetchedData);
+	},[fetchedData])
 
 	return (
 		<div>
@@ -212,6 +226,7 @@ export default function YaklasanIsler() {
 						
 
 						<MDBDataTable striped bordered hover data={fetchedData} />
+						
 					</div>
 				</div>
 				<div className="drawer-side ">

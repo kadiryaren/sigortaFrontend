@@ -8,15 +8,18 @@ import SideBarLinks from "../components/SideBarLinks";
 
 export default function IsOrtakArsivGoster() {
     const navigate = useNavigate();
-    const {arsivId,musteriId,setMusteriId,isId,setIsId,erisimKodu,isTuru,setIsTuru} = useContext(MainContext);
+    const {arsivId,musteriId,setMusteriId,isId,setIsId,erisimKodu,isTuru,setIsTuru,setFirmaId} = useContext(MainContext);
 
     const [fetchedData,setFetchedData] = useState([]);
-    const click =  (id,musteriId) => {
+    const click =  (id,musteriId,firma) => {
         setMusteriId(musteriId);
         setIsId(id);
+        setFirmaId(firma);
         setIsTuru(1);
   
-        navigate("/is/ortak/arsiv/tek");
+       navigate("/is/ortak/arsiv/tek");
+
+      
     };
 
 
@@ -30,7 +33,6 @@ export default function IsOrtakArsivGoster() {
             body: JSON.stringify({
                 erisimKodu: window.sessionStorage.getItem("erisimKodu"),
                 arsivId: arsivId
-
 
             })
         })
@@ -52,7 +54,7 @@ export default function IsOrtakArsivGoster() {
                 komisyonOraniFirma:returnData[i].komisyonOraniFirma,
                 firmaAdi:returnData[i].firmaAdi,
                 
-                clickEvent: () => click(returnData[i].id,returnData[i].musteriId)
+                clickEvent: () => click(returnData[i].id,returnData[i].musteriId,returnData[i].firmaId)
             });
 
             

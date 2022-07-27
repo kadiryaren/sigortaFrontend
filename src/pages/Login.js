@@ -80,7 +80,7 @@ export default function Login() {
                     
                 </div>
                 <div className="flex-1">
-                    <Link to="/home" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
+                    <Link to="/login" className=" normal-case text-xl w-25 h-25 d-flex justify-content-start">
                 <img className='w-50' src={ require('../assets/images/logo.jpeg') } alt="" />
                 </Link>
                 </div>

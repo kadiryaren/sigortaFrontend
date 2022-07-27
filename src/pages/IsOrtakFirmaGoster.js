@@ -21,6 +21,7 @@ export default function IsOrtakFirmaGoster() {
 	} = useContext(MainContext);
 
 	const [fetchedData, setFetchedData] = useState([]);
+	
 	const click = (id, musteriId) => {
 		setMusteriId(musteriId);
 		setIsId(id);
@@ -46,7 +47,7 @@ export default function IsOrtakFirmaGoster() {
 	};
 
 	const silClick = () => {
-		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
+		if (window.confirm("Ortak Silinecek Emin Misiniz?") == true) {
 			sil();
 			navigate("/firmalar");
 		}

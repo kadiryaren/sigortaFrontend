@@ -41,7 +41,9 @@ export default function TekBrans(props) {
 
 	const silClick = () => {
 		
-		sil();
+		if (window.confirm("Urun Silinecek Emin Misiniz?") == true) {
+			sil();
+		}
 		
 	};
 

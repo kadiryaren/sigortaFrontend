@@ -34,15 +34,18 @@ export default function ArsivGuncelle(props) {
 			},
 			body: JSON.stringify(initialData),
 		});
+		
 		setNextPage("/arsivler");
-		navigate("/bos");
+			navigate("/bos");
+		
 		const returnData = await response.json();
 		await setFetchedData(returnData);
 	};
 
 	const guncelle = () => {
-		update();
-			
+		if (window.confirm("Arsiv Guncellenecek Emin Misiniz?") == true) {
+			update();
+		}
 		
 	};
 

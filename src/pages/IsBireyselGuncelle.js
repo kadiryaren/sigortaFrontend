@@ -85,15 +85,14 @@ export default function IsBireyselGuncelle(props) {
 	}, []);
 
 	const guncelle = () => {
-		postData();
-		console.log("initialData",initialData);
+
+		if (window.confirm("Is  Guncellenecek Emin Misiniz?") == true) {
+			postData();
+		}
 	};
-
-
-	useEffect(()=>{
-		console.log("initialData",initialData);
-	},[initialData])
-
+	useEffect(() => {
+		console.log("initial Data -->",initialData);
+	}, [initialData]);
 	return (
 		<div>
 			{/* navbar */}
@@ -151,11 +150,9 @@ export default function IsBireyselGuncelle(props) {
 								<select
 									className="w-52"
 									onChange={(e) => {
-										setInitialData({
-											...initialData,
-											musteriId: e.target.value
-										})
+										
 										initialData["musteriId"] = e.target.value;
+										
 									}}
 									id="musteriler"
 									name="musteriler"
@@ -196,11 +193,8 @@ export default function IsBireyselGuncelle(props) {
 								<select
 									className="w-52"
 									onChange={(e) => {
-										setInitialData({
-											...initialData,
-											bransId: e.target.value
-										})
-										initialData["bransId"] = e.target.value;
+										
+										initialData["bransId"]= e.target.value
 									}}
 									id="branslar"
 									name="branslar"
@@ -242,11 +236,9 @@ export default function IsBireyselGuncelle(props) {
 								<select
 									className="w-52"
 									onChange={(e) => {
-										setInitialData({
-											...initialData,
-											arsivId: e.target.value
-										})
-										initialData["arsivId"] = e.target.value;
+										
+										initialData["arsivId"]= e.target.value
+										
 									}}
 									id="arsivId"
 									name="arsivId"
@@ -287,11 +279,7 @@ export default function IsBireyselGuncelle(props) {
 								<select
 									className="w-52"
 									onChange={(e) => {
-										setInitialData({
-											...initialData,
-											sigortaSirketiId: e.target.value
-										})
-										initialData["sigortaSirketiId"] = e.target.value;
+										initialData["sigortaSirketiId"] = e.target.value
 									}}
 									id="sigortaSirketleri"
 									name="sigortaSirketleri"
@@ -335,7 +323,7 @@ export default function IsBireyselGuncelle(props) {
 											...initialData,
 											plaka: e.target.value
 										})
-										initialData["plaka"] = e.target.value;
+										
 									}}
 									placeholder={initialData.plaka}
 									type="text"
@@ -354,7 +342,7 @@ export default function IsBireyselGuncelle(props) {
 											...initialData,
 											ruhsatSeriNo: e.target.value
 										})
-										initialData["ruhsatSeriNo"] = e.target.value;
+										
 									}}
 									placeholder={initialData.ruhsatSeriNo}
 									name="ruhsatSeriNo"
@@ -371,7 +359,7 @@ export default function IsBireyselGuncelle(props) {
 											...initialData,
 											policeNo: e.target.value
 										})
-										initialData["policeNo"] = e.target.value;
+										
 									}}
 									placeholder={initialData.policeNo}
 									type="text"
@@ -391,7 +379,7 @@ export default function IsBireyselGuncelle(props) {
 											...initialData,
 											policeBitisTarihi: e.target.value
 										})
-										// initialData["policeBitisTarihi"] =e.target.value ;
+										
 									}}
 									value={initialData.policeBitisTarihi}
 									type="date"

@@ -39,11 +39,8 @@ export default function TekSirket(props) {
 	};
 
 	const silClick = () => {
-		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
+		if (window.confirm("Sirket Silinecek Emin Misiniz?") == true) {
 			sil();
-			
-
-			
 		}
 	};
 

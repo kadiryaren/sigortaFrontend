@@ -40,7 +40,9 @@ export default function TekKullanici(props) {
 	};
 
 	const silClick = () => {
-		sil();
+		if (window.confirm("Kullanici Silinecek Emin Misiniz?") == true) {
+			sil();
+		}
 	};
 
 

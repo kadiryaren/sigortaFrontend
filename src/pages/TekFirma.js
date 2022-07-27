@@ -23,19 +23,21 @@ export default function TekFirma(props) {
 			body: JSON.stringify({
 				erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 				firmaId: firmaId,
-			}),
+			})
+			
 		});
+
 
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
+		setNextPage("/firmalar")
+			navigate("/bos");
 	};
 
 	const silClick = () => {
-		if (window.confirm("Firma Silinecek Emin Misiniz?") == true) {
+		if (window.confirm("Ortak Silinecek Emin Misiniz?") == true) {
 			sil();
-			setNextPage("/firmalar")
-			navigate("/bos");
-
+	
 		}
 	};
 

@@ -10,7 +10,7 @@ import VerecekGoster from "../components/VerecekGoster";
 
 export default function IsOrtakArsivTek(props) {
 	const navigate = useNavigate();
-	const { isId, erisimKodu, setIsTuru } = useContext(MainContext);
+	const { isId, erisimKodu, setIsTuru, setNextPage,setFirmaId} = useContext(MainContext);
 	const[borc,setBorc] = useState(0);
 	const[bireyselPay,setBireyselPay] = useState(0);
 	const[firmaPay,setFirmaPay] = useState(0);
@@ -31,6 +31,8 @@ export default function IsOrtakArsivTek(props) {
 
 		const returnVAL = await response.json();
 		console.log(returnVAL.durum);
+		setNextPage("/is/ortak")
+		navigate("/bos");
 	};
 
 	const payFetch = async () => {
@@ -75,7 +77,7 @@ export default function IsOrtakArsivTek(props) {
 	const silClick = () => {
 		if (window.confirm("Is Silinecek Emin Misiniz?") == true) {
 			sil();
-			navigate("/is/ortak");
+			
 		}
 	};
 
@@ -87,7 +89,8 @@ export default function IsOrtakArsivTek(props) {
 		navigate("/is/ortak/musteri");
 	};
 	const firmaortak = () => {
-		navigate("/is/ortak/firma");
+		setNextPage("/is/ortak/firma");
+		navigate("/bos");
 	};
 
 	useEffect(() => {
@@ -95,6 +98,11 @@ export default function IsOrtakArsivTek(props) {
 		fetchBorc();
 		payFetch();
 	}, []);
+
+
+	useEffect(()=>{
+		console.log("bireysel Pay: ",bireyselPay,"firma Pay: ",firmaPay);
+	},[bireyselPay,firmaPay])
 	return (
 		<div>
 			{/* navbar */}
@@ -146,12 +154,12 @@ export default function IsOrtakArsivTek(props) {
 								</h1>
 							</div>
 							<div className="d-flex justify-content-center">
-								<a
+								<button
 									onClick={firmaortak}
 									className="btn btn-primary rounded mx-2"
 								>
 									Ortak ile yapılan işleri gör
-								</a>
+								</button>
 								<a onClick={goruntule} className="btn btn-success rounded mx-2">
 									Müşteriye Yapılan İsleri gör
 								</a>

@@ -77,6 +77,9 @@ export default function IsOrtakEkle(props) {
 			},
 			body: JSON.stringify(initialData),
 		});
+		setArsivId(initialData["arsivId"]);
+		setNextPage("/is/ortak");
+		navigate("/bos");
 	};
 
 	useEffect(() => {
@@ -85,11 +88,7 @@ export default function IsOrtakEkle(props) {
 
 	const ekleClick = () => {
 		initialData.komisyonOraniKendisi =  100 - initialData.komisyonOraniFirma;
-		ekle();
-
-		setArsivId(initialData["arsivId"]);
-		setNextPage("/is/ortak");
-		navigate("/bos");
+		ekle();		
 	};
 
 	useEffect(() => {

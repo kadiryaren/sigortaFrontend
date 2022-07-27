@@ -40,7 +40,10 @@ export default function MusteriGuncelle(props) {
 	};
 
 	const guncelle = () => {
-		update();
+		if (window.confirm("Musteri Guncellenecek Emin Misiniz?") == true) {
+			update();
+		}
+		
 	};
 
 	return (
