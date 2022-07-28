@@ -12,8 +12,8 @@ export default function Teklif(props) {
 	let sirketcounter = 0;
 	const [url,seturl] = useState("bos");
 	const [sirketId,setSirketId] = useState();
-	const [sirketAdi,setSirketAdi] = useState("Kadir");
-	const[fiyat,setFiyat] = useState();
+	const [sirketAdi,setSirketAdi] = useState("");
+	const[fiyat,setFiyat] = useState("");
 
 	const { token, userId ,erisimKodu,page,setPage} = useContext(MainContext);
 	const [fetchedData, setFetchedData] = useState({
@@ -105,13 +105,13 @@ export default function Teklif(props) {
 			})
 
 		}
-		if(data.bransId == "" || data.ad == "" || data.soyad == "" || data.ustBilgi == "" ||
-		data.altBilgi == "" ||	data.sigortaSirketleri == "" ||	data.fiyatBilgileri == ""  
+		if(data.bransId === undefined || data.ad === undefined || data.soyad === undefined || data.ustBilgi === undefined ||
+		data.altBilgi === undefined ||	data.sigortaSirketleri === undefined ||	data.fiyatBilgileri === undefined  
 		){
 			alert("Lutfen tum alanlari doldurun!");
 
 		}else{
-
+			console.log("data-->",data);
 			window.location.href = 'http://127.0.0.1:5000/teklif/?data=' + JSON.stringify(data);
 		}
 		
@@ -127,17 +127,25 @@ export default function Teklif(props) {
 		// 	fiyatBilgileri : initialData.fiyatBilgileri.concat([fiyat])
 
 		// })
+		if(sirketAdi == "" || fiyat == ""){
+			alert("Lutfen sirket adi veya fiyati doldurun!");
+		}else{
+			setTeklif([
+				...teklif,
+				{
+					id: teklif.length,
+					sirketAdi:sirketAdi,
+					sirketId:sirketId,
+					fiyat: fiyat
+				}
+	
+			])
 
-		setTeklif([
-			...teklif,
-			{
-				id: teklif.length,
-				sirketAdi:sirketAdi,
-				sirketId:sirketId,
-				fiyat: fiyat
-			}
+			setSirketAdi("");
+			setFiyat("");
+		}
 
-		])
+		
 		// initialData.sigortaSirketleri.push(sirketId);
 		// initialData.sigortaIsimleri.push(sirketAdi);
 		// initialData.fiyatBilgileri.push(fiyat);

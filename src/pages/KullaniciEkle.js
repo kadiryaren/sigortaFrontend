@@ -49,7 +49,13 @@ export default function KullaniciEkle(props) {
 	};
 
 	const ekleClick = () => {
-		ekle();
+		if(initialData.kullaniciAdi ==="" || initialData.sifre === "" ){
+			alert("Lütfen eksik alanları doldurun!");
+		}else{
+		
+			ekle();	
+		}
+		
 	};
 	return (
 		<div>

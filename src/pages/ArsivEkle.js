@@ -40,8 +40,12 @@ export default function ArsivEkle(props) {
 	};
 
 	const ekleClick = () => {
-		ekle();
+		if(initialData.arsivKlasoruAdi ==="" ){
+			alert("Lütfen eksik alanları doldurun!");
+		}else{
 		
+			ekle();	
+		}
 	
 	};
 

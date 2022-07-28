@@ -33,7 +33,13 @@ export default function SirketEkle(props) {
 	};
 
 	const ekleClick = () => {
-		ekle();
+		
+		if(initialData.sigortaSirketiAdi ==="" || initialData.fotograf === "" ){
+			alert("Lütfen eksik alanları doldurun!");
+		}else{
+		
+			ekle();	
+		}
 		
 	};
 

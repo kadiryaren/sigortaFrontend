@@ -36,9 +36,13 @@ export default function BransEkle(props) {
 	};
 
 	const ekleClick = () => {
-		ekle();
+		if(initialData.bransAdi ==="" ){
+			alert("Lütfen eksik alanları doldurun!");
+		}else{
 		
-		
+			ekle();	
+		}
+
 	};
 
 	return (
