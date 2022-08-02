@@ -88,15 +88,18 @@ export default function IsOrtakGuncelle(props) {
 						return item.id === isId;
 					})[0].firmaId
 				);
-			})[0].ad
+			})[0].ad,
+			policeBitisTarihi: data.islerOrtak.filter((item) => {
+				return item.id === isId;
+			})[0].policeBitisTarihi
 			
 		});
-		date =  data.islerOrtak.filter((item) => {
+
+		date = await data.islerOrtak.filter((item) => {
 			return item.id === isId;
 		})[0].policeBitisTarihi;
+	
 
-		console.log("fetched data");
-		console.log(fetchedData["islerOrtak"]);
 	};
 
 	const postData = async () => {
@@ -119,7 +122,10 @@ export default function IsOrtakGuncelle(props) {
 	const guncelle = () => {
 		initialData["komisyonOraniKendisi"] = 100 - initialData.komisyonOraniFirma;
 		if (window.confirm("Is  Guncellenecek Emin Misiniz?") == true) {
-			initialData["policeBitisTarihi"] = date;
+			if(date !== ""){
+				initialData["policeBitisTarihi"] = date;
+			}
+			
 			postData();
 		}
 
@@ -470,7 +476,7 @@ export default function IsOrtakGuncelle(props) {
 													date = e.target.value;
 													
 												}}
-							
+										
 												type="date"
 												name="policeBitisTarihi"
 											/>

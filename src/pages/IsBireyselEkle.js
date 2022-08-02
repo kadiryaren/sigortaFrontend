@@ -83,8 +83,12 @@ export default function IsBireyselEkle(props) {
     }else{
       postData();
       setArsivId(initialData["arsivId"]);
-      setNextPage("/is/bireysel");
-      navigate("/bos");
+
+      setTimeout(()=>{
+        setNextPage("/is/bireysel");
+        navigate("/bos");
+      },5000);
+      
     }
     
   };

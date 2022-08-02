@@ -23,6 +23,7 @@ export default function IsBireyselGuncelle(props) {
 		plaka: "",
 		ruhsatSeriNo: "",
 		policeNo: "",
+		policeBitisTarihi: "",
 		isId: isId,
 	});
 
@@ -57,12 +58,17 @@ export default function IsBireyselGuncelle(props) {
 			})[0].ruhsatSeriNo,
 			policeNo: data.islerBireysel.filter((item) => {
 				return item.id === isId;
-			})[0].policeNo
+			})[0].policeNo,
+			policeBitisTarihi: data.islerBireysel.filter((item) => {
+				return item.id === isId;
+			})[0].policeBitisTarihi,
 			
 		});
-		date = data.islerBireysel.filter((item) => {
+
+		date = await data.islerBireysel.filter((item) => {
 			return item.id === isId;
 		})[0].policeBitisTarihi;
+
 	};
 
 	const postData = async () => {
@@ -89,7 +95,9 @@ export default function IsBireyselGuncelle(props) {
 	const guncelle = () => {
 
 		if (window.confirm("Is  Guncellenecek Emin Misiniz?") == true) {
-			initialData["policeBitisTarihi"] = date;
+			if(date !== ""){
+				initialData["policeBitisTarihi"] = date;
+			}
 			postData();
 			console.log("guncellenecek data--> ",initialData);
 		}
