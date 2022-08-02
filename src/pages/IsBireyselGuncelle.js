@@ -12,6 +12,8 @@ export default function IsBireyselGuncelle(props) {
 
 	const { token, userId, setArsivId, isId, setIsId, erisimKodu ,setNextPage} =
 		useContext(MainContext);
+
+	let date = "";
 	const [initialData, setInitialData] = useState({
 		erisimKodu: window.sessionStorage.getItem("erisimKodu"),
 		arsivId: "",
@@ -21,7 +23,6 @@ export default function IsBireyselGuncelle(props) {
 		plaka: "",
 		ruhsatSeriNo: "",
 		policeNo: "",
-		policeBitisTarihi: "",
 		isId: isId,
 	});
 
@@ -56,11 +57,12 @@ export default function IsBireyselGuncelle(props) {
 			})[0].ruhsatSeriNo,
 			policeNo: data.islerBireysel.filter((item) => {
 				return item.id === isId;
-			})[0].policeNo,
-			policeBitisTarihi: data.islerBireysel.filter((item) => {
-				return item.id === isId;
-			})[0].policeBitisTarihi,
+			})[0].policeNo
+			
 		});
+		date = data.islerBireysel.filter((item) => {
+			return item.id === isId;
+		})[0].policeBitisTarihi;
 	};
 
 	const postData = async () => {
@@ -87,12 +89,20 @@ export default function IsBireyselGuncelle(props) {
 	const guncelle = () => {
 
 		if (window.confirm("Is  Guncellenecek Emin Misiniz?") == true) {
+			initialData["policeBitisTarihi"] = date;
 			postData();
+			console.log("guncellenecek data--> ",initialData);
 		}
 	};
 	useEffect(() => {
 		console.log("initial Data -->",initialData);
 	}, [initialData]);
+
+
+	useEffect(() => {
+	  console.log("date-->",date);
+	}, [date]);
+	
 	return (
 		<div>
 			{/* navbar */}
@@ -150,9 +160,10 @@ export default function IsBireyselGuncelle(props) {
 								<select
 									className="w-52"
 									onChange={(e) => {
-										
-										initialData["musteriId"] = e.target.value;
-										
+										console.log("musteri --> ",e.target.value)
+										initialData["musteriId"]= e.target.value;
+										console.log("initial Data",initialData)
+						
 									}}
 									id="musteriler"
 									name="musteriler"
@@ -193,8 +204,9 @@ export default function IsBireyselGuncelle(props) {
 								<select
 									className="w-52"
 									onChange={(e) => {
-										
+										console.log("urun",e.target.value)
 										initialData["bransId"]= e.target.value
+										console.log("initial Data",initialData)
 									}}
 									id="branslar"
 									name="branslar"
@@ -236,8 +248,9 @@ export default function IsBireyselGuncelle(props) {
 								<select
 									className="w-52"
 									onChange={(e) => {
-										
+										console.log("arsiv --> ",e.target.value);
 										initialData["arsivId"]= e.target.value
+										console.log("initialData ",initialData);
 										
 									}}
 									id="arsivId"
@@ -279,7 +292,9 @@ export default function IsBireyselGuncelle(props) {
 								<select
 									className="w-52"
 									onChange={(e) => {
+										console.log("sigorta Sirketleri",e.target.value);
 										initialData["sigortaSirketiId"] = e.target.value
+										console.log("initial Data",initialData)
 									}}
 									id="sigortaSirketleri"
 									name="sigortaSirketleri"
@@ -319,10 +334,11 @@ export default function IsBireyselGuncelle(props) {
 								<input
 									className="w-52"
 									onChange={(e) => {
-										setInitialData({
-											...initialData,
-											plaka: e.target.value
-										})
+										
+
+										console.log("plaka",e.target.value);
+										initialData["plaka"] = e.target.value
+										console.log("initial Data",initialData)
 										
 									}}
 									placeholder={initialData.plaka}
@@ -338,10 +354,10 @@ export default function IsBireyselGuncelle(props) {
 									className="w-52"
 									type="text"
 									onChange={(e) => {
-										setInitialData({
-											...initialData,
-											ruhsatSeriNo: e.target.value
-										})
+										
+										console.log("ruhsatSeriNo",e.target.value);
+										initialData["ruhsatSeriNo"] = e.target.value
+										console.log("initial Data",initialData)
 										
 									}}
 									placeholder={initialData.ruhsatSeriNo}
@@ -355,10 +371,10 @@ export default function IsBireyselGuncelle(props) {
 								<input
 									className="w-52"
 									onChange={(e) => {
-										setInitialData({
-											...initialData,
-											policeNo: e.target.value
-										})
+									
+										console.log("policeNo",e.target.value);
+										initialData["policeNo"] = e.target.value
+										console.log("initial Data",initialData)
 										
 									}}
 									placeholder={initialData.policeNo}
@@ -368,20 +384,20 @@ export default function IsBireyselGuncelle(props) {
 								<br />
 							</label>
 
+
+							
+
 							<label htmlFor="policeBitisTarihi" className="input-group mt-3">
 								<span className="w-40 flex justify-center">
-									Poliçe Biriş Tarihi
+									Poliçe Bitiş Tarihi
 								</span>
 								<input
 									className="w-52"
 									onChange={(e) => {
-										setInitialData({
-											...initialData,
-											policeBitisTarihi: e.target.value
-										})
+										date = e.target.value;
 										
 									}}
-									value={initialData.policeBitisTarihi}
+									
 									type="date"
 									name="policeBitisTarihi"
 								/>

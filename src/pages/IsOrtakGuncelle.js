@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 export default function IsOrtakGuncelle(props) {
 	const navigate = useNavigate();
 	const [tumFirmalar, setTumFirmalar] = useState([]);
-
+	let date = "";
 	const { token, userId, setArsivId, isId, setIsId, erisimKodu } =
 		useContext(MainContext);
 	const [initialData, setInitialData] = useState({
@@ -88,11 +88,12 @@ export default function IsOrtakGuncelle(props) {
 						return item.id === isId;
 					})[0].firmaId
 				);
-			})[0].ad,
-			policeBitisTarihi: data.islerOrtak.filter((item) => {
-				return item.id === isId;
-			})[0].policeBitisTarihi,
+			})[0].ad
+			
 		});
+		date =  data.islerOrtak.filter((item) => {
+			return item.id === isId;
+		})[0].policeBitisTarihi;
 
 		console.log("fetched data");
 		console.log(fetchedData["islerOrtak"]);
@@ -118,6 +119,7 @@ export default function IsOrtakGuncelle(props) {
 	const guncelle = () => {
 		initialData["komisyonOraniKendisi"] = 100 - initialData.komisyonOraniFirma;
 		if (window.confirm("Is  Guncellenecek Emin Misiniz?") == true) {
+			initialData["policeBitisTarihi"] = date;
 			postData();
 		}
 
@@ -465,13 +467,10 @@ export default function IsOrtakGuncelle(props) {
 											<input
 												className="w-48"
 												onChange={(e) => {
-													setInitialData({
-														...initialData,
-														policeBitisTarihi:e.target.value
-													})
+													date = e.target.value;
 													
 												}}
-												value={initialData.policeBitisTarihi}
+							
 												type="date"
 												name="policeBitisTarihi"
 											/>

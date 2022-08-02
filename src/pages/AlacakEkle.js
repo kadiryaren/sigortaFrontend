@@ -52,6 +52,7 @@ export default function AlacakEkle(props) {
 	}, []);
 
 	const ekleClick = () => {
+		
 		ekle();
 		
 	};
